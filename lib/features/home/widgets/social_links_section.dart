@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:aad/core/constants/app_constants.dart';
 import 'package:aad/core/models/social_link_model.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
@@ -86,32 +87,26 @@ class SocialLinksSection extends StatelessWidget {
   }
 }
 
-class _SocialLinkButton extends StatefulWidget {
+class _SocialLinkButton extends HookWidget {
   final SocialLinkModel link;
   final int index;
 
   const _SocialLinkButton({required this.link, required this.index});
 
   @override
-  State<_SocialLinkButton> createState() => _SocialLinkButtonState();
-}
-
-class _SocialLinkButtonState extends State<_SocialLinkButton> {
-  bool _isHovered = false;
-
-  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final color = widget.link.color ?? theme.colorScheme.primary;
+    final color = link.color ?? theme.colorScheme.primary;
+    final isHovered = useState(false);
 
     return MouseRegion(
-          onEnter: (_) => setState(() => _isHovered = true),
-          onExit: (_) => setState(() => _isHovered = false),
+          onEnter: (_) => isHovered.value = true,
+          onExit: (_) => isHovered.value = false,
           child: GestureDetector(
-            onTap: () => _launchUrl(widget.link.url),
+            onTap: () => _launchUrl(link.url, link.name),
             child: AnimatedContainer(
               duration: AppConstants.shortAnimation,
-              transform: _isHovered
+              transform: isHovered.value
                   ? Matrix4.translationValues(0.0, -8.0, 0.0)
                   : Matrix4.identity(),
               child: Container(
@@ -128,15 +123,15 @@ class _SocialLinkButtonState extends State<_SocialLinkButton> {
                   desktop: 120,
                 ),
                 decoration: BoxDecoration(
-                  color: _isHovered
+                  color: isHovered.value
                       ? color.withValues(alpha: 0.1)
                       : theme.cardTheme.color,
                   borderRadius: BorderRadius.circular(AppConstants.radiusL),
                   border: Border.all(
-                    color: _isHovered ? color : Colors.transparent,
+                    color: isHovered.value ? color : Colors.transparent,
                     width: 2,
                   ),
-                  boxShadow: _isHovered
+                  boxShadow: isHovered.value
                       ? [
                           BoxShadow(
                             color: color.withValues(alpha: 0.3),
@@ -156,21 +151,21 @@ class _SocialLinkButtonState extends State<_SocialLinkButton> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Icon(
-                      widget.link.icon,
+                      link.icon,
                       size: Responsive.value(
                         context: context,
                         mobile: 32,
                         tablet: 40,
                         desktop: 48,
                       ),
-                      color: _isHovered ? color : theme.iconTheme.color,
+                      color: isHovered.value ? color : theme.iconTheme.color,
                     ),
                     const SizedBox(height: AppConstants.spacingS),
                     Text(
-                      widget.link.name,
+                      link.name,
                       style: theme.textTheme.bodySmall?.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: _isHovered ? color : null,
+                        color: isHovered.value ? color : null,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -183,17 +178,17 @@ class _SocialLinkButtonState extends State<_SocialLinkButton> {
         .animate()
         .fadeIn(
           duration: AppConstants.mediumAnimation,
-          delay: Duration(milliseconds: 50 * widget.index),
+          delay: Duration(milliseconds: 50 * index),
         )
         .scale(
           duration: AppConstants.mediumAnimation,
-          delay: Duration(milliseconds: 50 * widget.index),
+          delay: Duration(milliseconds: 50 * index),
         );
   }
 
-  Future<void> _launchUrl(String url) async {
+  Future<void> _launchUrl(String url, String linkName) async {
     // Track social link click
-    AnalyticsService.logSocialLinkClick(widget.link.name);
+    AnalyticsService.logSocialLinkClick(linkName);
 
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {

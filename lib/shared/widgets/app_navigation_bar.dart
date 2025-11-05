@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:aad/core/constants/app_constants.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
 import 'package:aad/core/providers/theme_provider.dart';
@@ -192,28 +194,22 @@ class _AppNavigationBarState extends ConsumerState<AppNavigationBar> {
   }
 }
 
-class _NavItem extends StatefulWidget {
+class _NavItem extends HookWidget {
   final String text;
   final VoidCallback onTap;
 
   const _NavItem({required this.text, required this.onTap});
 
   @override
-  State<_NavItem> createState() => _NavItemState();
-}
-
-class _NavItemState extends State<_NavItem> {
-  bool _isHovered = false;
-
-  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isHovered = useState(false);
 
     return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
+      onEnter: (_) => isHovered.value = true,
+      onExit: (_) => isHovered.value = false,
       child: GestureDetector(
-        onTap: widget.onTap,
+        onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: AppConstants.spacingM,
@@ -222,10 +218,12 @@ class _NavItemState extends State<_NavItem> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                widget.text,
+                text,
                 style: theme.textTheme.bodyLarge?.copyWith(
-                  fontWeight: _isHovered ? FontWeight.w600 : FontWeight.normal,
-                  color: _isHovered
+                  fontWeight: isHovered.value
+                      ? FontWeight.w600
+                      : FontWeight.normal,
+                  color: isHovered.value
                       ? theme.colorScheme.primary
                       : theme.textTheme.bodyLarge?.color,
                 ),
@@ -234,7 +232,7 @@ class _NavItemState extends State<_NavItem> {
               AnimatedContainer(
                 duration: AppConstants.shortAnimation,
                 height: 2,
-                width: _isHovered ? 40 : 0,
+                width: isHovered.value ? 40 : 0,
                 color: theme.colorScheme.primary,
               ),
             ],

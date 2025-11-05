@@ -317,7 +317,7 @@ The **d_art** page features 6 interactive generative art styles:
 3. **Fractals** - Recursive fractal tree structures
 4. **Noise Field** - Perlin noise-based flow field
 5. **Spirals** - Rotating spiral patterns
-6. **Frame** - Refik Anadol-inspired flowing waves in a frame
+6. **Frame** - Flowing waves in a frame
 
 Each style has customizable parameters (speed, color, intensity, etc.)
 
@@ -354,7 +354,7 @@ Feel free to use this portfolio as inspiration or a template for your own websit
 - 💼 GitHub: [@alperenderici](https://github.com/alperenderici)
 - 💼 LinkedIn: [Ali Alperen Derici](https://linkedin.com/in/alperenderici)
 - 💼 Upwork: [Ali Alperen Derici](https://www.upwork.com/freelancers/~01f3c97a8c1e3e3e3e)
-- 📧 Email: dericialperen5@gmail.com
+- 📧 Email: alialperenderici@gmail.com
 
 ## 🙏 Acknowledgments
 

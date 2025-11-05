@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:aad/core/constants/app_constants.dart';
 import 'package:aad/core/models/certificate_model.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
@@ -56,36 +57,30 @@ class CertificatesSection extends StatelessWidget {
   }
 }
 
-class _CertificateCard extends StatefulWidget {
+class _CertificateCard extends HookWidget {
   final CertificateModel certificate;
   final int index;
 
   const _CertificateCard({required this.certificate, required this.index});
 
   @override
-  State<_CertificateCard> createState() => _CertificateCardState();
-}
-
-class _CertificateCardState extends State<_CertificateCard> {
-  bool _isHovered = false;
-
-  @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final locale = Localizations.localeOf(context);
+    final isHovered = useState(false);
 
     return MouseRegion(
-          onEnter: (_) => setState(() => _isHovered = true),
-          onExit: (_) => setState(() => _isHovered = false),
+          onEnter: (_) => isHovered.value = true,
+          onExit: (_) => isHovered.value = false,
           child: GestureDetector(
-            onTap: () => _showCertificateDialog(context),
+            onTap: () => _showCertificateDialog(context, certificate),
             child: AnimatedContainer(
               duration: AppConstants.shortAnimation,
-              transform: _isHovered
+              transform: isHovered.value
                   ? Matrix4.diagonal3Values(1.05, 1.05, 1.0)
                   : Matrix4.identity(),
               child: Card(
-                elevation: _isHovered ? 8 : 2,
+                elevation: isHovered.value ? 8 : 2,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(AppConstants.radiusL),
                 ),
@@ -94,7 +89,7 @@ class _CertificateCardState extends State<_CertificateCard> {
                   fit: StackFit.expand,
                   children: [
                     Image.asset(
-                      widget.certificate.imagePath,
+                      certificate.imagePath,
                       fit: BoxFit.cover,
                       errorBuilder: (context, error, stackTrace) {
                         return Container(
@@ -113,7 +108,7 @@ class _CertificateCardState extends State<_CertificateCard> {
                       child: AnimatedContainer(
                         duration: AppConstants.shortAnimation,
                         padding: EdgeInsets.all(
-                          _isHovered
+                          isHovered.value
                               ? AppConstants.spacingL
                               : AppConstants.spacingM,
                         ),
@@ -129,7 +124,7 @@ class _CertificateCardState extends State<_CertificateCard> {
                           ),
                         ),
                         child: Text(
-                          widget.certificate.getTitle(locale.languageCode),
+                          certificate.getTitle(locale.languageCode),
                           style: theme.textTheme.titleMedium?.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -141,7 +136,7 @@ class _CertificateCardState extends State<_CertificateCard> {
                       ),
                     ),
                     // Hover effect - zoom icon
-                    if (_isHovered)
+                    if (isHovered.value)
                       Container(
                         color: Colors.black.withValues(alpha: 0.3),
                         child: const Center(
@@ -161,15 +156,15 @@ class _CertificateCardState extends State<_CertificateCard> {
         .animate()
         .fadeIn(
           duration: AppConstants.mediumAnimation,
-          delay: Duration(milliseconds: 100 * widget.index),
+          delay: Duration(milliseconds: 100 * index),
         )
         .scale(
           duration: AppConstants.mediumAnimation,
-          delay: Duration(milliseconds: 100 * widget.index),
+          delay: Duration(milliseconds: 100 * index),
         );
   }
 
-  void _showCertificateDialog(BuildContext context) {
+  void _showCertificateDialog(BuildContext context, CertificateModel cert) {
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -177,10 +172,7 @@ class _CertificateCardState extends State<_CertificateCard> {
         child: Stack(
           children: [
             InteractiveViewer(
-              child: Image.asset(
-                widget.certificate.imagePath,
-                fit: BoxFit.contain,
-              ),
+              child: Image.asset(cert.imagePath, fit: BoxFit.contain),
             ),
             Positioned(
               top: 0,
