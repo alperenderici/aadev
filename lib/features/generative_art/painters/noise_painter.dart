@@ -5,10 +5,18 @@ import 'package:flutter/material.dart';
 class NoisePainter extends CustomPainter {
   final Animation<double> animation;
   final Random random;
+  final double noiseScale;
+  final double speed;
+  final double flowStrength;
+  final double hue;
 
   NoisePainter({
     required this.animation,
     required this.random,
+    this.noiseScale = 1.0,
+    this.speed = 1.0,
+    this.flowStrength = 1.0,
+    this.hue = 0.0,
   }) : super(repaint: animation);
 
   @override
@@ -24,46 +32,35 @@ class NoisePainter extends CustomPainter {
 
         // Generate noise value
         final noise = _noise(
-          i * 0.1,
-          j * 0.1,
-          animation.value * 2,
+          i * 0.1 * noiseScale,
+          j * 0.1 * noiseScale,
+          animation.value * speed * 2,
         );
 
         // Convert noise to angle
         final angle = noise * 2 * pi;
-        final magnitude = 15;
+        final magnitude = 15 * flowStrength;
 
         final endX = x + cos(angle) * magnitude;
         final endY = y + sin(angle) * magnitude;
 
         // Color based on noise value
-        final hue = (noise * 360 + animation.value * 360) % 360;
+        final fieldHue = hue > 0
+            ? (hue + noise * 60) % 360
+            : (noise * 360 + animation.value * 360) % 360;
         final paint = Paint()
-          ..color = HSVColor.fromAHSV(
-            0.6,
-            hue,
-            0.8,
-            1.0,
-          ).toColor()
+          ..color = HSVColor.fromAHSV(0.6, fieldHue, 0.8, 1.0).toColor()
           ..strokeWidth = 2
           ..strokeCap = StrokeCap.round;
 
-        canvas.drawLine(
-          Offset(x, y),
-          Offset(endX, endY),
-          paint,
-        );
+        canvas.drawLine(Offset(x, y), Offset(endX, endY), paint);
 
         // Draw dots at grid points
         final dotPaint = Paint()
           ..color = paint.color.withValues(alpha: 0.8)
           ..style = PaintingStyle.fill;
 
-        canvas.drawCircle(
-          Offset(x, y),
-          2,
-          dotPaint,
-        );
+        canvas.drawCircle(Offset(x, y), 2, dotPaint);
       }
     }
   }
@@ -98,8 +95,16 @@ class NoisePainter extends CustomPainter {
       ),
       _lerp(
         v,
-        _lerp(u, _grad(aa + 1, xf, yf, zf - 1), _grad(ba + 1, xf - 1, yf, zf - 1)),
-        _lerp(u, _grad(ab + 1, xf, yf - 1, zf - 1), _grad(bb + 1, xf - 1, yf - 1, zf - 1)),
+        _lerp(
+          u,
+          _grad(aa + 1, xf, yf, zf - 1),
+          _grad(ba + 1, xf - 1, yf, zf - 1),
+        ),
+        _lerp(
+          u,
+          _grad(ab + 1, xf, yf - 1, zf - 1),
+          _grad(bb + 1, xf - 1, yf - 1, zf - 1),
+        ),
       ),
     );
   }
@@ -126,4 +131,3 @@ class NoisePainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
-

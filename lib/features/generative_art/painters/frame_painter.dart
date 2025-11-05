@@ -5,9 +5,19 @@ import 'package:flutter/material.dart';
 class FramePainter extends CustomPainter {
   final Animation<double> animation;
   final Random random;
+  final double speed;
+  final double flowIntensity;
+  final double particleCount;
+  final double hue;
 
-  FramePainter({required this.animation, required this.random})
-      : super(repaint: animation);
+  FramePainter({
+    required this.animation,
+    required this.random,
+    this.speed = 1.0,
+    this.flowIntensity = 1.0,
+    this.particleCount = 1.0,
+    this.hue = 0.0,
+  }) : super(repaint: animation);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -59,12 +69,14 @@ class FramePainter extends CustomPainter {
 
     // Clip to frame interior for generative art
     canvas.save();
-    canvas.clipRect(Rect.fromLTWH(
-      frameLeft + 20,
-      frameTop + 20,
-      frameWidth - 40,
-      frameHeight - 40,
-    ));
+    canvas.clipRect(
+      Rect.fromLTWH(
+        frameLeft + 20,
+        frameTop + 20,
+        frameWidth - 40,
+        frameHeight - 40,
+      ),
+    );
 
     // Draw Refik Anadol inspired flowing waves
     _drawFlowingWaves(
@@ -92,11 +104,13 @@ class FramePainter extends CustomPainter {
     for (int layer = 0; layer < 15; layer++) {
       final path = Path();
       final points = 200;
-      final layerOffset = layer * 30.0;
-      final timeOffset = animation.value * 2 * pi + layer * 0.3;
+      final layerOffset = layer * 30.0 * flowIntensity;
+      final timeOffset = animation.value * speed * 2 * pi + layer * 0.3;
 
       // Blue to white gradient based on layer
-      final hue = 200.0 + layer * 5; // Blue range
+      final layerHue = hue > 0
+          ? (hue + layer * 5) % 360
+          : 200.0 + layer * 5; // Blue range
       final saturation = 0.8 - layer * 0.03;
       final value = 0.6 + layer * 0.03;
       final alpha = 0.15 - layer * 0.005;
@@ -104,7 +118,7 @@ class FramePainter extends CustomPainter {
       final paint = Paint()
         ..color = HSVColor.fromAHSV(
           max(0.05, alpha),
-          hue % 360,
+          layerHue % 360,
           max(0.3, saturation),
           min(1.0, value),
         ).toColor()
@@ -150,20 +164,21 @@ class FramePainter extends CustomPainter {
     }
 
     // Add flowing particles for extra detail
-    for (int i = 0; i < 50; i++) {
-      final angle = (i / 50) * 2 * pi + animation.value * 2 * pi;
-      final radius = 100 + sin(animation.value * 4 * pi + i) * 80;
+    final numParticles = (50 * particleCount).toInt().clamp(10, 200);
+    for (int i = 0; i < numParticles; i++) {
+      final angle =
+          (i / numParticles) * 2 * pi + animation.value * speed * 2 * pi;
+      final radius =
+          100 + sin(animation.value * 4 * pi + i) * 80 * flowIntensity;
 
       final px = centerX + cos(angle) * radius;
       final py = centerY + sin(angle) * radius;
 
+      final particleHue = hue > 0
+          ? (hue + sin(animation.value * 2 * pi + i) * 30) % 360
+          : 200 + sin(animation.value * 2 * pi + i) * 30;
       final particlePaint = Paint()
-        ..color = HSVColor.fromAHSV(
-          0.6,
-          200 + sin(animation.value * 2 * pi + i) * 30,
-          0.7,
-          1.0,
-        ).toColor()
+        ..color = HSVColor.fromAHSV(0.6, particleHue, 0.7, 1.0).toColor()
         ..style = PaintingStyle.fill;
 
       canvas.drawCircle(
@@ -177,11 +192,7 @@ class FramePainter extends CustomPainter {
         ..color = particlePaint.color.withValues(alpha: 0.3)
         ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5);
 
-      canvas.drawCircle(
-        Offset(px, py),
-        4,
-        glowPaint,
-      );
+      canvas.drawCircle(Offset(px, py), 4, glowPaint);
     }
 
     // Add flowing lines connecting particles
@@ -199,24 +210,14 @@ class FramePainter extends CustomPainter {
       final endY = centerY + sin(endAngle) * endRadius;
 
       final linePaint = Paint()
-        ..color = HSVColor.fromAHSV(
-          0.2,
-          210 + t * 20,
-          0.6,
-          0.9,
-        ).toColor()
+        ..color = HSVColor.fromAHSV(0.2, 210 + t * 20, 0.6, 0.9).toColor()
         ..strokeWidth = 1
         ..strokeCap = StrokeCap.round;
 
-      canvas.drawLine(
-        Offset(startX, startY),
-        Offset(endX, endY),
-        linePaint,
-      );
+      canvas.drawLine(Offset(startX, startY), Offset(endX, endY), linePaint);
     }
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
-

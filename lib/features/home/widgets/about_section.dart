@@ -6,8 +6,6 @@ import 'package:aad/core/l10n/app_localizations.dart';
 import 'package:aad/core/utils/responsive.dart';
 import 'package:aad/shared/widgets/section_title.dart';
 import 'package:aad/shared/widgets/responsive_section.dart';
-import 'package:aad/shared/widgets/animated_card.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 /// About section widget
 class AboutSection extends StatelessWidget {

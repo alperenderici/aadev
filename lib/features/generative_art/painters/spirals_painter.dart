@@ -5,10 +5,18 @@ import 'package:flutter/material.dart';
 class SpiralsPainter extends CustomPainter {
   final Animation<double> animation;
   final Random random;
+  final double rotationSpeed;
+  final double spiralCount;
+  final double radius;
+  final double hue;
 
   SpiralsPainter({
     required this.animation,
     required this.random,
+    this.rotationSpeed = 1.0,
+    this.spiralCount = 1.0,
+    this.radius = 1.0,
+    this.hue = 0.0,
   }) : super(repaint: animation);
 
   @override
@@ -17,14 +25,17 @@ class SpiralsPainter extends CustomPainter {
     final centerY = size.height / 2;
 
     // Draw multiple spirals
-    for (int spiralIndex = 0; spiralIndex < 5; spiralIndex++) {
-      final hue = (spiralIndex * 72 + animation.value * 360) % 360;
-      final rotationOffset = spiralIndex * (2 * pi / 5);
+    final numSpirals = (5 * spiralCount).toInt().clamp(1, 10);
+    for (int spiralIndex = 0; spiralIndex < numSpirals; spiralIndex++) {
+      final spiralHue = hue > 0
+          ? (hue + spiralIndex * (360 / numSpirals)) % 360
+          : (spiralIndex * 72 + animation.value * rotationSpeed * 360) % 360;
+      final rotationOffset = spiralIndex * (2 * pi / numSpirals);
 
       _drawSpiral(
         canvas,
         Offset(centerX, centerY),
-        hue,
+        spiralHue,
         rotationOffset,
         spiralIndex,
       );
@@ -37,7 +48,7 @@ class SpiralsPainter extends CustomPainter {
   void _drawSpiral(
     Canvas canvas,
     Offset center,
-    double hue,
+    double spiralHue,
     double rotationOffset,
     int index,
   ) {
@@ -48,11 +59,14 @@ class SpiralsPainter extends CustomPainter {
 
     final path = Path();
     final points = 500;
-    final maxRadius = 400.0;
+    final maxRadius = 400.0 * radius;
 
     for (int i = 0; i < points; i++) {
       final t = i / points;
-      final angle = t * 6 * pi + animation.value * 2 * pi + rotationOffset;
+      final angle =
+          t * 6 * pi +
+          animation.value * rotationSpeed * 2 * pi +
+          rotationOffset;
       final radius = t * maxRadius;
 
       final x = center.dx + cos(angle) * radius;
@@ -69,7 +83,7 @@ class SpiralsPainter extends CustomPainter {
         final dotPaint = Paint()
           ..color = HSVColor.fromAHSV(
             0.8,
-            (hue + t * 60) % 360,
+            (spiralHue + t * 60) % 360,
             0.8,
             1.0,
           ).toColor()
@@ -87,15 +101,11 @@ class SpiralsPainter extends CustomPainter {
           ..style = PaintingStyle.fill
           ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 5);
 
-        canvas.drawCircle(
-          Offset(x, y),
-          6,
-          glowPaint,
-        );
+        canvas.drawCircle(Offset(x, y), 6, glowPaint);
       }
     }
 
-    paint.color = HSVColor.fromAHSV(0.4, hue, 0.8, 1.0).toColor();
+    paint.color = HSVColor.fromAHSV(0.4, spiralHue, 0.8, 1.0).toColor();
     canvas.drawPath(path, paint);
   }
 
@@ -158,4 +168,3 @@ class SpiralsPainter extends CustomPainter {
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
-

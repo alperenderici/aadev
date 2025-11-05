@@ -5,9 +5,19 @@ import 'package:flutter/material.dart';
 class FractalsPainter extends CustomPainter {
   final Animation<double> animation;
   final Random random;
+  final double depth;
+  final double rotationSpeed;
+  final double scale;
+  final double hue;
 
-  FractalsPainter({required this.animation, required this.random})
-    : super(repaint: animation);
+  FractalsPainter({
+    required this.animation,
+    required this.random,
+    this.depth = 1.0,
+    this.rotationSpeed = 1.0,
+    this.scale = 1.0,
+    this.hue = 0.0,
+  }) : super(repaint: animation);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -24,13 +34,15 @@ class FractalsPainter extends CustomPainter {
     ];
 
     for (int i = 0; i < positions.length; i++) {
-      final hue = (i * 72 + animation.value * 360) % 360;
+      final treeHue = hue > 0
+          ? (hue + i * 72) % 360
+          : (i * 72 + animation.value * rotationSpeed * 360) % 360;
       _drawFractalTree(
         canvas,
         positions[i],
         -pi / 2, // Start pointing up
-        100 + sin(animation.value * 2 * pi + i) * 20,
-        hue,
+        (100 + sin(animation.value * 2 * pi + i) * 20) * scale,
+        treeHue,
         0,
       );
     }
@@ -41,10 +53,11 @@ class FractalsPainter extends CustomPainter {
     Offset start,
     double angle,
     double length,
-    double hue,
-    int depth,
+    double treeHue,
+    int currentDepth,
   ) {
-    if (depth > 10 || length < 2) return;
+    final maxDepth = (10 * depth).toInt();
+    if (currentDepth > maxDepth || length < 2) return;
 
     final end = Offset(
       start.dx + cos(angle) * length,
@@ -52,14 +65,19 @@ class FractalsPainter extends CustomPainter {
     );
 
     final paint = Paint()
-      ..color = HSVColor.fromAHSV(1.0 - depth * 0.08, hue, 0.8, 1.0).toColor()
-      ..strokeWidth = max(1.0, 8.0 - depth)
+      ..color = HSVColor.fromAHSV(
+        1.0 - currentDepth * 0.08,
+        treeHue,
+        0.8,
+        1.0,
+      ).toColor()
+      ..strokeWidth = max(1.0, 8.0 - currentDepth)
       ..strokeCap = StrokeCap.round;
 
     canvas.drawLine(start, end, paint);
 
     // Add glow effect for branches
-    if (depth > 5) {
+    if (currentDepth > 5) {
       final glowPaint = Paint()
         ..color = paint.color.withValues(alpha: 0.5)
         ..strokeWidth = paint.strokeWidth * 2
@@ -70,16 +88,18 @@ class FractalsPainter extends CustomPainter {
     }
 
     // Recursive branches with animation
-    final angleOffset = pi / 6 + sin(animation.value * 2 * pi) * 0.2;
-    final lengthFactor = 0.67 + sin(animation.value * 2 * pi + depth) * 0.05;
+    final angleOffset =
+        pi / 6 + sin(animation.value * rotationSpeed * 2 * pi) * 0.2;
+    final lengthFactor =
+        0.67 + sin(animation.value * 2 * pi + currentDepth) * 0.05;
 
     _drawFractalTree(
       canvas,
       end,
       angle - angleOffset,
       length * lengthFactor,
-      hue,
-      depth + 1,
+      treeHue,
+      currentDepth + 1,
     );
 
     _drawFractalTree(
@@ -87,8 +107,8 @@ class FractalsPainter extends CustomPainter {
       end,
       angle + angleOffset,
       length * lengthFactor,
-      hue,
-      depth + 1,
+      treeHue,
+      currentDepth + 1,
     );
   }
 

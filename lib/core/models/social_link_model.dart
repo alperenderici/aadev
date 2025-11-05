@@ -79,7 +79,7 @@ class SocialLinks {
     SocialLinkModel(
       name: 'Untappd',
       url: 'https://untappd.com/user/alperenderici',
-      icon: FontAwesomeIcons.beer,
+      icon: FontAwesomeIcons.beerMugEmpty,
       color: Color(0xFFFFCC00),
     ),
   ];

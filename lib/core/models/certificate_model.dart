@@ -1,63 +1,125 @@
 /// Model for certificates
 class CertificateModel {
   final String imagePath;
-  final String title;
+  final String titleEn;
+  final String titleTr;
 
   const CertificateModel({
     required this.imagePath,
-    required this.title,
+    required this.titleEn,
+    required this.titleTr,
   });
+
+  /// Get title based on language code
+  String getTitle(String languageCode) {
+    return languageCode == 'tr' ? titleTr : titleEn;
+  }
+
+  /// Extract date from filename (format: day.month.year.extension)
+  DateTime? get date {
+    try {
+      // Extract filename from path
+      final filename = imagePath.split('/').last;
+      // Remove extension
+      final nameWithoutExt = filename.split('.').take(3).join('.');
+      // Parse date parts
+      final parts = nameWithoutExt.split('.');
+      if (parts.length >= 3) {
+        final day = int.parse(parts[0]);
+        final month = int.parse(parts[1]);
+        final year = int.parse(parts[2]);
+        return DateTime(year, month, day);
+      }
+    } catch (e) {
+      // Return null if parsing fails
+    }
+    return null;
+  }
 }
 
 /// Predefined certificates with titles
 class Certificates {
   Certificates._();
 
-  static const List<CertificateModel> all = [
+  static const List<CertificateModel> _certificates = [
     CertificateModel(
       imagePath: 'assets/certificates/02.04.2025.png',
-      title: 'Flutter Development Certificate',
+      titleEn:
+          'Certificate Regarding the Implementation of Occupational Health and Safety Services',
+      titleTr:
+          'İş Sağlığı ve Güvenliği Hizmetlerinin Uygulanmasına İlişkin Sertifika',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/01.11.2024.jpg',
-      title: 'Mobile App Development',
+      titleEn: 'Teknogirişim Akademisi Certificate of Participation',
+      titleTr: 'Teknogirişim Akademisi Katılım Sertifikası',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/25.01.2023.png',
-      title: 'Advanced Dart Programming',
+      titleEn: 'techcareer.net Flutter Bootcamp',
+      titleTr: 'techcareer.net Flutter Bootcamp',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/19.08.2022.png',
-      title: 'Firebase Integration',
+      titleEn: 'Basic Occupational Health and Safety Training',
+      titleTr: 'Temel İş Sağlığı ve Güvenliği Eğitimi',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/29.10.2021(2).png',
-      title: 'UI/UX Design Principles',
+      titleEn: 'UI/UX Design Principles',
+      titleTr: 'UI/UX Tasarım Prensipleri',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/29.10.2021.png',
-      title: 'State Management',
+      titleEn: 'State Management',
+      titleTr: 'Durum Yönetimi',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/28.10.2021.png',
-      title: 'Clean Architecture',
+      titleEn: 'Security Training: KnowBe4, NTT Data, Security Incidents',
+      titleTr: 'Güvenlik Eğitimi: KnowBe4, NTT Data, Güvenlik Olayları',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/19.12.2021(2).png',
-      title: 'Testing & Quality Assurance',
+      titleEn: 'Micro-module - Introduction to Ransomware',
+      titleTr: 'Mikro-modül - Fidye Yazılımına Giriş',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/19.12.2021.png',
-      title: 'CI/CD & DevOps',
+      titleEn: 'Creating Strong Passwords',
+      titleTr: 'Güçlü Parolalar Oluşturma',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/25.10.2020.png',
-      title: 'Software Engineering',
+      titleEn: 'Introduction to Python Programming Certification',
+      titleTr: 'Python Programlamaya Giriş Sertifikası',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/10.12.2019.png',
-      title: 'Programming Fundamentals',
+      titleEn: 'The Fundamentals of Digital Marketing',
+      titleTr: 'Dijital Pazarlamanın Temelleri',
     ),
   ];
-}
 
+  /// Get all certificates sorted by date (newest first)
+  static List<CertificateModel> get all {
+    final sorted = List<CertificateModel>.from(_certificates);
+    sorted.sort((a, b) {
+      final dateA = a.date;
+      final dateB = b.date;
+
+      // If both have dates, compare them (newest first)
+      if (dateA != null && dateB != null) {
+        return dateB.compareTo(dateA);
+      }
+
+      // If only one has a date, prioritize it
+      if (dateA != null) return -1;
+      if (dateB != null) return 1;
+
+      // If neither has a date, maintain original order
+      return 0;
+    });
+    return sorted;
+  }
+}

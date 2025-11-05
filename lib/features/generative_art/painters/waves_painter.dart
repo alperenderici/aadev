@@ -5,10 +5,18 @@ import 'package:flutter/material.dart';
 class WavesPainter extends CustomPainter {
   final Animation<double> animation;
   final Random random;
+  final double speed;
+  final double amplitude;
+  final double frequency;
+  final double hue;
 
   WavesPainter({
     required this.animation,
     required this.random,
+    this.speed = 1.0,
+    this.amplitude = 1.0,
+    this.frequency = 1.0,
+    this.hue = 0.0,
   }) : super(repaint: animation);
 
   @override
@@ -18,12 +26,16 @@ class WavesPainter extends CustomPainter {
 
     // Draw multiple wave layers
     for (int layer = 0; layer < 8; layer++) {
+      final layerHue = hue > 0
+          ? (hue + layer * 45) % 360
+          : (layer * 45 + animation.value * 360) % 360;
+
       final paint = Paint()
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2
         ..color = HSVColor.fromAHSV(
           0.6 - layer * 0.05,
-          (layer * 45 + animation.value * 360) % 360,
+          layerHue,
           0.8,
           1.0,
         ).toColor();
@@ -31,13 +43,14 @@ class WavesPainter extends CustomPainter {
       final path = Path();
       final points = 200;
       final radius = 100.0 + layer * 60;
-      final waveCount = 3 + layer;
-      final amplitude = 30.0 + layer * 5;
+      final waveCount = (3 + layer) * frequency;
+      final waveAmplitude = (30.0 + layer * 5) * amplitude;
 
       for (int i = 0; i <= points; i++) {
         final angle = (i / points) * 2 * pi;
-        final wave = sin(angle * waveCount + animation.value * 2 * pi) *
-            amplitude;
+        final wave =
+            sin(angle * waveCount + animation.value * speed * 2 * pi) *
+            waveAmplitude;
         final r = radius + wave;
 
         final x = centerX + cos(angle) * r;
@@ -75,11 +88,7 @@ class WavesPainter extends CustomPainter {
 
     final pulseRadius = 20 + sin(animation.value * 4 * pi) * 10;
 
-    canvas.drawCircle(
-      Offset(centerX, centerY),
-      pulseRadius,
-      centralPaint,
-    );
+    canvas.drawCircle(Offset(centerX, centerY), pulseRadius, centralPaint);
 
     // Glow for central circle
     final centralGlow = Paint()
@@ -87,14 +96,9 @@ class WavesPainter extends CustomPainter {
       ..color = centralPaint.color.withValues(alpha: 0.3)
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 20);
 
-    canvas.drawCircle(
-      Offset(centerX, centerY),
-      pulseRadius * 2,
-      centralGlow,
-    );
+    canvas.drawCircle(Offset(centerX, centerY), pulseRadius * 2, centralGlow);
   }
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
 }
-

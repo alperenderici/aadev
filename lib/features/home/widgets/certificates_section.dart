@@ -72,6 +72,7 @@ class _CertificateCardState extends State<_CertificateCard> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final locale = Localizations.localeOf(context);
 
     return MouseRegion(
           onEnter: (_) => setState(() => _isHovered = true),
@@ -81,7 +82,7 @@ class _CertificateCardState extends State<_CertificateCard> {
             child: AnimatedContainer(
               duration: AppConstants.shortAnimation,
               transform: _isHovered
-                  ? (Matrix4.identity()..scale(1.05, 1.05, 1.0))
+                  ? (Matrix4.identity()..scale(1.05))
                   : Matrix4.identity(),
               child: Card(
                 elevation: _isHovered ? 8 : 2,
@@ -128,13 +129,13 @@ class _CertificateCardState extends State<_CertificateCard> {
                           ),
                         ),
                         child: Text(
-                          widget.certificate.title,
+                          widget.certificate.getTitle(locale.languageCode),
                           style: theme.textTheme.titleMedium?.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
                           textAlign: TextAlign.center,
-                          maxLines: 2,
+                          maxLines: 3,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),

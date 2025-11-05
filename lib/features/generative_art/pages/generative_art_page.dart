@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aad/features/generative_art/widgets/generative_art_canvas.dart';
 import 'package:aad/features/generative_art/models/art_type.dart';
-import 'package:aad/features/generative_art/widgets/particle_controls.dart';
+import 'package:aad/features/generative_art/widgets/art_controls.dart';
 
 /// Generative Art Page
 class GenerativeArtPage extends StatefulWidget {
@@ -19,6 +19,36 @@ class _GenerativeArtPageState extends State<GenerativeArtPage> {
   double _particleHue = 0.0;
   double _particleSize = 1.0;
 
+  // Waves control parameters
+  double _waveSpeed = 1.0;
+  double _waveAmplitude = 1.0;
+  double _waveFrequency = 1.0;
+  double _waveHue = 0.0;
+
+  // Fractals control parameters
+  double _fractalDepth = 1.0;
+  double _fractalRotationSpeed = 1.0;
+  double _fractalScale = 1.0;
+  double _fractalHue = 0.0;
+
+  // Noise control parameters
+  double _noiseScale = 1.0;
+  double _noiseSpeed = 1.0;
+  double _noiseFlowStrength = 1.0;
+  double _noiseHue = 0.0;
+
+  // Spirals control parameters
+  double _spiralRotationSpeed = 1.0;
+  double _spiralCount = 1.0;
+  double _spiralRadius = 1.0;
+  double _spiralHue = 0.0;
+
+  // Frame control parameters
+  double _frameSpeed = 1.0;
+  double _frameFlowIntensity = 1.0;
+  double _frameParticleCount = 1.0;
+  double _frameHue = 0.0;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -33,6 +63,26 @@ class _GenerativeArtPageState extends State<GenerativeArtPage> {
               particleSpeed: _particleSpeed,
               particleHue: _particleHue,
               particleSize: _particleSize,
+              waveSpeed: _waveSpeed,
+              waveAmplitude: _waveAmplitude,
+              waveFrequency: _waveFrequency,
+              waveHue: _waveHue,
+              fractalDepth: _fractalDepth,
+              fractalRotationSpeed: _fractalRotationSpeed,
+              fractalScale: _fractalScale,
+              fractalHue: _fractalHue,
+              noiseScale: _noiseScale,
+              noiseSpeed: _noiseSpeed,
+              noiseFlowStrength: _noiseFlowStrength,
+              noiseHue: _noiseHue,
+              spiralRotationSpeed: _spiralRotationSpeed,
+              spiralCount: _spiralCount,
+              spiralRadius: _spiralRadius,
+              spiralHue: _spiralHue,
+              frameSpeed: _frameSpeed,
+              frameFlowIntensity: _frameFlowIntensity,
+              frameParticleCount: _frameParticleCount,
+              frameHue: _frameHue,
             ),
           ),
 
@@ -83,32 +133,8 @@ class _GenerativeArtPageState extends State<GenerativeArtPage> {
             ),
           ),
 
-          // Particle Controls Panel (only visible when Particles is selected)
-          if (_selectedArtType == ArtType.particles)
-            Positioned(
-              right: 24,
-              top: 100,
-              child: ParticleControls(
-                speed: _particleSpeed,
-                hue: _particleHue,
-                particleSize: _particleSize,
-                onSpeedChanged: (value) {
-                  setState(() {
-                    _particleSpeed = value;
-                  });
-                },
-                onHueChanged: (value) {
-                  setState(() {
-                    _particleHue = value;
-                  });
-                },
-                onParticleSizeChanged: (value) {
-                  setState(() {
-                    _particleSize = value;
-                  });
-                },
-              ),
-            ),
+          // Art Controls Panel (changes based on selected art type)
+          Positioned(right: 24, top: 100, child: _buildControlPanel()),
 
           // Bottom Art Selection Panel
           Positioned(
@@ -166,6 +192,305 @@ class _GenerativeArtPageState extends State<GenerativeArtPage> {
         ],
       ),
     );
+  }
+
+  /// Build control panel based on selected art type
+  Widget _buildControlPanel() {
+    switch (_selectedArtType) {
+      case ArtType.particles:
+        return ArtControls(
+          title: 'Particles',
+          controls: [
+            ArtControlItem(
+              label: 'Speed',
+              value: _particleSpeed,
+              min: 0.1,
+              max: 3.0,
+              onChanged: (value) => setState(() => _particleSpeed = value),
+              valueLabel: '${_particleSpeed.toStringAsFixed(1)}x',
+              icon: Icons.speed,
+              color: Colors.cyan,
+            ),
+            ArtControlItem(
+              label: 'Color Hue',
+              value: _particleHue,
+              min: 0,
+              max: 360,
+              onChanged: (value) => setState(() => _particleHue = value),
+              valueLabel: '${_particleHue.toStringAsFixed(0)}°',
+              icon: Icons.palette,
+              color: HSVColor.fromAHSV(1.0, _particleHue, 0.8, 1.0).toColor(),
+            ),
+            ArtControlItem(
+              label: 'Particle Size',
+              value: _particleSize,
+              min: 0.5,
+              max: 3.0,
+              onChanged: (value) => setState(() => _particleSize = value),
+              valueLabel: '${_particleSize.toStringAsFixed(1)}x',
+              icon: Icons.circle,
+              color: Colors.purple,
+            ),
+          ],
+        );
+      case ArtType.waves:
+        return ArtControls(
+          title: 'Waves',
+          controls: [
+            ArtControlItem(
+              label: 'Speed',
+              value: _waveSpeed,
+              min: 0.1,
+              max: 3.0,
+              onChanged: (value) => setState(() => _waveSpeed = value),
+              valueLabel: '${_waveSpeed.toStringAsFixed(1)}x',
+              icon: Icons.speed,
+              color: Colors.cyan,
+            ),
+            ArtControlItem(
+              label: 'Amplitude',
+              value: _waveAmplitude,
+              min: 0.5,
+              max: 2.0,
+              onChanged: (value) => setState(() => _waveAmplitude = value),
+              valueLabel: '${_waveAmplitude.toStringAsFixed(1)}x',
+              icon: Icons.waves,
+              color: Colors.blue,
+            ),
+            ArtControlItem(
+              label: 'Frequency',
+              value: _waveFrequency,
+              min: 0.5,
+              max: 2.0,
+              onChanged: (value) => setState(() => _waveFrequency = value),
+              valueLabel: '${_waveFrequency.toStringAsFixed(1)}x',
+              icon: Icons.graphic_eq,
+              color: Colors.teal,
+            ),
+            ArtControlItem(
+              label: 'Color Hue',
+              value: _waveHue,
+              min: 0,
+              max: 360,
+              onChanged: (value) => setState(() => _waveHue = value),
+              valueLabel: '${_waveHue.toStringAsFixed(0)}°',
+              icon: Icons.palette,
+              color: HSVColor.fromAHSV(
+                1.0,
+                _waveHue > 0 ? _waveHue : 180,
+                0.8,
+                1.0,
+              ).toColor(),
+            ),
+          ],
+        );
+      case ArtType.fractals:
+        return ArtControls(
+          title: 'Fractals',
+          controls: [
+            ArtControlItem(
+              label: 'Depth',
+              value: _fractalDepth,
+              min: 0.5,
+              max: 1.5,
+              onChanged: (value) => setState(() => _fractalDepth = value),
+              valueLabel: '${(_fractalDepth * 10).toInt()}',
+              icon: Icons.account_tree,
+              color: Colors.green,
+            ),
+            ArtControlItem(
+              label: 'Rotation Speed',
+              value: _fractalRotationSpeed,
+              min: 0.1,
+              max: 3.0,
+              onChanged: (value) =>
+                  setState(() => _fractalRotationSpeed = value),
+              valueLabel: '${_fractalRotationSpeed.toStringAsFixed(1)}x',
+              icon: Icons.rotate_right,
+              color: Colors.orange,
+            ),
+            ArtControlItem(
+              label: 'Scale',
+              value: _fractalScale,
+              min: 0.5,
+              max: 2.0,
+              onChanged: (value) => setState(() => _fractalScale = value),
+              valueLabel: '${_fractalScale.toStringAsFixed(1)}x',
+              icon: Icons.zoom_out_map,
+              color: Colors.amber,
+            ),
+            ArtControlItem(
+              label: 'Color Hue',
+              value: _fractalHue,
+              min: 0,
+              max: 360,
+              onChanged: (value) => setState(() => _fractalHue = value),
+              valueLabel: '${_fractalHue.toStringAsFixed(0)}°',
+              icon: Icons.palette,
+              color: HSVColor.fromAHSV(
+                1.0,
+                _fractalHue > 0 ? _fractalHue : 120,
+                0.8,
+                1.0,
+              ).toColor(),
+            ),
+          ],
+        );
+      case ArtType.noise:
+        return ArtControls(
+          title: 'Noise Field',
+          controls: [
+            ArtControlItem(
+              label: 'Noise Scale',
+              value: _noiseScale,
+              min: 0.5,
+              max: 2.0,
+              onChanged: (value) => setState(() => _noiseScale = value),
+              valueLabel: '${_noiseScale.toStringAsFixed(1)}x',
+              icon: Icons.grain,
+              color: Colors.grey,
+            ),
+            ArtControlItem(
+              label: 'Speed',
+              value: _noiseSpeed,
+              min: 0.1,
+              max: 3.0,
+              onChanged: (value) => setState(() => _noiseSpeed = value),
+              valueLabel: '${_noiseSpeed.toStringAsFixed(1)}x',
+              icon: Icons.speed,
+              color: Colors.cyan,
+            ),
+            ArtControlItem(
+              label: 'Flow Strength',
+              value: _noiseFlowStrength,
+              min: 0.5,
+              max: 2.0,
+              onChanged: (value) => setState(() => _noiseFlowStrength = value),
+              valueLabel: '${_noiseFlowStrength.toStringAsFixed(1)}x',
+              icon: Icons.water_drop,
+              color: Colors.blueGrey,
+            ),
+            ArtControlItem(
+              label: 'Color Hue',
+              value: _noiseHue,
+              min: 0,
+              max: 360,
+              onChanged: (value) => setState(() => _noiseHue = value),
+              valueLabel: '${_noiseHue.toStringAsFixed(0)}°',
+              icon: Icons.palette,
+              color: HSVColor.fromAHSV(
+                1.0,
+                _noiseHue > 0 ? _noiseHue : 60,
+                0.8,
+                1.0,
+              ).toColor(),
+            ),
+          ],
+        );
+      case ArtType.spirals:
+        return ArtControls(
+          title: 'Spirals',
+          controls: [
+            ArtControlItem(
+              label: 'Rotation Speed',
+              value: _spiralRotationSpeed,
+              min: 0.1,
+              max: 3.0,
+              onChanged: (value) =>
+                  setState(() => _spiralRotationSpeed = value),
+              valueLabel: '${_spiralRotationSpeed.toStringAsFixed(1)}x',
+              icon: Icons.rotate_right,
+              color: Colors.orange,
+            ),
+            ArtControlItem(
+              label: 'Spiral Count',
+              value: _spiralCount,
+              min: 0.2,
+              max: 2.0,
+              onChanged: (value) => setState(() => _spiralCount = value),
+              valueLabel: '${(_spiralCount * 5).toInt()}',
+              icon: Icons.all_inclusive,
+              color: Colors.pink,
+            ),
+            ArtControlItem(
+              label: 'Radius',
+              value: _spiralRadius,
+              min: 0.5,
+              max: 1.5,
+              onChanged: (value) => setState(() => _spiralRadius = value),
+              valueLabel: '${_spiralRadius.toStringAsFixed(1)}x',
+              icon: Icons.circle_outlined,
+              color: Colors.deepPurple,
+            ),
+            ArtControlItem(
+              label: 'Color Hue',
+              value: _spiralHue,
+              min: 0,
+              max: 360,
+              onChanged: (value) => setState(() => _spiralHue = value),
+              valueLabel: '${_spiralHue.toStringAsFixed(0)}°',
+              icon: Icons.palette,
+              color: HSVColor.fromAHSV(
+                1.0,
+                _spiralHue > 0 ? _spiralHue : 280,
+                0.8,
+                1.0,
+              ).toColor(),
+            ),
+          ],
+        );
+      case ArtType.frame:
+        return ArtControls(
+          title: 'Frame',
+          controls: [
+            ArtControlItem(
+              label: 'Wave Speed',
+              value: _frameSpeed,
+              min: 0.1,
+              max: 3.0,
+              onChanged: (value) => setState(() => _frameSpeed = value),
+              valueLabel: '${_frameSpeed.toStringAsFixed(1)}x',
+              icon: Icons.speed,
+              color: Colors.cyan,
+            ),
+            ArtControlItem(
+              label: 'Flow Intensity',
+              value: _frameFlowIntensity,
+              min: 0.5,
+              max: 2.0,
+              onChanged: (value) => setState(() => _frameFlowIntensity = value),
+              valueLabel: '${_frameFlowIntensity.toStringAsFixed(1)}x',
+              icon: Icons.water,
+              color: Colors.blue,
+            ),
+            ArtControlItem(
+              label: 'Particle Count',
+              value: _frameParticleCount,
+              min: 0.2,
+              max: 4.0,
+              onChanged: (value) => setState(() => _frameParticleCount = value),
+              valueLabel: '${(_frameParticleCount * 50).toInt()}',
+              icon: Icons.grain,
+              color: Colors.lightBlue,
+            ),
+            ArtControlItem(
+              label: 'Color Hue',
+              value: _frameHue,
+              min: 0,
+              max: 360,
+              onChanged: (value) => setState(() => _frameHue = value),
+              valueLabel: '${_frameHue.toStringAsFixed(0)}°',
+              icon: Icons.palette,
+              color: HSVColor.fromAHSV(
+                1.0,
+                _frameHue > 0 ? _frameHue : 200,
+                0.8,
+                1.0,
+              ).toColor(),
+            ),
+          ],
+        );
+    }
   }
 }
 

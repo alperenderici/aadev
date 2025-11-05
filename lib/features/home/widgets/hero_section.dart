@@ -5,7 +5,6 @@ import 'package:aad/core/constants/asset_paths.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
 import 'package:aad/core/utils/responsive.dart';
 import 'package:aad/shared/widgets/app_button.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 /// Hero section widget
 class HeroSection extends StatelessWidget {

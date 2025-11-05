@@ -3,7 +3,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:aad/core/constants/app_constants.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
 import 'package:aad/core/services/analytics_service.dart';
-import 'package:aad/core/utils/responsive.dart';
 import 'package:aad/shared/widgets/section_title.dart';
 import 'package:aad/shared/widgets/responsive_section.dart';
 import 'package:aad/shared/widgets/app_button.dart';

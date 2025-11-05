@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:aad/core/constants/app_constants.dart';
 
 /// Animated card widget with hover effect

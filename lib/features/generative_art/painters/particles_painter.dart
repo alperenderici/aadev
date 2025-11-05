@@ -28,7 +28,7 @@ class ParticlesPainter extends CustomPainter {
     final paint = Paint()..style = PaintingStyle.fill;
 
     for (final particle in particles) {
-      particle.update(animation.value * speed, size);
+      particle.update(animation.value, size, speed);
 
       // Apply hue shift if specified
       final particleColor = hue > 0
@@ -104,10 +104,10 @@ class Particle {
     color = HSVColor.fromAHSV(1.0, this.baseHue, 0.8, 1.0).toColor();
   }
 
-  void update(double time, Size size) {
-    // Update position with smooth motion
-    x += vx + sin(time * 2 * pi + phase) * 0.5;
-    y += vy + cos(time * 2 * pi + phase) * 0.5;
+  void update(double time, Size size, double speedMultiplier) {
+    // Update position with smooth motion, applying speed multiplier
+    x += (vx + sin(time * 2 * pi + phase) * 0.5) * speedMultiplier;
+    y += (vy + cos(time * 2 * pi + phase) * 0.5) * speedMultiplier;
 
     // Wrap around screen edges
     if (x < 0) x = size.width;
