@@ -22,9 +22,7 @@ class ExperienceSection extends StatelessWidget {
     return ResponsiveSection(
       child: Column(
         children: [
-          SectionTitle(
-            title: l10n.experienceTitle,
-          ),
+          SectionTitle(title: l10n.experienceTitle),
           const SizedBox(height: AppConstants.spacingXXL),
           _buildExperienceList(context),
         ],
@@ -34,17 +32,36 @@ class ExperienceSection extends StatelessWidget {
 
   Widget _buildExperienceList(BuildContext context) {
     final experiences = ExperiencesData.experiences;
+    final isMobile = Responsive.isMobile(context);
 
-    return Column(
+    if (isMobile) {
+      // Mobile: Single column
+      return Column(
+        children: experiences.asMap().entries.map((entry) {
+          final index = entry.key;
+          final experience = entry.value;
+          return Padding(
+            padding: const EdgeInsets.only(bottom: AppConstants.spacingXL),
+            child: _ExperienceCard(experience: experience, index: index),
+          );
+        }).toList(),
+      );
+    }
+
+    // Desktop: 2 columns
+    return Wrap(
+      spacing: AppConstants.spacingL,
+      runSpacing: AppConstants.spacingL,
       children: experiences.asMap().entries.map((entry) {
         final index = entry.key;
         final experience = entry.value;
-        return Padding(
-          padding: const EdgeInsets.only(bottom: AppConstants.spacingXL),
-          child: _ExperienceCard(
-            experience: experience,
-            index: index,
-          ),
+        return SizedBox(
+          width:
+              (MediaQuery.of(context).size.width -
+                  AppConstants.spacingXXXL * 2 -
+                  AppConstants.spacingL) /
+              2,
+          child: _ExperienceCard(experience: experience, index: index),
         );
       }).toList(),
     );
@@ -55,10 +72,7 @@ class _ExperienceCard extends StatelessWidget {
   final ExperienceModel experience;
   final int index;
 
-  const _ExperienceCard({
-    required this.experience,
-    required this.index,
-  });
+  const _ExperienceCard({required this.experience, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +81,10 @@ class _ExperienceCard extends StatelessWidget {
     final isMobile = Responsive.isMobile(context);
 
     return AnimatedCard(
-      child: isMobile
-          ? _buildMobileLayout(context, l10n, theme)
-          : _buildDesktopLayout(context, l10n, theme),
-    )
+          child: isMobile
+              ? _buildMobileLayout(context, l10n, theme)
+              : _buildDesktopLayout(context, l10n, theme),
+        )
         .animate()
         .fadeIn(
           duration: AppConstants.mediumAnimation,
@@ -109,16 +123,12 @@ class _ExperienceCard extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (experience.screenshot != null || experience.companyLogo != null) ...[
-          SizedBox(
-            width: 200,
-            child: _buildImage(context),
-          ),
+        if (experience.screenshot != null ||
+            experience.companyLogo != null) ...[
+          SizedBox(width: 200, child: _buildImage(context)),
           const SizedBox(width: AppConstants.spacingXL),
         ],
-        Expanded(
-          child: _buildContent(context, l10n, theme),
-        ),
+        Expanded(child: _buildContent(context, l10n, theme)),
       ],
     );
   }
@@ -203,9 +213,7 @@ class _ExperienceCard extends StatelessWidget {
         const SizedBox(height: AppConstants.spacingM),
         Text(
           l10n.translate(experience.descriptionKey),
-          style: theme.textTheme.bodyMedium?.copyWith(
-            height: 1.6,
-          ),
+          style: theme.textTheme.bodyMedium?.copyWith(height: 1.6),
         ),
         const SizedBox(height: AppConstants.spacingL),
         Text(
@@ -265,4 +273,3 @@ class _ExperienceCard extends StatelessWidget {
     }
   }
 }
-

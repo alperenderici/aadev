@@ -30,18 +30,34 @@ class ExperienceModel {
 
   String get duration {
     if (startDate == null) return '';
-    final end = isCurrent ? DateTime.now() : (endDate ?? DateTime.now());
-    final months = (end.year - startDate!.year) * 12 + end.month - startDate!.month;
-    final years = months ~/ 12;
-    final remainingMonths = months % 12;
 
-    if (years > 0 && remainingMonths > 0) {
-      return '$years yr${years > 1 ? 's' : ''} $remainingMonths mo${remainingMonths > 1 ? 's' : ''}';
-    } else if (years > 0) {
-      return '$years yr${years > 1 ? 's' : ''}';
-    } else {
-      return '$remainingMonths mo${remainingMonths > 1 ? 's' : ''}';
+    final monthNames = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec',
+    ];
+
+    final startMonth = monthNames[startDate!.month - 1];
+    final startYear = startDate!.year;
+
+    if (isCurrent) {
+      return '$startMonth $startYear - Present';
     }
+
+    if (endDate == null) return '$startMonth $startYear';
+
+    final endMonth = monthNames[endDate!.month - 1];
+    final endYear = endDate!.year;
+
+    return '$startMonth $startYear - $endMonth $endYear';
   }
 }
-

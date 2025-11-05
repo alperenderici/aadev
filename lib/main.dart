@@ -55,7 +55,7 @@ class MyApp extends ConsumerWidget {
       navigatorObservers: [AnalyticsService.observer],
 
       // Home
-      home: const HomePage(),
+      home: const SelectionArea(child: HomePage()),
     );
   }
 }
