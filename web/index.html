@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="$FLUTTER_BASE_HREF">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Ali Alperen Derici - Professional Flutter Developer. Passionate about creating beautiful, performant mobile and web applications.">
+  <meta name="keywords" content="Flutter Developer, Mobile App Development, Web Development, Ali Alperen Derici, Flutter, Dart, Firebase, Riverpod">
+  <meta name="author" content="Ali Alperen Derici">
+
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Ali Alperen Derici - Flutter Developer">
+  <meta property="og:description" content="Professional Flutter Developer specializing in cross-platform mobile and web applications">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alialperenderici.dev">
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ali Alperen Derici - Flutter Developer">
+  <meta name="twitter:description" content="Professional Flutter Developer specializing in cross-platform mobile and web applications">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Ali Alperen Derici">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
+  <title>Ali Alperen Derici - Flutter Developer</title>
+  <link rel="manifest" href="manifest.json">
+
+  <style>
+    /* Enable text selection for Flutter Web */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    /* Loading indicator */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #fafafa;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #e0e0e0;
+      border-top: 4px solid #2196F3;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .loading {
+        background: #121212;
+      }
+      .loading-spinner {
+        border-color: #333;
+        border-top-color: #64B5F6;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <div class="loading-spinner"></div>
+  </div>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

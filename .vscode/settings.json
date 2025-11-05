@@ -1,0 +1,12 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true
+    },
+    "hide-files.files": [],
+    "dart.flutterSdkPath": "/Users/alialperenderici/.puro/envs/stable/flutter",
+    "dart.sdkPath": "/Users/alialperenderici/.puro/envs/stable/flutter/bin/cache/dart-sdk"
+}
