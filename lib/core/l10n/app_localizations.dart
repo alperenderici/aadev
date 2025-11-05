@@ -32,7 +32,7 @@ class AppLocalizations {
       'hero_name': 'Ali Alperen Derici',
       'hero_title': 'Flutter Developer',
       'hero_subtitle':
-          'Passionate about creating beautiful, performant mobile and web applications',
+          'Computer Engineering Graduate | Passionate about creating beautiful, performant mobile and web applications.',
       'hero_cta_contact': 'Get in Touch',
       'hero_cta_cv': 'Download CV',
 
@@ -171,7 +171,7 @@ class AppLocalizations {
       'hero_name': 'Ali Alperen Derici',
       'hero_title': 'Flutter Geliştirici',
       'hero_subtitle':
-          'Güzel ve performanslı mobil ve web uygulamaları oluşturma konusunda tutkulu',
+          'Bilgisayar Mühendisliği Mezunu | Güzel ve performanslı mobil ve web uygulamaları oluşturma konusunda tutkulu',
       'hero_cta_contact': 'İletişime Geç',
       'hero_cta_cv': 'CV İndir',
 

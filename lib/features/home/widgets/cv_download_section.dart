@@ -164,11 +164,27 @@ class CVDownloadSection extends StatelessWidget {
     }
     AnalyticsService.logCVDownload(type);
 
-    // For web, we need to use the asset path directly
-    // The assetPath already includes 'assets/' prefix
-    final url = Uri.parse(assetPath);
-    if (await canLaunchUrl(url)) {
-      await launchUrl(url, mode: LaunchMode.externalApplication);
+    // For web, we need to use the full URL path
+    // In production, assets are served from the root
+    final url = Uri.parse('/$assetPath');
+
+    try {
+      await launchUrl(
+        url,
+        mode: LaunchMode.platformDefault,
+        webOnlyWindowName: '_blank',
+      );
+    } catch (e) {
+      // If that fails, try without the leading slash
+      try {
+        await launchUrl(
+          Uri.parse(assetPath),
+          mode: LaunchMode.platformDefault,
+          webOnlyWindowName: '_blank',
+        );
+      } catch (e) {
+        // Ignore errors - file will open in new tab if available
+      }
     }
   }
 }

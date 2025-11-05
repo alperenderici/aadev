@@ -8,8 +8,8 @@ part 'theme_provider.g.dart';
 class ThemeMode extends _$ThemeMode {
   @override
   ThemeModeEnum build() {
-    // Default to system theme
-    return ThemeModeEnum.system;
+    // Default to dark theme
+    return ThemeModeEnum.dark;
   }
 
   /// Toggle between light and dark theme
