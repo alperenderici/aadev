@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:aad/core/constants/app_constants.dart';
-import 'package:aad/core/constants/asset_paths.dart';
+import 'package:aad/core/models/certificate_model.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
 import 'package:aad/core/utils/responsive.dart';
 import 'package:aad/shared/widgets/section_title.dart';
@@ -20,9 +20,7 @@ class CertificatesSection extends StatelessWidget {
       backgroundColor: theme.colorScheme.surface,
       child: Column(
         children: [
-          SectionTitle(
-            title: l10n.certificatesTitle,
-          ),
+          SectionTitle(title: l10n.certificatesTitle),
           const SizedBox(height: AppConstants.spacingXXL),
           _buildCertificatesGrid(context),
         ],
@@ -47,10 +45,10 @@ class CertificatesSection extends StatelessWidget {
         mainAxisSpacing: AppConstants.spacingL,
         childAspectRatio: 1.4,
       ),
-      itemCount: AssetPaths.certificates.length,
+      itemCount: Certificates.all.length,
       itemBuilder: (context, index) {
         return _CertificateCard(
-          imagePath: AssetPaths.certificates[index],
+          certificate: Certificates.all[index],
           index: index,
         );
       },
@@ -59,13 +57,10 @@ class CertificatesSection extends StatelessWidget {
 }
 
 class _CertificateCard extends StatefulWidget {
-  final String imagePath;
+  final CertificateModel certificate;
   final int index;
 
-  const _CertificateCard({
-    required this.imagePath,
-    required this.index,
-  });
+  const _CertificateCard({required this.certificate, required this.index});
 
   @override
   State<_CertificateCard> createState() => _CertificateCardState();
@@ -79,51 +74,89 @@ class _CertificateCardState extends State<_CertificateCard> {
     final theme = Theme.of(context);
 
     return MouseRegion(
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: GestureDetector(
-        onTap: () => _showCertificateDialog(context),
-        child: AnimatedContainer(
-          duration: AppConstants.shortAnimation,
-          transform: _isHovered
-              ? (Matrix4.identity()..scale(1.05))
-              : Matrix4.identity(),
-          child: Card(
-            elevation: _isHovered ? 8 : 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(AppConstants.radiusL),
-            ),
-            clipBehavior: Clip.antiAlias,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Image.asset(
-                  widget.imagePath,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return Container(
-                      color: theme.colorScheme.primary.withOpacity(0.1),
-                      child: const Icon(Icons.image, size: 50),
-                    );
-                  },
+          onEnter: (_) => setState(() => _isHovered = true),
+          onExit: (_) => setState(() => _isHovered = false),
+          child: GestureDetector(
+            onTap: () => _showCertificateDialog(context),
+            child: AnimatedContainer(
+              duration: AppConstants.shortAnimation,
+              transform: _isHovered
+                  ? (Matrix4.identity()..scale(1.05, 1.05, 1.0))
+                  : Matrix4.identity(),
+              child: Card(
+                elevation: _isHovered ? 8 : 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(AppConstants.radiusL),
                 ),
-                if (_isHovered)
-                  Container(
-                    color: Colors.black.withOpacity(0.5),
-                    child: const Center(
-                      child: Icon(
-                        Icons.zoom_in,
-                        size: 48,
-                        color: Colors.white,
+                clipBehavior: Clip.antiAlias,
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.asset(
+                      widget.certificate.imagePath,
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: theme.colorScheme.primary.withValues(
+                            alpha: 0.1,
+                          ),
+                          child: const Icon(Icons.image, size: 50),
+                        );
+                      },
+                    ),
+                    // Always show overlay with title
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      right: 0,
+                      child: AnimatedContainer(
+                        duration: AppConstants.shortAnimation,
+                        padding: EdgeInsets.all(
+                          _isHovered
+                              ? AppConstants.spacingL
+                              : AppConstants.spacingM,
+                        ),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter,
+                            colors: [
+                              Colors.black.withValues(alpha: 0.8),
+                              Colors.black.withValues(alpha: 0.6),
+                              Colors.transparent,
+                            ],
+                          ),
+                        ),
+                        child: Text(
+                          widget.certificate.title,
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
                       ),
                     ),
-                  ),
-              ],
+                    // Hover effect - zoom icon
+                    if (_isHovered)
+                      Container(
+                        color: Colors.black.withValues(alpha: 0.3),
+                        child: const Center(
+                          child: Icon(
+                            Icons.zoom_in,
+                            size: 48,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
-      ),
-    )
+        )
         .animate()
         .fadeIn(
           duration: AppConstants.mediumAnimation,
@@ -144,7 +177,7 @@ class _CertificateCardState extends State<_CertificateCard> {
           children: [
             InteractiveViewer(
               child: Image.asset(
-                widget.imagePath,
+                widget.certificate.imagePath,
                 fit: BoxFit.contain,
               ),
             ),
@@ -155,7 +188,7 @@ class _CertificateCardState extends State<_CertificateCard> {
                 icon: const Icon(Icons.close, color: Colors.white),
                 onPressed: () => Navigator.of(context).pop(),
                 style: IconButton.styleFrom(
-                  backgroundColor: Colors.black.withOpacity(0.5),
+                  backgroundColor: Colors.black.withValues(alpha: 0.5),
                 ),
               ),
             ),
@@ -165,4 +198,3 @@ class _CertificateCardState extends State<_CertificateCard> {
     );
   }
 }
-

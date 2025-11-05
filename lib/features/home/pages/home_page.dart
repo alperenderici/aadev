@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aad/features/home/widgets/hero_section.dart';
 import 'package:aad/features/home/widgets/about_section.dart';
+import 'package:aad/features/home/widgets/upwork_service_section.dart';
 import 'package:aad/features/home/widgets/experience_section.dart';
 import 'package:aad/features/home/widgets/events_section.dart';
 import 'package:aad/features/home/widgets/certificates_section.dart';
@@ -62,6 +63,9 @@ class _HomePageState extends State<HomePage> {
                     key: _sectionKeys['about'],
                     child: const AboutSection(),
                   ),
+
+                  // Upwork Service Section
+                  const UpworkServiceSection(),
 
                   // Experience Section
                   Container(

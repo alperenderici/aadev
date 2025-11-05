@@ -80,245 +80,109 @@ class AboutSection extends StatelessWidget {
             .animate()
             .fadeIn(duration: AppConstants.mediumAnimation)
             .slideY(begin: 0.2, end: 0),
-        const SizedBox(height: AppConstants.spacingXL),
-        Text(
-              l10n.aboutSkillsTitle,
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            )
+        const SizedBox(height: AppConstants.spacingXXL),
+        _buildHighlights(context, theme)
             .animate()
             .fadeIn(duration: AppConstants.mediumAnimation, delay: 200.ms)
-            .slideY(begin: 0.2, end: 0),
-        const SizedBox(height: AppConstants.spacingL),
-        _buildSkillsGrid(context)
-            .animate()
-            .fadeIn(duration: AppConstants.mediumAnimation, delay: 300.ms)
-            .slideY(begin: 0.2, end: 0),
-        const SizedBox(height: AppConstants.spacingXL),
-        _buildUpworkService(context, l10n, theme)
-            .animate()
-            .fadeIn(duration: AppConstants.mediumAnimation, delay: 400.ms)
             .slideY(begin: 0.2, end: 0),
       ],
     );
   }
 
-  Widget _buildUpworkService(
-    BuildContext context,
-    AppLocalizations l10n,
-    ThemeData theme,
-  ) {
-    return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingL),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [
-            theme.colorScheme.primary.withOpacity(0.1),
-            theme.colorScheme.secondary.withOpacity(0.1),
-          ],
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-        ),
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
-        border: Border.all(color: theme.colorScheme.primary.withOpacity(0.3)),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              Icon(Icons.work, color: theme.colorScheme.primary, size: 28),
-              const SizedBox(width: AppConstants.spacingM),
-              Expanded(
-                child: Text(
-                  l10n.translate('upwork_service_title'),
-                  style: theme.textTheme.titleLarge?.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: theme.colorScheme.primary,
-                  ),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: AppConstants.spacingM),
-          Text(
-            l10n.translate('upwork_service_desc'),
-            style: theme.textTheme.bodyLarge?.copyWith(height: 1.6),
-          ),
-          const SizedBox(height: AppConstants.spacingL),
-          InkWell(
-            onTap: () async {
-              final url = Uri.parse(AppConstants.upworkServiceUrl);
-              if (await canLaunchUrl(url)) {
-                await launchUrl(url, mode: LaunchMode.externalApplication);
-              }
-            },
-            child: Container(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppConstants.spacingL,
-                vertical: AppConstants.spacingM,
-              ),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.primary,
-                borderRadius: BorderRadius.circular(AppConstants.radiusM),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    l10n.translate('upwork_service_cta'),
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  const SizedBox(width: AppConstants.spacingS),
-                  const Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 20,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSkillsGrid(BuildContext context) {
-    final theme = Theme.of(context);
-
-    final skillCategories = [
+  Widget _buildHighlights(BuildContext context, ThemeData theme) {
+    final highlights = [
       {
-        'category': 'Languages & Frameworks',
-        'skills': [
-          'Dart/Flutter',
-          'JavaScript/TypeScript',
-          'React/Next.js',
-          'Node.js',
-          'Java/Kotlin',
-          'Python',
-          'C#',
-        ],
+        'icon': Icons.rocket_launch,
+        'title': 'Entrepreneurial Mindset',
+        'description':
+            'Co-founded Fitgo, a health-tech startup, leading product development and technical architecture from concept to production.',
       },
       {
-        'category': 'Architecture & Patterns',
-        'skills': [
-          'Clean Architecture',
-          'MVVM',
-          'Repository Pattern',
-          'Domain-Driven Design',
-          'SOLID Principles',
-          'Riverpod State Management',
-        ],
+        'icon': Icons.code,
+        'title': 'Full-Stack Development',
+        'description':
+            'Expert in Flutter, React, Node.js, and modern development practices. Building scalable cross-platform applications with clean architecture.',
       },
       {
-        'category': 'DevOps & CI/CD',
-        'skills': [
-          'Git/GitHub',
-          'GitHub Actions',
-          'Codemagic',
-          'Bitbucket Pipelines',
-          'Fastlane',
-          'Unit/Widget Testing',
-          'Flutter DevTools',
-        ],
+        'icon': Icons.lightbulb,
+        'title': 'Problem Solver',
+        'description':
+            'Passionate about solving complex technical challenges and delivering innovative solutions that create real business value.',
       },
       {
-        'category': 'Cloud & Backend',
-        'skills': [
-          'Firebase (Auth, Firestore, Functions)',
-          'Supabase',
-          'REST APIs',
-          'WebSocket',
-          'GraphQL',
-          'Hive',
-          'SQLite',
-        ],
+        'icon': Icons.people,
+        'title': 'Project Leadership',
+        'description':
+            'Experienced in leading development teams, managing projects from ideation to deployment, and mentoring junior developers.',
       },
       {
-        'category': 'Platform Integration',
-        'skills': [
-          'Custom Android Plugins',
-          'Native SDK Integration',
-          'Payment SDKs',
-          'Analytics (Meta, Adjust)',
-          'RevenueCat',
-          'Superwall',
-          'Push Notifications',
-        ],
+        'icon': Icons.hub,
+        'title': 'Startup Ecosystem',
+        'description':
+            'Active in the tech community through GDG events, hackathons, and continuous learning. Embracing AI-enhanced workflows and modern tools.',
       },
       {
-        'category': 'AI-Enhanced Workflow',
-        'skills': [
-          'Augment Code',
-          'GitHub Copilot',
-          'Cursor IDE',
-          'ChatGPT/OpenAI APIs',
-          'Automated Test Generation',
-        ],
-      },
-      {
-        'category': 'Tools & Collaboration',
-        'skills': [
-          'VS Code',
-          'Android Studio',
-          'Xcode',
-          'Figma',
-          'Jira/Confluence',
-          'Slack',
-          'Postman',
-          'Notion',
-        ],
-      },
-      {
-        'category': 'Methodologies',
-        'skills': [
-          'Agile/Scrum',
-          'Test-Driven Development',
-          'Code Review & Mentoring',
-          'Feature-based Architecture',
-        ],
+        'icon': Icons.trending_up,
+        'title': 'Impact-Driven',
+        'description':
+            'Focused on building products that matter. From health-tech to e-commerce, creating solutions that improve user experiences and drive growth.',
       },
     ];
 
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: skillCategories.map((category) {
-        return Padding(
-          padding: const EdgeInsets.only(bottom: AppConstants.spacingL),
+    return Wrap(
+      spacing: AppConstants.spacingL,
+      runSpacing: AppConstants.spacingL,
+      children: highlights.map((highlight) {
+        return Container(
+          width: Responsive.isMobile(context)
+              ? double.infinity
+              : (MediaQuery.of(context).size.width -
+                        AppConstants.spacingXXXL * 2 -
+                        AppConstants.spacingL) /
+                    2,
+          padding: const EdgeInsets.all(AppConstants.spacingL),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            border: Border.all(
+              color: theme.colorScheme.primary.withValues(alpha: 0.2),
+            ),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                category['category'] as String,
-                style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: theme.colorScheme.primary,
-                ),
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(AppConstants.spacingM),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                    ),
+                    child: Icon(
+                      highlight['icon'] as IconData,
+                      color: theme.colorScheme.primary,
+                      size: 28,
+                    ),
+                  ),
+                  const SizedBox(width: AppConstants.spacingM),
+                  Expanded(
+                    child: Text(
+                      highlight['title'] as String,
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: AppConstants.spacingM),
-              Wrap(
-                spacing: AppConstants.spacingS,
-                runSpacing: AppConstants.spacingS,
-                children: (category['skills'] as List<String>).map((skill) {
-                  return Chip(
-                    label: Text(skill),
-                    backgroundColor: theme.colorScheme.primary.withValues(
-                      alpha: 0.1,
-                    ),
-                    labelStyle: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurface,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingS,
-                    ),
-                  );
-                }).toList(),
+              Text(
+                highlight['description'] as String,
+                style: theme.textTheme.bodyMedium?.copyWith(
+                  height: 1.6,
+                  color: theme.textTheme.bodySmall?.color,
+                ),
               ),
             ],
           ),

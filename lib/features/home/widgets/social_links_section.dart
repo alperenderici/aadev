@@ -29,15 +29,59 @@ class SocialLinksSection extends StatelessWidget {
   }
 
   Widget _buildSocialLinks(BuildContext context) {
-    return Wrap(
-      spacing: AppConstants.spacingL,
-      runSpacing: AppConstants.spacingL,
-      alignment: WrapAlignment.center,
-      children: SocialLinks.all.asMap().entries.map((entry) {
-        final index = entry.key;
-        final link = entry.value;
-        return _SocialLinkButton(link: link, index: index);
-      }).toList(),
+    final isMobile = Responsive.isMobile(context);
+
+    if (isMobile) {
+      // Mobile: Wrap layout
+      return Wrap(
+        spacing: AppConstants.spacingL,
+        runSpacing: AppConstants.spacingL,
+        alignment: WrapAlignment.center,
+        children: SocialLinks.all.asMap().entries.map((entry) {
+          final index = entry.key;
+          final link = entry.value;
+          return _SocialLinkButton(link: link, index: index);
+        }).toList(),
+      );
+    }
+
+    // Desktop: 5+5 Grid Layout (2 rows, 5 columns each)
+    final links = SocialLinks.all;
+    final firstRow = links.take(5).toList();
+    final secondRow = links.skip(5).take(5).toList();
+
+    return Column(
+      children: [
+        // First row
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: firstRow.asMap().entries.map((entry) {
+            final index = entry.key;
+            final link = entry.value;
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppConstants.spacingM,
+              ),
+              child: _SocialLinkButton(link: link, index: index),
+            );
+          }).toList(),
+        ),
+        const SizedBox(height: AppConstants.spacingL),
+        // Second row
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: secondRow.asMap().entries.map((entry) {
+            final index = entry.key + 5; // Continue index from first row
+            final link = entry.value;
+            return Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppConstants.spacingM,
+              ),
+              child: _SocialLinkButton(link: link, index: index),
+            );
+          }).toList(),
+        ),
+      ],
     );
   }
 }

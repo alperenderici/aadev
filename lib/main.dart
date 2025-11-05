@@ -9,6 +9,7 @@ import 'package:aad/core/providers/theme_provider.dart';
 import 'package:aad/core/providers/locale_provider.dart';
 import 'package:aad/core/services/analytics_service.dart';
 import 'package:aad/features/home/pages/home_page.dart';
+import 'package:aad/features/generative_art/pages/generative_art_page.dart';
 import 'package:aad/firebase_options.dart';
 
 void main() async {
@@ -54,8 +55,12 @@ class MyApp extends ConsumerWidget {
       // Firebase Analytics
       navigatorObservers: [AnalyticsService.observer],
 
-      // Home
-      home: const SelectionArea(child: HomePage()),
+      // Routes
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const SelectionArea(child: HomePage()),
+        '/generative-art': (context) => const GenerativeArtPage(),
+      },
     );
   }
 }

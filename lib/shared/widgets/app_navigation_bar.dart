@@ -52,12 +52,21 @@ class _AppNavigationBarState extends ConsumerState<AppNavigationBar> {
         ),
         child: Row(
           children: [
-            // Logo/Name
-            Text(
-              'AAD',
-              style: theme.textTheme.headlineSmall?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: theme.colorScheme.primary,
+            // Logo/Name - Navigate to Generative Art Page
+            InkWell(
+              onTap: () {
+                Navigator.of(context).pushNamed('/generative-art');
+              },
+              child: MouseRegion(
+                cursor: SystemMouseCursors.click,
+                child: Text(
+                  'd_art',
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.primary,
+                    fontFamily: 'monospace',
+                  ),
+                ),
               ),
             ),
             const Spacer(),
