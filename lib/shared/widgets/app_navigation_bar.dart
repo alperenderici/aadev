@@ -19,7 +19,7 @@ class AppNavigationBar extends ConsumerStatefulWidget {
 }
 
 class _AppNavigationBarState extends ConsumerState<AppNavigationBar> {
-  bool _isScrolled = false;
+  final bool _isScrolled = false;
 
   @override
   Widget build(BuildContext context) {
@@ -118,14 +118,12 @@ class _AppNavigationBarState extends ConsumerState<AppNavigationBar> {
             IconButton(
               icon: const Icon(FontAwesomeIcons.language),
               onPressed: () {
-                ref.read(localeNotifierProvider.notifier).toggle();
-                final currentLocale = ref
-                    .read(localeNotifierProvider)
-                    .languageCode;
+                ref.read(localeProvider.notifier).toggle();
+                final currentLocale = ref.read(localeProvider).languageCode;
                 final newLanguage = currentLocale == 'en' ? 'tr' : 'en';
                 AnalyticsService.logLanguageChange(newLanguage);
               },
-              tooltip: ref.watch(localeNotifierProvider).languageCode == 'en'
+              tooltip: ref.watch(localeProvider).languageCode == 'en'
                   ? l10n.languageTurkish
                   : l10n.languageEnglish,
             ),

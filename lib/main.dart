@@ -31,10 +31,10 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
-    final locale = ref.watch(localeNotifierProvider);
+    final locale = ref.watch(localeProvider);
 
     return MaterialApp(
-      title: 'Ali Alperen Derici - Flutter Developer',
+      title: 'Ali Alperen Derici',
       debugShowCheckedModeBanner: false,
 
       // Theme
