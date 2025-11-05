@@ -12,11 +12,7 @@ class HeroSection extends StatelessWidget {
   final VoidCallback? onContactPressed;
   final VoidCallback? onCVPressed;
 
-  const HeroSection({
-    super.key,
-    this.onContactPressed,
-    this.onCVPressed,
-  });
+  const HeroSection({super.key, this.onContactPressed, this.onCVPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -68,9 +64,13 @@ class HeroSection extends StatelessWidget {
       children: [
         _buildProfileImage(context, 150),
         const SizedBox(height: AppConstants.spacingXL),
-        _buildTextContent(context, l10n, theme, TextAlign.center),
-        const SizedBox(height: AppConstants.spacingXL),
-        _buildButtons(context, l10n, true),
+        _buildTextContent(
+          context,
+          l10n,
+          theme,
+          TextAlign.center,
+          isMobile: true,
+        ),
       ],
     );
   }
@@ -89,9 +89,7 @@ class HeroSection extends StatelessWidget {
         const SizedBox(width: AppConstants.spacingXXXL),
         Expanded(
           flex: 2,
-          child: Center(
-            child: _buildProfileImage(context, 300),
-          ),
+          child: Center(child: _buildProfileImage(context, 300)),
         ),
       ],
     );
@@ -99,49 +97,51 @@ class HeroSection extends StatelessWidget {
 
   Widget _buildProfileImage(BuildContext context, double size) {
     return Container(
-      width: size,
-      height: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-            blurRadius: 30,
-            spreadRadius: 5,
-          ),
-        ],
-      ),
-      child: ClipOval(
-        child: Image.asset(
-          AssetPaths.profilePhoto,
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) {
-            return Container(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
-              child: Icon(
-                Icons.person,
-                size: size * 0.5,
-                color: Theme.of(context).colorScheme.primary,
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            boxShadow: [
+              BoxShadow(
+                color: Theme.of(
+                  context,
+                ).colorScheme.primary.withValues(alpha: 0.3),
+                blurRadius: 30,
+                spreadRadius: 5,
               ),
-            );
-          },
-        ),
-      ),
-    )
+            ],
+          ),
+          child: ClipOval(
+            child: Image.asset(
+              AssetPaths.profilePhoto,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: Theme.of(
+                    context,
+                  ).colorScheme.primary.withValues(alpha: 0.1),
+                  child: Icon(
+                    Icons.person,
+                    size: size * 0.5,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                );
+              },
+            ),
+          ),
+        )
         .animate()
         .fadeIn(duration: AppConstants.mediumAnimation)
-        .scale(
-          duration: AppConstants.longAnimation,
-          curve: Curves.easeOutBack,
-        );
+        .scale(duration: AppConstants.longAnimation, curve: Curves.easeOutBack);
   }
 
   Widget _buildTextContent(
     BuildContext context,
     AppLocalizations l10n,
     ThemeData theme,
-    TextAlign textAlign,
-  ) {
+    TextAlign textAlign, {
+    bool isMobile = false,
+  }) {
     return Column(
       crossAxisAlignment: textAlign == TextAlign.center
           ? CrossAxisAlignment.center
@@ -149,57 +149,56 @@ class HeroSection extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          l10n.heroGreeting,
-          style: theme.textTheme.titleLarge?.copyWith(
-            color: theme.colorScheme.primary,
-            fontWeight: FontWeight.w500,
-          ),
-          textAlign: textAlign,
-        )
+              l10n.heroGreeting,
+              style: theme.textTheme.titleLarge?.copyWith(
+                color: theme.colorScheme.primary,
+                fontWeight: FontWeight.w500,
+              ),
+              textAlign: textAlign,
+            )
             .animate()
             .fadeIn(duration: AppConstants.mediumAnimation, delay: 100.ms)
             .slideX(begin: -0.2, end: 0),
         const SizedBox(height: AppConstants.spacingS),
         Text(
-          l10n.heroName,
-          style: Responsive.value(
-            context: context,
-            mobile: theme.textTheme.displaySmall,
-            tablet: theme.textTheme.displayMedium,
-            desktop: theme.textTheme.displayLarge,
-          )?.copyWith(
-            fontWeight: FontWeight.bold,
-          ),
-          textAlign: textAlign,
-        )
+              l10n.heroName,
+              style: Responsive.value(
+                context: context,
+                mobile: theme.textTheme.displaySmall,
+                tablet: theme.textTheme.displayMedium,
+                desktop: theme.textTheme.displayLarge,
+              )?.copyWith(fontWeight: FontWeight.bold),
+              textAlign: textAlign,
+            )
             .animate()
             .fadeIn(duration: AppConstants.mediumAnimation, delay: 200.ms)
             .slideX(begin: -0.2, end: 0),
         const SizedBox(height: AppConstants.spacingM),
         Text(
-          l10n.heroTitle,
-          style: Responsive.value(
-            context: context,
-            mobile: theme.textTheme.headlineSmall,
-            tablet: theme.textTheme.headlineMedium,
-            desktop: theme.textTheme.headlineLarge,
-          )?.copyWith(
-            color: theme.colorScheme.secondary,
-            fontWeight: FontWeight.w600,
-          ),
-          textAlign: textAlign,
-        )
+              l10n.heroTitle,
+              style:
+                  Responsive.value(
+                    context: context,
+                    mobile: theme.textTheme.headlineSmall,
+                    tablet: theme.textTheme.headlineMedium,
+                    desktop: theme.textTheme.headlineLarge,
+                  )?.copyWith(
+                    color: theme.colorScheme.secondary,
+                    fontWeight: FontWeight.w600,
+                  ),
+              textAlign: textAlign,
+            )
             .animate()
             .fadeIn(duration: AppConstants.mediumAnimation, delay: 300.ms)
             .slideX(begin: -0.2, end: 0),
         const SizedBox(height: AppConstants.spacingL),
         Text(
-          l10n.heroSubtitle,
-          style: theme.textTheme.titleMedium?.copyWith(
-            color: theme.textTheme.bodySmall?.color,
-          ),
-          textAlign: textAlign,
-        )
+              l10n.heroSubtitle,
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: theme.textTheme.bodySmall?.color,
+              ),
+              textAlign: textAlign,
+            )
             .animate()
             .fadeIn(duration: AppConstants.mediumAnimation, delay: 400.ms)
             .slideX(begin: -0.2, end: 0),
@@ -240,9 +239,6 @@ class HeroSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: buttons,
           )
-        : Row(
-            children: buttons,
-          );
+        : Row(children: buttons);
   }
 }
-

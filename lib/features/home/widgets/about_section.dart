@@ -95,37 +95,37 @@ class AboutSection extends StatelessWidget {
         'icon': Icons.rocket_launch,
         'title': 'Entrepreneurial Mindset',
         'description':
-            'Co-founded Fitgo, a health-tech startup, leading product development and technical architecture from concept to production.',
+            'Co-founded Fitgo health-tech startup, leading product development from concept to production.',
       },
       {
         'icon': Icons.code,
         'title': 'Full-Stack Development',
         'description':
-            'Expert in Flutter, React, Node.js, and modern development practices. Building scalable cross-platform applications with clean architecture.',
+            'Expert in Flutter, React, Node.js. Building scalable cross-platform apps with clean architecture.',
       },
       {
         'icon': Icons.lightbulb,
         'title': 'Problem Solver',
         'description':
-            'Passionate about solving complex technical challenges and delivering innovative solutions that create real business value.',
+            'Solving complex technical challenges and delivering innovative solutions with real business value.',
       },
       {
         'icon': Icons.people,
         'title': 'Project Leadership',
         'description':
-            'Experienced in leading development teams, managing projects from ideation to deployment, and mentoring junior developers.',
+            'Leading development teams, managing projects from ideation to deployment, mentoring developers.',
       },
       {
         'icon': Icons.hub,
         'title': 'Startup Ecosystem',
         'description':
-            'Active in the tech community through GDG events, hackathons, and continuous learning. Embracing AI-enhanced workflows and modern tools.',
+            'Active in tech community through GDG events, hackathons. Embracing AI-enhanced workflows.',
       },
       {
         'icon': Icons.trending_up,
         'title': 'Impact-Driven',
         'description':
-            'Focused on building products that matter. From health-tech to e-commerce, creating solutions that improve user experiences and drive growth.',
+            'Building products that matter. From health-tech to e-commerce, improving user experiences.',
       },
     ];
 
@@ -140,7 +140,7 @@ class AboutSection extends StatelessWidget {
                         AppConstants.spacingXXXL * 2 -
                         AppConstants.spacingL) /
                     2,
-          padding: const EdgeInsets.all(AppConstants.spacingL),
+          padding: const EdgeInsets.all(AppConstants.spacingM),
           decoration: BoxDecoration(
             color: theme.colorScheme.surface,
             borderRadius: BorderRadius.circular(AppConstants.radiusL),
@@ -148,40 +148,41 @@ class AboutSection extends StatelessWidget {
               color: theme.colorScheme.primary.withValues(alpha: 0.2),
             ),
           ),
-          child: Column(
+          child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(AppConstants.spacingM),
-                    decoration: BoxDecoration(
-                      color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
-                    ),
-                    child: Icon(
-                      highlight['icon'] as IconData,
-                      color: theme.colorScheme.primary,
-                      size: 28,
-                    ),
-                  ),
-                  const SizedBox(width: AppConstants.spacingM),
-                  Expanded(
-                    child: Text(
+              Container(
+                padding: const EdgeInsets.all(AppConstants.spacingS),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                ),
+                child: Icon(
+                  highlight['icon'] as IconData,
+                  color: theme.colorScheme.primary,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(width: AppConstants.spacingM),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
                       highlight['title'] as String,
-                      style: theme.textTheme.titleMedium?.copyWith(
+                      style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: AppConstants.spacingM),
-              Text(
-                highlight['description'] as String,
-                style: theme.textTheme.bodyMedium?.copyWith(
-                  height: 1.6,
-                  color: theme.textTheme.bodySmall?.color,
+                    const SizedBox(height: AppConstants.spacingXS),
+                    Text(
+                      highlight['description'] as String,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        height: 1.5,
+                        color: theme.textTheme.bodySmall?.color,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
@@ -204,7 +205,7 @@ class AboutSection extends StatelessWidget {
                     height: 300,
                     color: Theme.of(
                       context,
-                    ).colorScheme.primary.withOpacity(0.1),
+                    ).colorScheme.primary.withValues(alpha: 0.1),
                     child: const Icon(Icons.image, size: 100),
                   );
                 },

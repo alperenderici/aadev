@@ -64,9 +64,6 @@ class _HomePageState extends State<HomePage> {
                     child: const AboutSection(),
                   ),
 
-                  // Upwork Service Section
-                  const UpworkServiceSection(),
-
                   // Experience Section
                   Container(
                     key: _sectionKeys['experience'],
@@ -96,6 +93,9 @@ class _HomePageState extends State<HomePage> {
                     key: _sectionKeys['cv'],
                     child: const CVDownloadSection(),
                   ),
+
+                  // Upwork Service Section (moved above Contact)
+                  const UpworkServiceSection(),
 
                   // Contact Section
                   Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:aad/features/generative_art/widgets/generative_art_canvas.dart';
 import 'package:aad/features/generative_art/models/art_type.dart';
+import 'package:aad/features/generative_art/widgets/particle_controls.dart';
 
 /// Generative Art Page
 class GenerativeArtPage extends StatefulWidget {
@@ -13,6 +14,11 @@ class GenerativeArtPage extends StatefulWidget {
 class _GenerativeArtPageState extends State<GenerativeArtPage> {
   ArtType _selectedArtType = ArtType.particles;
 
+  // Particle control parameters
+  double _particleSpeed = 1.0;
+  double _particleHue = 0.0;
+  double _particleSize = 1.0;
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -22,7 +28,12 @@ class _GenerativeArtPageState extends State<GenerativeArtPage> {
         children: [
           // Generative Art Background
           Positioned.fill(
-            child: GenerativeArtCanvas(artType: _selectedArtType),
+            child: GenerativeArtCanvas(
+              artType: _selectedArtType,
+              particleSpeed: _particleSpeed,
+              particleHue: _particleHue,
+              particleSize: _particleSize,
+            ),
           ),
 
           // Top Navigation Bar
@@ -71,6 +82,33 @@ class _GenerativeArtPageState extends State<GenerativeArtPage> {
               ),
             ),
           ),
+
+          // Particle Controls Panel (only visible when Particles is selected)
+          if (_selectedArtType == ArtType.particles)
+            Positioned(
+              right: 24,
+              top: 100,
+              child: ParticleControls(
+                speed: _particleSpeed,
+                hue: _particleHue,
+                particleSize: _particleSize,
+                onSpeedChanged: (value) {
+                  setState(() {
+                    _particleSpeed = value;
+                  });
+                },
+                onHueChanged: (value) {
+                  setState(() {
+                    _particleHue = value;
+                  });
+                },
+                onParticleSizeChanged: (value) {
+                  setState(() {
+                    _particleSize = value;
+                  });
+                },
+              ),
+            ),
 
           // Bottom Art Selection Panel
           Positioned(
@@ -166,8 +204,8 @@ class _ArtTypeButtonState extends State<_ArtTypeButton> {
             color: widget.isSelected
                 ? theme.colorScheme.primary
                 : _isHovered
-                    ? Colors.white.withValues(alpha: 0.2)
-                    : Colors.white.withValues(alpha: 0.1),
+                ? Colors.white.withValues(alpha: 0.2)
+                : Colors.white.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
             border: Border.all(
               color: widget.isSelected
@@ -178,10 +216,11 @@ class _ArtTypeButtonState extends State<_ArtTypeButton> {
             boxShadow: widget.isSelected || _isHovered
                 ? [
                     BoxShadow(
-                      color: (widget.isSelected
-                              ? theme.colorScheme.primary
-                              : Colors.white)
-                          .withValues(alpha: 0.3),
+                      color:
+                          (widget.isSelected
+                                  ? theme.colorScheme.primary
+                                  : Colors.white)
+                              .withValues(alpha: 0.3),
                       blurRadius: 20,
                       spreadRadius: 2,
                     ),
@@ -190,18 +229,15 @@ class _ArtTypeButtonState extends State<_ArtTypeButton> {
           ),
           child: Column(
             children: [
-              Icon(
-                widget.artType.icon,
-                color: Colors.white,
-                size: 32,
-              ),
+              Icon(widget.artType.icon, color: Colors.white, size: 32),
               const SizedBox(height: 8),
               Text(
                 widget.artType.name,
                 style: theme.textTheme.titleSmall?.copyWith(
                   color: Colors.white,
-                  fontWeight:
-                      widget.isSelected ? FontWeight.bold : FontWeight.normal,
+                  fontWeight: widget.isSelected
+                      ? FontWeight.bold
+                      : FontWeight.normal,
                 ),
               ),
             ],
@@ -211,4 +247,3 @@ class _ArtTypeButtonState extends State<_ArtTypeButton> {
     );
   }
 }
-
