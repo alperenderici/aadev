@@ -82,7 +82,7 @@ class _CertificateCardState extends State<_CertificateCard> {
             child: AnimatedContainer(
               duration: AppConstants.shortAnimation,
               transform: _isHovered
-                  ? (Matrix4.identity()..scale(1.05))
+                  ? Matrix4.diagonal3Values(1.05, 1.05, 1.0)
                   : Matrix4.identity(),
               child: Card(
                 elevation: _isHovered ? 8 : 2,

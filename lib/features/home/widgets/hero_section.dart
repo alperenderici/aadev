@@ -215,29 +215,34 @@ class HeroSection extends StatelessWidget {
     AppLocalizations l10n,
     bool isColumn,
   ) {
-    final buttons = [
-      AppButton(
-        text: l10n.heroCtaContact,
-        onPressed: onContactPressed,
-        icon: Icons.email,
-      ),
-      const SizedBox(
-        width: AppConstants.spacingM,
-        height: AppConstants.spacingM,
-      ),
-      AppButton(
-        text: l10n.heroCtaCv,
-        onPressed: onCVPressed,
-        isOutlined: true,
-        icon: Icons.download,
-      ),
-    ];
+    final contactButton = AppButton(
+      text: l10n.heroCtaContact,
+      onPressed: onContactPressed,
+      icon: Icons.email,
+    );
+
+    final cvButton = AppButton(
+      text: l10n.heroCtaCv,
+      onPressed: onCVPressed,
+      isOutlined: true,
+      icon: Icons.download,
+    );
 
     return isColumn
         ? Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: buttons,
+            children: [
+              contactButton,
+              const SizedBox(height: AppConstants.spacingM),
+              cvButton,
+            ],
           )
-        : Row(children: buttons);
+        : Row(
+            children: [
+              contactButton,
+              const SizedBox(width: AppConstants.spacingM),
+              cvButton,
+            ],
+          );
   }
 }

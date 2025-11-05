@@ -39,7 +39,7 @@ class _AnimatedCardState extends State<AnimatedCard> {
         child: AnimatedContainer(
           duration: AppConstants.shortAnimation,
           transform: _isHovered
-              ? (Matrix4.identity()..translate(0.0, -8.0, 0.0))
+              ? Matrix4.translationValues(0.0, -8.0, 0.0)
               : Matrix4.identity(),
           child: Card(
             elevation: _isHovered

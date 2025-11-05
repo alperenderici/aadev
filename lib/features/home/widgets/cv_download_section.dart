@@ -164,9 +164,9 @@ class CVDownloadSection extends StatelessWidget {
     }
     AnalyticsService.logCVDownload(type);
 
-    // For web, we need to use a different approach
-    // This will open the PDF in a new tab
-    final url = Uri.parse('assets/$assetPath');
+    // For web, we need to use the asset path directly
+    // The assetPath already includes 'assets/' prefix
+    final url = Uri.parse(assetPath);
     if (await canLaunchUrl(url)) {
       await launchUrl(url, mode: LaunchMode.externalApplication);
     }

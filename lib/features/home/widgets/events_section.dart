@@ -54,9 +54,11 @@ class EventsSection extends StatelessWidget {
       runSpacing: AppConstants.spacingL,
       children: events.map((event) {
         return SizedBox(
-          width: (MediaQuery.of(context).size.width - 
-                  AppConstants.spacingXXXL * 2 - 
-                  AppConstants.spacingL) / 2,
+          width:
+              (MediaQuery.of(context).size.width -
+                  AppConstants.spacingXXXL * 2 -
+                  AppConstants.spacingL) /
+              2,
           child: _EventCard(event: event),
         );
       }).toList(),
@@ -75,129 +77,132 @@ class _EventCard extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Container(
-      padding: const EdgeInsets.all(AppConstants.spacingL),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(AppConstants.radiusL),
-        border: Border.all(
-          color: theme.colorScheme.outline.withOpacity(0.2),
-        ),
-        boxShadow: [
-          BoxShadow(
-            color: theme.shadowColor.withOpacity(0.05),
-            blurRadius: 10,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Date badge
-          Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          padding: const EdgeInsets.all(AppConstants.spacingL),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(AppConstants.radiusL),
+            border: Border.all(
+              color: theme.colorScheme.outline.withValues(alpha: 0.2),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  DateFormat('MMM').format(event.date).toUpperCase(),
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                Text(
-                  DateFormat('yyyy').format(event.date),
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.primary,
-                    fontSize: 10,
-                  ),
-                ),
-              ],
-            ),
+            boxShadow: [
+              BoxShadow(
+                color: theme.shadowColor.withValues(alpha: 0.05),
+                blurRadius: 10,
+                offset: const Offset(0, 4),
+              ),
+            ],
           ),
-          const SizedBox(width: AppConstants.spacingM),
-          
-          // Event details
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  l10n.translate(event.nameKey),
-                  style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Date badge
+              Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
                 ),
-                const SizedBox(height: AppConstants.spacingXS),
-                Row(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      Icons.business,
-                      size: 14,
-                      color: theme.textTheme.bodySmall?.color,
-                    ),
-                    const SizedBox(width: AppConstants.spacingXS),
                     Text(
-                      event.organizer,
+                      DateFormat('MMM').format(event.date).toUpperCase(),
                       style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.textTheme.bodySmall?.color,
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      DateFormat('yyyy').format(event.date),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontSize: 10,
                       ),
                     ),
                   ],
                 ),
-                if (event.location != null) ...[
-                  const SizedBox(height: AppConstants.spacingXS),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.location_on,
-                        size: 14,
-                        color: theme.textTheme.bodySmall?.color,
+              ),
+              const SizedBox(width: AppConstants.spacingM),
+
+              // Event details
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      l10n.translate(event.nameKey),
+                      style: theme.textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(width: AppConstants.spacingXS),
-                      Text(
-                        event.location!,
-                        style: theme.textTheme.bodySmall?.copyWith(
+                    ),
+                    const SizedBox(height: AppConstants.spacingXS),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.business,
+                          size: 14,
                           color: theme.textTheme.bodySmall?.color,
                         ),
+                        const SizedBox(width: AppConstants.spacingXS),
+                        Text(
+                          event.organizer,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.textTheme.bodySmall?.color,
+                          ),
+                        ),
+                      ],
+                    ),
+                    if (event.location != null) ...[
+                      const SizedBox(height: AppConstants.spacingXS),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.location_on,
+                            size: 14,
+                            color: theme.textTheme.bodySmall?.color,
+                          ),
+                          const SizedBox(width: AppConstants.spacingXS),
+                          Text(
+                            event.location!,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: theme.textTheme.bodySmall?.color,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
-                ],
-                const SizedBox(height: AppConstants.spacingXS),
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: AppConstants.spacingS,
-                    vertical: AppConstants.spacingXS,
-                  ),
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.secondary.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(AppConstants.radiusS),
-                  ),
-                  child: Text(
-                    l10n.translate('event_attendee'),
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.secondary,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 11,
+                    const SizedBox(height: AppConstants.spacingXS),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: AppConstants.spacingS,
+                        vertical: AppConstants.spacingXS,
+                      ),
+                      decoration: BoxDecoration(
+                        color: theme.colorScheme.secondary.withValues(
+                          alpha: 0.1,
+                        ),
+                        borderRadius: BorderRadius.circular(
+                          AppConstants.radiusS,
+                        ),
+                      ),
+                      child: Text(
+                        l10n.translate('event_attendee'),
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.colorScheme.secondary,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 11,
+                        ),
+                      ),
                     ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
-      ),
-    )
+        )
         .animate()
         .fadeIn(duration: AppConstants.mediumAnimation)
         .slideY(begin: 0.1, end: 0);
   }
 }
-

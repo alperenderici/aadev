@@ -17,7 +17,6 @@ class ExperienceSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
-    final theme = Theme.of(context);
 
     return ResponsiveSection(
       child: Column(
@@ -145,7 +144,7 @@ class _ExperienceCard extends StatelessWidget {
         errorBuilder: (context, error, stackTrace) {
           return Container(
             height: 150,
-            color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+            color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1),
             child: const Icon(Icons.image, size: 50),
           );
         },
@@ -230,7 +229,7 @@ class _ExperienceCard extends StatelessWidget {
           children: experience.technologies.map((tech) {
             return Chip(
               label: Text(tech),
-              backgroundColor: theme.colorScheme.primary.withOpacity(0.1),
+              backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.1),
               labelStyle: theme.textTheme.bodySmall?.copyWith(
                 color: theme.colorScheme.primary,
                 fontWeight: FontWeight.w600,

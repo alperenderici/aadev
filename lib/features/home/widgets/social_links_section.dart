@@ -112,7 +112,7 @@ class _SocialLinkButtonState extends State<_SocialLinkButton> {
             child: AnimatedContainer(
               duration: AppConstants.shortAnimation,
               transform: _isHovered
-                  ? (Matrix4.identity()..translate(0.0, -8.0, 0.0))
+                  ? Matrix4.translationValues(0.0, -8.0, 0.0)
                   : Matrix4.identity(),
               child: Container(
                 width: Responsive.value(
@@ -129,7 +129,7 @@ class _SocialLinkButtonState extends State<_SocialLinkButton> {
                 ),
                 decoration: BoxDecoration(
                   color: _isHovered
-                      ? color.withOpacity(0.1)
+                      ? color.withValues(alpha: 0.1)
                       : theme.cardTheme.color,
                   borderRadius: BorderRadius.circular(AppConstants.radiusL),
                   border: Border.all(
@@ -139,14 +139,14 @@ class _SocialLinkButtonState extends State<_SocialLinkButton> {
                   boxShadow: _isHovered
                       ? [
                           BoxShadow(
-                            color: color.withOpacity(0.3),
+                            color: color.withValues(alpha: 0.3),
                             blurRadius: 20,
                             spreadRadius: 2,
                           ),
                         ]
                       : [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
+                            color: Colors.black.withValues(alpha: 0.1),
                             blurRadius: 10,
                             offset: const Offset(0, 4),
                           ),
