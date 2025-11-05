@@ -6,6 +6,45 @@ class ExperiencesData {
   ExperiencesData._();
 
   static final List<ExperienceModel> experiences = [
+    // Upwork Projects (Current)
+    ExperienceModel(
+      id: 'safea',
+      titleKey: 'exp_safea_title',
+      descriptionKey: 'exp_safea_desc',
+      companyName: 'Upwork',
+      technologies: ['Flutter', 'AR', 'Figma', 'Firebase', 'MVP Development'],
+      startDate: DateTime(2025, 1),
+      isCurrent: true,
+    ),
+    ExperienceModel(
+      id: 'lyt',
+      titleKey: 'exp_lyt_title',
+      descriptionKey: 'exp_lyt_desc',
+      companyName: 'Upwork',
+      technologies: ['Flutter', 'AR', 'Figma', 'Firebase', 'MVP Development'],
+      startDate: DateTime(2025, 1),
+      isCurrent: true,
+    ),
+    ExperienceModel(
+      id: 'amora',
+      titleKey: 'exp_amora_title',
+      descriptionKey: 'exp_amora_desc',
+      companyName: 'Upwork',
+      technologies: ['Flutter', 'Figma', 'Firebase', 'MVP Development'],
+      startDate: DateTime(2025, 1),
+      isCurrent: true,
+    ),
+    ExperienceModel(
+      id: 'high_fidelity',
+      titleKey: 'exp_high_fidelity_title',
+      descriptionKey: 'exp_high_fidelity_desc',
+      companyName: 'Upwork',
+      technologies: ['Flutter', 'Figma', 'Firebase', 'MVP Development'],
+      startDate: DateTime(2025, 1),
+      isCurrent: true,
+    ),
+
+    // Previous Projects
     ExperienceModel(
       id: 'fitgo',
       titleKey: 'exp_fitgo_title',
@@ -29,12 +68,7 @@ class ExperiencesData {
       descriptionKey: 'exp_hygge_desc',
       companyName: 'Hygge',
       screenshot: AssetPaths.hyggeScreenshot,
-      technologies: [
-        'Flutter',
-        'Firebase',
-        'Provider',
-        'REST API',
-      ],
+      technologies: ['Flutter', 'Firebase', 'Provider', 'REST API'],
       startDate: DateTime(2022, 6),
       endDate: DateTime(2023, 1),
       isCurrent: false,
@@ -45,12 +79,7 @@ class ExperiencesData {
       descriptionKey: 'exp_gagas_desc',
       companyName: 'Gagas',
       screenshot: AssetPaths.gagasAppScreenshot,
-      technologies: [
-        'Flutter',
-        'Firebase',
-        'GetX',
-        'Google Maps',
-      ],
+      technologies: ['Flutter', 'Firebase', 'GetX', 'Google Maps'],
       startDate: DateTime(2021, 9),
       endDate: DateTime(2022, 6),
       isCurrent: false,
@@ -61,11 +90,7 @@ class ExperiencesData {
       descriptionKey: 'exp_biko_desc',
       companyName: 'Biko',
       screenshot: AssetPaths.bikoScreenshot,
-      technologies: [
-        'Flutter',
-        'Firebase',
-        'Provider',
-      ],
+      technologies: ['Flutter', 'Firebase', 'Provider'],
       startDate: DateTime(2021, 3),
       endDate: DateTime(2021, 9),
       isCurrent: false,
@@ -76,11 +101,7 @@ class ExperiencesData {
       descriptionKey: 'exp_boly_desc',
       companyName: 'Boly',
       companyLogo: AssetPaths.bolyLogoScreenshot,
-      technologies: [
-        'Flutter',
-        'Firebase',
-        'BLoC',
-      ],
+      technologies: ['Flutter', 'Firebase', 'BLoC'],
       startDate: DateTime(2020, 10),
       endDate: DateTime(2021, 3),
       isCurrent: false,
@@ -91,11 +112,7 @@ class ExperiencesData {
       descriptionKey: 'exp_kanguru_desc',
       companyName: 'Kanguru',
       companyLogo: AssetPaths.kanguruLogoScreenshot,
-      technologies: [
-        'Flutter',
-        'Firebase',
-        'Provider',
-      ],
+      technologies: ['Flutter', 'Firebase', 'Provider'],
       startDate: DateTime(2020, 6),
       endDate: DateTime(2020, 10),
       isCurrent: false,
@@ -106,11 +123,7 @@ class ExperiencesData {
       descriptionKey: 'exp_appy_desc',
       companyName: 'Appy Ventures',
       screenshot: AssetPaths.appyVenturesScreenshot,
-      technologies: [
-        'Flutter',
-        'Firebase',
-        'Provider',
-      ],
+      technologies: ['Flutter', 'Firebase', 'Provider'],
       startDate: DateTime(2020, 1),
       endDate: DateTime(2020, 6),
       isCurrent: false,
@@ -121,14 +134,10 @@ class ExperiencesData {
       descriptionKey: 'exp_alper_bekat_desc',
       companyName: 'Alper Bekat',
       screenshot: AssetPaths.alperBekatScreenshot,
-      technologies: [
-        'Flutter',
-        'Firebase',
-      ],
+      technologies: ['Flutter', 'Firebase'],
       startDate: DateTime(2019, 9),
       endDate: DateTime(2020, 1),
       isCurrent: false,
     ),
   ];
 }
-

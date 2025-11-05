@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:aad/features/home/widgets/hero_section.dart';
 import 'package:aad/features/home/widgets/about_section.dart';
 import 'package:aad/features/home/widgets/experience_section.dart';
+import 'package:aad/features/home/widgets/events_section.dart';
 import 'package:aad/features/home/widgets/certificates_section.dart';
 import 'package:aad/features/home/widgets/social_links_section.dart';
 import 'package:aad/features/home/widgets/cv_download_section.dart';
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
     'home': GlobalKey(),
     'about': GlobalKey(),
     'experience': GlobalKey(),
+    'events': GlobalKey(),
     'certificates': GlobalKey(),
     'social': GlobalKey(),
     'cv': GlobalKey(),
@@ -40,9 +42,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Column(
         children: [
-          AppNavigationBar(
-            onNavigate: _scrollToSection,
-          ),
+          AppNavigationBar(onNavigate: _scrollToSection),
           Expanded(
             child: SingleChildScrollView(
               controller: _scrollController,
@@ -67,6 +67,12 @@ class _HomePageState extends State<HomePage> {
                   Container(
                     key: _sectionKeys['experience'],
                     child: const ExperienceSection(),
+                  ),
+
+                  // Events Section
+                  Container(
+                    key: _sectionKeys['events'],
+                    child: const EventsSection(),
                   ),
 
                   // Certificates Section
@@ -115,4 +121,3 @@ class _HomePageState extends State<HomePage> {
     }
   }
 }
-

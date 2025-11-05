@@ -4,7 +4,7 @@
 
 GitHub'dan aldığınız uyarı:
 ```
-Google API Key detected: REDACTED_FIREBASE_API_KEY
+Google API Key detected: AIzaSyB5G-EPoIN1WaynJT-8ctARzrVC3NVbgTc
 ```
 
 ## ✅ Bu Normal ve Güvenlidir
@@ -26,7 +26,7 @@ Firebase Web API Key'inin public olması **tamamen normaldir** ve **güvenlik so
 Firebase Console'da API key'inizi kısıtlayın:
 
 1. [Google Cloud Console](https://console.cloud.google.com/apis/credentials?project=aadev-a3d70) adresine gidin
-2. API Key'inizi bulun: `REDACTED_FIREBASE_API_KEY`
+2. API Key'inizi bulun: `AIzaSyB5G-EPoIN1WaynJT-8ctARzrVC3NVbgTc`
 3. **Application restrictions** bölümünde:
    - **HTTP referrers** seçin
    - Şu domain'leri ekleyin:

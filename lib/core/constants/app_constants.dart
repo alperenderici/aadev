@@ -15,7 +15,9 @@ class AppConstants {
   static const String githubUrl = 'https://github.com/alperenderici';
   static const String linkedinUrl = 'https://linkedin.com/in/alperenderici';
   static const String upworkUrl =
-      'https://www.upwork.com/freelancers/~01066de01bf9c1790f'; // Update
+      'https://www.upwork.com/freelancers/~01066de01bf9c1790f';
+  static const String upworkServiceUrl =
+      'https://www.upwork.com/services/product/development-it-a-scalable-cross-platform-app-mvp-built-ready-to-grow-into-production-1969853513010293066';
   static const String mediumUrl = 'https://medium.com/@alperenderici';
   static const String twitterUrl = 'https://twitter.com/grandealperen';
   static const String letterboxdUrl = 'https://letterboxd.com/alperenderici';

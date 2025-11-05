@@ -53,12 +53,12 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'REDACTED_FIREBASE_API_KEY',
-    appId: '1:132923745492:web:c9c7702474996a99a94741',
+    apiKey: 'AIzaSyB5G-EPoIN1WaynJT-8ctARzrVC3NVbgTc',
+    appId: '1:132923745492:web:f9889e616bea5910a94741',
     messagingSenderId: '132923745492',
     projectId: 'aadev-a3d70',
     authDomain: 'aadev-a3d70.firebaseapp.com',
     storageBucket: 'aadev-a3d70.firebasestorage.app',
-    measurementId: 'G-DR2S6SE369',
+    measurementId: 'G-FV2PYE9DX7',
   );
 }

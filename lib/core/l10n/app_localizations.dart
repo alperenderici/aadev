@@ -122,6 +122,41 @@ class AppLocalizations {
       'exp_alper_bekat_title': 'Alper Bekat - Portfolio Projects',
       'exp_alper_bekat_desc':
           'Developed multiple portfolio projects and client applications, gaining experience in Flutter development and Firebase integration.',
+
+      // Upwork Projects
+      'exp_safea_title': 'Safea - AR Mobile Application',
+      'exp_safea_desc':
+          'Developing an AR-enabled mobile application MVP from Figma designs for Upwork client. Building scalable cross-platform solution ready for production deployment.',
+      'exp_lyt_title': 'L-yt - AR Mobile Application',
+      'exp_lyt_desc':
+          'Creating an AR-focused mobile application MVP based on Figma specifications for Upwork client. Implementing augmented reality features with Flutter.',
+      'exp_amora_title': 'Amora - Mobile Application MVP',
+      'exp_amora_desc':
+          'Building a mobile application MVP from Figma designs for Upwork client. Developing scalable architecture ready to grow into production.',
+      'exp_high_fidelity_title': 'High Fidelity - Mobile Application MVP',
+      'exp_high_fidelity_desc':
+          'Developing a mobile application MVP based on Figma designs for Upwork client. Creating cross-platform solution with focus on scalability and production readiness.',
+
+      // Upwork Service
+      'upwork_service_title': 'Freelance Services on Upwork',
+      'upwork_service_desc':
+          'I offer professional Flutter development services on Upwork. Specializing in building scalable, cross-platform app MVPs from Figma designs, ready to grow into production. Let\'s bring your app idea to life!',
+      'upwork_service_cta': 'View My Service',
+
+      // Events & Conferences
+      'events_title': 'Events & Conferences',
+      'events_subtitle': 'Community Engagement & Learning',
+      'event_attendee': 'Attendee',
+      'event_gdg_izmir_devfest': 'GDG Izmir DevFest',
+      'event_wtm_izmir': 'Women Techmakers Izmir',
+      'event_gdg_manisa_devfest': 'GDG Manisa DevFest',
+      'event_dsc_galatasaray_flutter':
+          'Google DSC Galatasaray Club Flutter Camp',
+      'event_google_io_extended_izmir': 'Google I/O Extended Izmir',
+      'event_fuckup_nights_izmir': 'Fuck Up Nights Izmir',
+      'event_cloud_jam_a_thon': 'Cloud Jam a Thon',
+      'event_hack_n_break': 'Hack\'N Break',
+      'event_create_in_izmir': 'Create In Izmir Pitching Day',
     },
     'tr': {
       // Navigation
@@ -226,6 +261,41 @@ class AppLocalizations {
       'exp_alper_bekat_title': 'Alper Bekat - Portföy Projeleri',
       'exp_alper_bekat_desc':
           'Flutter geliştirme ve Firebase entegrasyonu konusunda deneyim kazanarak birden fazla portföy projesi ve müşteri uygulaması geliştirdim.',
+
+      // Upwork Projeleri
+      'exp_safea_title': 'Safea - AR Mobil Uygulama',
+      'exp_safea_desc':
+          'Upwork müşterisi için Figma tasarımlarından AR destekli mobil uygulama MVP\'si geliştiriyorum. Üretime hazır ölçeklenebilir cross-platform çözüm oluşturuyorum.',
+      'exp_lyt_title': 'L-yt - AR Mobil Uygulama',
+      'exp_lyt_desc':
+          'Upwork müşterisi için Figma spesifikasyonlarına göre AR odaklı mobil uygulama MVP\'si oluşturuyorum. Flutter ile artırılmış gerçeklik özellikleri uyguluyorum.',
+      'exp_amora_title': 'Amora - Mobil Uygulama MVP',
+      'exp_amora_desc':
+          'Upwork müşterisi için Figma tasarımlarından mobil uygulama MVP\'si geliştiriyorum. Üretime geçmeye hazır ölçeklenebilir mimari oluşturuyorum.',
+      'exp_high_fidelity_title': 'High Fidelity - Mobil Uygulama MVP',
+      'exp_high_fidelity_desc':
+          'Upwork müşterisi için Figma tasarımlarına göre mobil uygulama MVP\'si geliştiriyorum. Ölçeklenebilirlik ve üretime hazırlık odaklı cross-platform çözüm oluşturuyorum.',
+
+      // Upwork Hizmeti
+      'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',
+      'upwork_service_desc':
+          'Upwork\'te profesyonel Flutter geliştirme hizmetleri sunuyorum. Figma tasarımlarından üretime hazır, ölçeklenebilir cross-platform uygulama MVP\'leri oluşturma konusunda uzmanım. Uygulama fikrinizi hayata geçirelim!',
+      'upwork_service_cta': 'Hizmetimi Görüntüle',
+
+      // Etkinlikler & Konferanslar
+      'events_title': 'Etkinlikler & Konferanslar',
+      'events_subtitle': 'Topluluk Katılımı & Öğrenme',
+      'event_attendee': 'Katılımcı',
+      'event_gdg_izmir_devfest': 'GDG Izmir DevFest',
+      'event_wtm_izmir': 'Women Techmakers Izmir',
+      'event_gdg_manisa_devfest': 'GDG Manisa DevFest',
+      'event_dsc_galatasaray_flutter':
+          'Google DSC Galatasaray Kulübü Flutter Kampı',
+      'event_google_io_extended_izmir': 'Google I/O Extended Izmir',
+      'event_fuckup_nights_izmir': 'Fuck Up Nights Izmir',
+      'event_cloud_jam_a_thon': 'Cloud Jam a Thon',
+      'event_hack_n_break': 'Hack\'N Break',
+      'event_create_in_izmir': 'Create In Izmir Pitching Day',
     },
   };
 
