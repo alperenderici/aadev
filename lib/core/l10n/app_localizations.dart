@@ -60,7 +60,7 @@ class AppLocalizations {
       // CV Download Section
       'cv_title': 'Download Documents',
       'cv_download': 'Download CV',
-      'cv_cover_letter': 'Download Cover Letter',
+      'cv_cover_letter': 'Request Cover Letter',
       'cv_english': 'English',
       'cv_turkish': 'Turkish',
 
@@ -98,44 +98,39 @@ class AppLocalizations {
       'common_view_less': 'View Less',
 
       // Experiences
-      'exp_fitgo_title': 'Fitgo - Fitness & Wellness Platform',
+      'exp_upwork_title': 'Upwork',
+      'exp_upwork_desc':
+          'Developed several application MVPs. Such as Social Networking app, News & Politics, Lifestyle apps.',
+      'exp_fitgo_title': 'Fitgo',
       'exp_fitgo_desc':
-          'Developed a comprehensive fitness and wellness platform with features including workout tracking, nutrition planning, and social features. Implemented real-time location tracking for outdoor activities.',
-      'exp_hygge_title': 'Hygge - Lifestyle & Wellness App',
+          'Developed a comprehensive fitness and wellness platform with features including workout tracking, nutrition planning, and social features.',
+      'exp_kanguru_title': 'Kanguru',
+      'exp_kanguru_desc': 'A child tracking mobile application for parents.',
+      'exp_akilli_ekip_title': 'Akıllı Ekip',
+      'exp_akilli_ekip_desc':
+          'Developed the web platform for admins and managers.',
+      'exp_boly_title': 'Flutter Dev. - Boly',
+      'exp_boly_desc': 'A volunteer team project application.',
+      'exp_hygge_title': 'Hygge - Web App',
       'exp_hygge_desc':
-          'Built a lifestyle and wellness application focused on mindfulness and self-care. Implemented user authentication, content management, and personalized recommendations.',
-      'exp_gagas_title': 'Gagas - Delivery & Logistics',
-      'exp_gagas_desc':
-          'Created a delivery and logistics application with real-time tracking, route optimization, and order management. Integrated Google Maps for location services.',
-      'exp_biko_title': 'Biko - E-commerce Platform',
-      'exp_biko_desc':
-          'Developed an e-commerce platform with product catalog, shopping cart, payment integration, and order tracking features.',
-      'exp_boly_title': 'Boly - Social Networking',
-      'exp_boly_desc':
-          'Built a social networking application with user profiles, posts, comments, and real-time messaging using Firebase.',
-      'exp_kanguru_title': 'Kanguru - Educational Platform',
-      'exp_kanguru_desc':
-          'Created an educational platform for students with course management, assignments, and progress tracking features.',
-      'exp_appy_title': 'Appy Ventures - Mobile Solutions',
-      'exp_appy_desc':
-          'Worked on various mobile solutions including business apps, productivity tools, and custom client applications.',
-      'exp_alper_bekat_title': 'Alper Bekat - Portfolio Projects',
+          'Web app for Hygge Skin Art. Includes admin panel and spin wheel feature.',
+      'exp_biko_title': 'Product Development Solution',
+      'exp_biko_desc': 'A product development solution for BİKO Mühendislik.',
+      'exp_alper_bekat_title': 'Personal Website',
       'exp_alper_bekat_desc':
-          'Developed multiple portfolio projects and client applications, gaining experience in Flutter development and Firebase integration.',
-
-      // Upwork Projects
-      'exp_safea_title': 'Safea - AR Mobile Application',
-      'exp_safea_desc':
-          'Developing an AR-enabled mobile application MVP from Figma designs for Upwork client. Building scalable cross-platform solution ready for production deployment.',
-      'exp_lyt_title': 'L-yt - AR Mobile Application',
-      'exp_lyt_desc':
-          'Creating an AR-focused mobile application MVP based on Figma specifications for Upwork client. Implementing augmented reality features with Flutter.',
-      'exp_amora_title': 'Amora - Mobile Application MVP',
-      'exp_amora_desc':
-          'Building a mobile application MVP from Figma designs for Upwork client. Developing scalable architecture ready to grow into production.',
-      'exp_high_fidelity_title': 'High Fidelity - Mobile Application MVP',
-      'exp_high_fidelity_desc':
-          'Developing a mobile application MVP based on Figma designs for Upwork client. Creating cross-platform solution with focus on scalability and production readiness.',
+          'Personal information website for Alper Bekat with multi-language option.',
+      'exp_gagas_title': 'Restaurant Loyalty App',
+      'exp_gagas_desc':
+          'Loyalty web application for Gaga\'s Hot Fried Chicken restaurant.',
+      'exp_mrlt_title': 'Mrlt',
+      'exp_mrlt_desc':
+          'Web app for Arda Nural. Personal information, portfolio and gallery site.',
+      'exp_mobilist_title': 'Jr. Flutter Dev. - Mobilist',
+      'exp_mobilist_desc':
+          'Full-time position at Mobilist. Mostly worked with Amber project. Also handled problem fixes on Turksat project.',
+      'exp_appy_title': 'MVP Of An Application',
+      'exp_appy_desc':
+          'As an intern at Appy Ventures, developed minimum viable product with responsive design.',
 
       // Upwork Service
       'upwork_service_title': 'Freelance Services on Upwork',
@@ -199,7 +194,7 @@ class AppLocalizations {
       // CV Download Section
       'cv_title': 'Dokümanları İndir',
       'cv_download': 'CV İndir',
-      'cv_cover_letter': 'Ön Yazı İndir',
+      'cv_cover_letter': 'Ön Yazı Talep Et',
       'cv_english': 'İngilizce',
       'cv_turkish': 'Türkçe',
 
@@ -237,44 +232,39 @@ class AppLocalizations {
       'common_view_less': 'Daha Az',
 
       // Experiences
-      'exp_fitgo_title': 'Fitgo - Fitness & Wellness Platformu',
+      'exp_upwork_title': 'Upwork',
+      'exp_upwork_desc':
+          'Birkaç uygulama MVP\'si geliştirdim. Sosyal Ağ uygulaması, Haber & Politika, Yaşam Tarzı uygulamaları gibi.',
+      'exp_fitgo_title': 'Fitgo',
       'exp_fitgo_desc':
-          'Antrenman takibi, beslenme planlaması ve sosyal özellikler içeren kapsamlı bir fitness ve wellness platformu geliştirdim. Açık hava aktiviteleri için gerçek zamanlı konum takibi uyguladım.',
-      'exp_hygge_title': 'Hygge - Yaşam Tarzı & Wellness Uygulaması',
+          'Antrenman takibi, beslenme planlaması ve sosyal özellikler içeren kapsamlı bir fitness ve wellness platformu geliştirdim.',
+      'exp_kanguru_title': 'Kanguru',
+      'exp_kanguru_desc': 'Ebeveynler için çocuk takip mobil uygulaması.',
+      'exp_akilli_ekip_title': 'Akıllı Ekip',
+      'exp_akilli_ekip_desc':
+          'Yöneticiler ve adminler için web platformu geliştirdim.',
+      'exp_boly_title': 'Flutter Dev. - Boly',
+      'exp_boly_desc': 'Gönüllü ekip projesi uygulaması.',
+      'exp_hygge_title': 'Hygge - Web Uygulaması',
       'exp_hygge_desc':
-          'Farkındalık ve öz bakıma odaklanan bir yaşam tarzı ve wellness uygulaması geliştirdim. Kullanıcı kimlik doğrulama, içerik yönetimi ve kişiselleştirilmiş öneriler uyguladım.',
-      'exp_gagas_title': 'Gagas - Teslimat & Lojistik',
-      'exp_gagas_desc':
-          'Gerçek zamanlı takip, rota optimizasyonu ve sipariş yönetimi içeren bir teslimat ve lojistik uygulaması oluşturdum. Konum servisleri için Google Maps entegre ettim.',
-      'exp_biko_title': 'Biko - E-ticaret Platformu',
-      'exp_biko_desc':
-          'Ürün kataloğu, alışveriş sepeti, ödeme entegrasyonu ve sipariş takibi özellikleri içeren bir e-ticaret platformu geliştirdim.',
-      'exp_boly_title': 'Boly - Sosyal Ağ',
-      'exp_boly_desc':
-          'Firebase kullanarak kullanıcı profilleri, gönderiler, yorumlar ve gerçek zamanlı mesajlaşma içeren bir sosyal ağ uygulaması geliştirdim.',
-      'exp_kanguru_title': 'Kanguru - Eğitim Platformu',
-      'exp_kanguru_desc':
-          'Ders yönetimi, ödevler ve ilerleme takibi özellikleri içeren öğrenciler için bir eğitim platformu oluşturdum.',
-      'exp_appy_title': 'Appy Ventures - Mobil Çözümler',
-      'exp_appy_desc':
-          'İş uygulamaları, verimlilik araçları ve özel müşteri uygulamaları dahil olmak üzere çeşitli mobil çözümler üzerinde çalıştım.',
-      'exp_alper_bekat_title': 'Alper Bekat - Portföy Projeleri',
+          'Hygge Skin Art için web uygulaması. Admin paneli ve çark çevirme özelliği içerir.',
+      'exp_biko_title': 'Ürün Geliştirme Çözümü',
+      'exp_biko_desc': 'BİKO Mühendislik için ürün geliştirme çözümü.',
+      'exp_alper_bekat_title': 'Kişisel Web Sitesi',
       'exp_alper_bekat_desc':
-          'Flutter geliştirme ve Firebase entegrasyonu konusunda deneyim kazanarak birden fazla portföy projesi ve müşteri uygulaması geliştirdim.',
-
-      // Upwork Projeleri
-      'exp_safea_title': 'Safea - AR Mobil Uygulama',
-      'exp_safea_desc':
-          'Upwork müşterisi için Figma tasarımlarından AR destekli mobil uygulama MVP\'si geliştiriyorum. Üretime hazır ölçeklenebilir cross-platform çözüm oluşturuyorum.',
-      'exp_lyt_title': 'L-yt - AR Mobil Uygulama',
-      'exp_lyt_desc':
-          'Upwork müşterisi için Figma spesifikasyonlarına göre AR odaklı mobil uygulama MVP\'si oluşturuyorum. Flutter ile artırılmış gerçeklik özellikleri uyguluyorum.',
-      'exp_amora_title': 'Amora - Mobil Uygulama MVP',
-      'exp_amora_desc':
-          'Upwork müşterisi için Figma tasarımlarından mobil uygulama MVP\'si geliştiriyorum. Üretime geçmeye hazır ölçeklenebilir mimari oluşturuyorum.',
-      'exp_high_fidelity_title': 'High Fidelity - Mobil Uygulama MVP',
-      'exp_high_fidelity_desc':
-          'Upwork müşterisi için Figma tasarımlarına göre mobil uygulama MVP\'si geliştiriyorum. Ölçeklenebilirlik ve üretime hazırlık odaklı cross-platform çözüm oluşturuyorum.',
+          'Alper Bekat için çok dilli seçeneğe sahip kişisel bilgi web sitesi.',
+      'exp_gagas_title': 'Restoran Sadakat Uygulaması',
+      'exp_gagas_desc':
+          'Gaga\'s Hot Fried Chicken restoranı için sadakat web uygulaması.',
+      'exp_mrlt_title': 'Mrlt',
+      'exp_mrlt_desc':
+          'Arda Nural için web uygulaması. Kişisel bilgi, portföy ve galeri sitesi.',
+      'exp_mobilist_title': 'Jr. Flutter Dev. - Mobilist',
+      'exp_mobilist_desc':
+          'Mobilist\'te tam zamanlı pozisyon. Çoğunlukla Amber projesi üzerinde çalıştım. Ayrıca Turksat projesinde sorun düzeltmeleri yaptım.',
+      'exp_appy_title': 'Bir Uygulamanın MVP\'si',
+      'exp_appy_desc':
+          'Appy Ventures\'ta stajyer olarak, responsive tasarıma sahip minimum uygulanabilir ürün geliştirdim.',
 
       // Upwork Hizmeti
       'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',

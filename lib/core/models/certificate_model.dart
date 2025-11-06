@@ -50,7 +50,7 @@ class Certificates {
           'İş Sağlığı ve Güvenliği Hizmetlerinin Uygulanmasına İlişkin Sertifika',
     ),
     CertificateModel(
-      imagePath: 'assets/certificates/01.11.2024.jpg',
+      imagePath: 'assets/certificates/01.11.2024.png',
       titleEn: 'Teknogirişim Akademisi Certificate of Participation',
       titleTr: 'Teknogirişim Akademisi Katılım Sertifikası',
     ),

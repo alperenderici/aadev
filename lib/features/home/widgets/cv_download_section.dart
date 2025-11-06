@@ -129,18 +129,16 @@ class CVDownloadSection extends StatelessWidget {
                   Expanded(
                     child: AppButton(
                       text: l10n.cvEnglish,
-                      onPressed: () =>
-                          _downloadFile(AssetPaths.coverLetterEnglish),
-                      icon: Icons.download,
+                      onPressed: () => _requestCoverLetter('EN'),
+                      icon: Icons.email,
                     ),
                   ),
                   const SizedBox(width: AppConstants.spacingM),
                   Expanded(
                     child: AppButton(
                       text: l10n.cvTurkish,
-                      onPressed: () =>
-                          _downloadFile(AssetPaths.coverLetterTurkish),
-                      icon: Icons.download,
+                      onPressed: () => _requestCoverLetter('TR'),
+                      icon: Icons.email,
                       isOutlined: true,
                     ),
                   ),
@@ -185,6 +183,33 @@ class CVDownloadSection extends StatelessWidget {
       } catch (e) {
         // Ignore errors - file will open in new tab if available
       }
+    }
+  }
+
+  Future<void> _requestCoverLetter(String language) async {
+    // Track cover letter request event
+    AnalyticsService.logCVDownload('CL_REQUEST_$language');
+
+    // Open email client with pre-filled subject and body
+    final subject = language == 'EN'
+        ? 'Cover Letter Request - English'
+        : 'Ön Yazı Talebi - Türkçe';
+
+    final body = language == 'EN'
+        ? 'Hello,\n\nI would like to request your cover letter in English.\n\nThank you!'
+        : 'Merhaba,\n\nÖn yazınızı Türkçe olarak talep etmek istiyorum.\n\nTeşekkürler!';
+
+    final emailUrl = Uri(
+      scheme: 'mailto',
+      path: 'dericialperen5@gmail.com',
+      query:
+          'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
+    );
+
+    try {
+      await launchUrl(emailUrl);
+    } catch (e) {
+      // Ignore errors - email client will open if available
     }
   }
 }
