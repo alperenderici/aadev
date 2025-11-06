@@ -153,6 +153,7 @@ class ExperiencesData {
       titleKey: 'exp_mrlt_title',
       descriptionKey: 'exp_mrlt_desc',
       companyName: 'Arda Nural',
+      screenshot: AssetPaths.personalSiteScreenshot,
       technologies: ['React + Tailwind'],
       startDate: DateTime(2021, 1),
       endDate: DateTime(2021, 6),
@@ -165,6 +166,7 @@ class ExperiencesData {
       titleKey: 'exp_mobilist_title',
       descriptionKey: 'exp_mobilist_desc',
       companyName: 'Mobilist',
+      screenshot: AssetPaths.mobilistScreenshot,
       technologies: [
         'Flutter (Riverpod, Freezed)',
         'Jira',

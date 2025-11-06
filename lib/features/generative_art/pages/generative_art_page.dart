@@ -11,9 +11,13 @@ class GenerativeArtPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final isMobile = MediaQuery.of(context).size.width < 600;
 
     // Art type state
     final selectedArtType = useState(ArtType.particles);
+
+    // Control panel visibility for mobile
+    final isControlPanelExpanded = useState(false);
 
     // Particle control parameters
     final particleSpeed = useState(1.0);
@@ -433,7 +437,41 @@ class GenerativeArtPage extends HookWidget {
           ),
 
           // Art Controls Panel (changes based on selected art type)
-          Positioned(right: 24, top: 100, child: buildControlPanel()),
+          // On mobile: floating button that expands/collapses
+          // On desktop: fixed panel on the right
+          if (isMobile)
+            Positioned(
+              right: 16,
+              top: 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  // Floating toggle button
+                  FloatingActionButton(
+                    mini: true,
+                    backgroundColor: theme.colorScheme.primary,
+                    onPressed: () {
+                      isControlPanelExpanded.value =
+                          !isControlPanelExpanded.value;
+                    },
+                    child: Icon(
+                      isControlPanelExpanded.value ? Icons.close : Icons.tune,
+                      color: Colors.white,
+                    ),
+                  ),
+                  // Expandable control panel
+                  if (isControlPanelExpanded.value) ...[
+                    const SizedBox(height: 8),
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 280),
+                      child: buildControlPanel(),
+                    ),
+                  ],
+                ],
+              ),
+            )
+          else
+            Positioned(right: 24, top: 100, child: buildControlPanel()),
 
           // Bottom Art Selection Panel
           Positioned(

@@ -24,6 +24,7 @@ class AssetPaths {
       'assets/screenshots/kanguru_logo_ss.png';
   static const String personalSiteScreenshot =
       'assets/screenshots/personal_site_ss.png';
+  static const String mobilistScreenshot = 'assets/screenshots/mobilist_ss.png';
 
   // Certificates
   static const String certificatesDir = 'assets/certificates/';

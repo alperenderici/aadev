@@ -136,23 +136,6 @@ class _EventCard extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const SizedBox(height: AppConstants.spacingXS),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.business,
-                          size: 14,
-                          color: theme.textTheme.bodySmall?.color,
-                        ),
-                        const SizedBox(width: AppConstants.spacingXS),
-                        Text(
-                          event.organizer,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.textTheme.bodySmall?.color,
-                          ),
-                        ),
-                      ],
-                    ),
                     if (event.location != null) ...[
                       const SizedBox(height: AppConstants.spacingXS),
                       Row(

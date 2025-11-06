@@ -94,8 +94,9 @@ class Particle {
   Particle(Random random, {double baseHue = 0.0, double sizeMultiplier = 1.0}) {
     x = random.nextDouble() * 2000;
     y = random.nextDouble() * 2000;
-    vx = (random.nextDouble() - 0.5) * 2;
-    vy = (random.nextDouble() - 0.5) * 2;
+    // Reduced base velocity from 2 to 0.5 for better speed control
+    vx = (random.nextDouble() - 0.5) * 0.5;
+    vy = (random.nextDouble() - 0.5) * 0.5;
     size = (random.nextDouble() * 3 + 2) * sizeMultiplier;
     phase = random.nextDouble() * 2 * pi;
 
@@ -106,8 +107,9 @@ class Particle {
 
   void update(double time, Size size, double speedMultiplier) {
     // Update position with smooth motion, applying speed multiplier
-    x += (vx + sin(time * 2 * pi + phase) * 0.5) * speedMultiplier;
-    y += (vy + cos(time * 2 * pi + phase) * 0.5) * speedMultiplier;
+    // Reduced sine/cosine amplitude from 0.5 to 0.1 for smoother motion
+    x += (vx + sin(time * 2 * pi + phase) * 0.1) * speedMultiplier;
+    y += (vy + cos(time * 2 * pi + phase) * 0.1) * speedMultiplier;
 
     // Wrap around screen edges
     if (x < 0) x = size.width;
