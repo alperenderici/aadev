@@ -13,7 +13,8 @@ class AppConstants {
 
   // Social Media Links d
   static const String githubUrl = 'https://github.com/alperenderici';
-  static const String linkedinUrl = 'https://linkedin.com/in/alperenderici';
+  static const String linkedinUrl =
+      'https://linkedin.com/in/ali-alperen-derici-38870114a';
   static const String upworkUrl =
       'https://www.upwork.com/freelancers/~01066de01bf9c1790f';
   static const String upworkServiceUrl =
@@ -23,7 +24,7 @@ class AppConstants {
   static const String letterboxdUrl = 'https://letterboxd.com/alperenderici';
   static const String hackerrankUrl =
       'https://www.hackerrank.com/alperenderici';
-  static const String instagramUrl = 'https://instagram.com/salperenderici';
+  static const String instagramUrl = 'https://instagram.com/aalperenderici';
   static const String youtubeUrl =
       'https://www.youtube.com/channel/UCLbG2_G2k7ei0oOqX_1b_MQ';
   static const String untappdUrl = 'https://untappd.com/user/alperenderici';

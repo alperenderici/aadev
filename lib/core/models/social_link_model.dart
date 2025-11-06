@@ -31,7 +31,7 @@ class SocialLinks {
     ),
     SocialLinkModel(
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/alperenderici',
+      url: 'https://linkedin.com/in/ali-alperen-derici-38870114a',
       icon: FontAwesomeIcons.linkedin,
       color: Color(0xFF0077B5),
       isPrimary: true,
@@ -66,7 +66,7 @@ class SocialLinks {
     ),
     SocialLinkModel(
       name: 'Instagram',
-      url: 'https://instagram.com/salperenderici',
+      url: 'https://instagram.com/aalperenderici',
       icon: FontAwesomeIcons.instagram,
       color: Color(0xFFE4405F),
     ),
