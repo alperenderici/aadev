@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:aad/core/constants/app_constants.dart';
 import 'package:aad/core/constants/asset_paths.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
+import 'package:aad/core/providers/locale_provider.dart';
 import 'package:aad/core/services/analytics_service.dart';
 import 'package:aad/core/utils/responsive.dart';
 import 'package:aad/shared/widgets/section_title.dart';
@@ -12,13 +14,14 @@ import 'package:aad/shared/widgets/app_button.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 /// CV download section widget
-class CVDownloadSection extends StatelessWidget {
+class CVDownloadSection extends ConsumerWidget {
   const CVDownloadSection({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
+    final locale = ref.watch(localeProvider);
 
     return ResponsiveSection(
       backgroundColor: theme.colorScheme.surface,
@@ -26,7 +29,7 @@ class CVDownloadSection extends StatelessWidget {
         children: [
           SectionTitle(title: l10n.cvTitle),
           const SizedBox(height: AppConstants.spacingXXL),
-          _buildDownloadCards(context, l10n, theme),
+          _buildDownloadCards(context, l10n, theme, locale),
         ],
       ),
     );
@@ -36,22 +39,25 @@ class CVDownloadSection extends StatelessWidget {
     BuildContext context,
     AppLocalizations l10n,
     ThemeData theme,
+    Locale locale,
   ) {
     final isMobile = Responsive.isMobile(context);
 
     return isMobile
         ? Column(
             children: [
-              _buildCVCard(context, l10n, theme),
+              _buildCVCard(context, l10n, theme, locale),
               const SizedBox(height: AppConstants.spacingL),
-              _buildCoverLetterCard(context, l10n, theme),
+              _buildCoverLetterCard(context, l10n, theme, locale),
             ],
           )
         : Row(
             children: [
-              Expanded(child: _buildCVCard(context, l10n, theme)),
+              Expanded(child: _buildCVCard(context, l10n, theme, locale)),
               const SizedBox(width: AppConstants.spacingXL),
-              Expanded(child: _buildCoverLetterCard(context, l10n, theme)),
+              Expanded(
+                child: _buildCoverLetterCard(context, l10n, theme, locale),
+              ),
             ],
           );
   }
@@ -60,7 +66,10 @@ class CVDownloadSection extends StatelessWidget {
     BuildContext context,
     AppLocalizations l10n,
     ThemeData theme,
+    Locale locale,
   ) {
+    // If Turkish, Turkish button is outlined; if English, English button is outlined
+    final isTurkish = locale.languageCode == 'tr';
     return AnimatedCard(
           child: Column(
             children: [
@@ -85,6 +94,8 @@ class CVDownloadSection extends StatelessWidget {
                       text: l10n.cvEnglish,
                       onPressed: () => _downloadFile(AssetPaths.cvEnglish),
                       icon: Icons.download,
+                      isOutlined:
+                          isTurkish, // English outlined if Turkish is active
                     ),
                   ),
                   const SizedBox(width: AppConstants.spacingM),
@@ -93,7 +104,8 @@ class CVDownloadSection extends StatelessWidget {
                       text: l10n.cvTurkish,
                       onPressed: () => _downloadFile(AssetPaths.cvTurkish),
                       icon: Icons.download,
-                      isOutlined: true,
+                      isOutlined:
+                          !isTurkish, // Turkish outlined if English is active
                     ),
                   ),
                 ],
@@ -110,7 +122,10 @@ class CVDownloadSection extends StatelessWidget {
     BuildContext context,
     AppLocalizations l10n,
     ThemeData theme,
+    Locale locale,
   ) {
+    // If Turkish, Turkish button is outlined; if English, English button is outlined
+    final isTurkish = locale.languageCode == 'tr';
     return AnimatedCard(
           child: Column(
             children: [
@@ -131,6 +146,8 @@ class CVDownloadSection extends StatelessWidget {
                       text: l10n.cvEnglish,
                       onPressed: () => _requestCoverLetter('EN'),
                       icon: Icons.email,
+                      isOutlined:
+                          isTurkish, // English outlined if Turkish is active
                     ),
                   ),
                   const SizedBox(width: AppConstants.spacingM),
@@ -139,7 +156,8 @@ class CVDownloadSection extends StatelessWidget {
                       text: l10n.cvTurkish,
                       onPressed: () => _requestCoverLetter('TR'),
                       icon: Icons.email,
-                      isOutlined: true,
+                      isOutlined:
+                          !isTurkish, // Turkish outlined if English is active
                     ),
                   ),
                 ],
@@ -198,7 +216,7 @@ class CVDownloadSection extends StatelessWidget {
 
     final emailUrl = Uri(
       scheme: 'mailto',
-      path: 'dericialperen5@gmail.com',
+      path: 'alialperenderici@gmail.com',
       query:
           'subject=${Uri.encodeComponent(subject)}&body=${Uri.encodeComponent(body)}',
     );

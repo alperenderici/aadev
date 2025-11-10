@@ -8,7 +8,7 @@ class AppConstants {
   static const String appDescription = 'Professional Portfolio Website';
 
   // Contact Info
-  static const String email = 'alperenderici@gmail.com';
+  static const String email = 'alialperenderici@gmail.com';
   static const String phone = '+90 545 123 4567'; // Update with actual phone
 
   // Social Media Links d
