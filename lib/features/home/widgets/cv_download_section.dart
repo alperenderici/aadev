@@ -95,7 +95,7 @@ class CVDownloadSection extends ConsumerWidget {
                       onPressed: () => _downloadFile(AssetPaths.cvEnglish),
                       icon: Icons.download,
                       isOutlined:
-                          isTurkish, // English outlined if Turkish is active
+                          !isTurkish, // English outlined if English is active
                     ),
                   ),
                   const SizedBox(width: AppConstants.spacingM),
@@ -105,7 +105,7 @@ class CVDownloadSection extends ConsumerWidget {
                       onPressed: () => _downloadFile(AssetPaths.cvTurkish),
                       icon: Icons.download,
                       isOutlined:
-                          !isTurkish, // Turkish outlined if English is active
+                          isTurkish, // Turkish outlined if Turkish is active
                     ),
                   ),
                 ],
@@ -147,7 +147,7 @@ class CVDownloadSection extends ConsumerWidget {
                       onPressed: () => _requestCoverLetter('EN'),
                       icon: Icons.email,
                       isOutlined:
-                          isTurkish, // English outlined if Turkish is active
+                          !isTurkish, // English outlined if English is active
                     ),
                   ),
                   const SizedBox(width: AppConstants.spacingM),
@@ -157,7 +157,7 @@ class CVDownloadSection extends ConsumerWidget {
                       onPressed: () => _requestCoverLetter('TR'),
                       icon: Icons.email,
                       isOutlined:
-                          !isTurkish, // Turkish outlined if English is active
+                          isTurkish, // Turkish outlined if Turkish is active
                     ),
                   ),
                 ],
@@ -181,8 +181,9 @@ class CVDownloadSection extends ConsumerWidget {
     AnalyticsService.logCVDownload(type);
 
     // For web, open the PDF in a new tab
-    // Assets are served from /assets/ path in production
-    final url = Uri.parse('/$assetPath');
+    // On web, assets are served from /assets/assets/ path after build
+    // This is because Flutter web copies assets to build/web/assets/
+    final url = Uri.parse('/assets/$assetPath');
 
     try {
       // Use externalApplication mode to force opening in new tab
