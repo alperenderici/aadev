@@ -162,27 +162,24 @@ class CVDownloadSection extends StatelessWidget {
     }
     AnalyticsService.logCVDownload(type);
 
-    // For web, we need to use the full URL path
-    // In production, assets are served from the root
+    // For web, open the PDF in a new tab
+    // Assets are served from /assets/ path in production
     final url = Uri.parse('/$assetPath');
 
     try {
-      await launchUrl(
+      // Use externalApplication mode to force opening in new tab
+      final launched = await launchUrl(
         url,
-        mode: LaunchMode.platformDefault,
-        webOnlyWindowName: '_blank',
+        mode: LaunchMode.externalApplication,
       );
-    } catch (e) {
-      // If that fails, try without the leading slash
-      try {
-        await launchUrl(
-          Uri.parse(assetPath),
-          mode: LaunchMode.platformDefault,
-          webOnlyWindowName: '_blank',
-        );
-      } catch (e) {
-        // Ignore errors - file will open in new tab if available
+
+      if (!launched) {
+        // Fallback: try with webOnlyWindowName
+        await launchUrl(url, webOnlyWindowName: '_blank');
       }
+    } catch (e) {
+      // Ignore errors - file will open in new tab if available
+      debugPrint('Error opening CV: $e');
     }
   }
 
