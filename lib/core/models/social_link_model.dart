@@ -77,6 +77,12 @@ class SocialLinks {
       color: Color(0xFFFF0000),
     ),
     SocialLinkModel(
+      name: 'Goodreads',
+      url: 'https://www.goodreads.com/user/show/150602298-alperen-derici',
+      icon: FontAwesomeIcons.bookOpen,
+      color: Color(0xFF372213),
+    ),
+    SocialLinkModel(
       name: 'Untappd',
       url: 'https://untappd.com/user/alperenderici',
       icon: FontAwesomeIcons.beerMugEmpty,

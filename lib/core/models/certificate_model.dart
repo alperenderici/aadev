@@ -65,29 +65,19 @@ class Certificates {
       titleTr: 'Temel İş Sağlığı ve Güvenliği Eğitimi',
     ),
     CertificateModel(
-      imagePath: 'assets/certificates/29.10.2021(2).png',
-      titleEn: 'UI/UX Design Principles',
-      titleTr: 'UI/UX Tasarım Prensipleri',
-    ),
-    CertificateModel(
-      imagePath: 'assets/certificates/29.10.2021.png',
-      titleEn: 'State Management',
-      titleTr: 'Durum Yönetimi',
-    ),
-    CertificateModel(
       imagePath: 'assets/certificates/28.10.2021.png',
       titleEn: 'Security Training: KnowBe4, NTT Data, Security Incidents',
       titleTr: 'Güvenlik Eğitimi: KnowBe4, NTT Data, Güvenlik Olayları',
     ),
     CertificateModel(
-      imagePath: 'assets/certificates/19.12.2021(2).png',
-      titleEn: 'Micro-module - Introduction to Ransomware',
-      titleTr: 'Mikro-modül - Fidye Yazılımına Giriş',
+      imagePath: 'assets/certificates/19.12.2021.png',
+      titleEn: 'Flutter Kampı Başarım Sertifikası',
+      titleTr: 'Flutter Kampı Başarım Sertifikası',
     ),
     CertificateModel(
-      imagePath: 'assets/certificates/19.12.2021.png',
-      titleEn: 'Creating Strong Passwords',
-      titleTr: 'Güçlü Parolalar Oluşturma',
+      imagePath: 'assets/certificates/19.12.2021(2).png',
+      titleEn: 'Flutter Kampı Katılım Sertifikası',
+      titleTr: 'Flutter Kampı Katılım Sertifikası',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/25.10.2020.png',

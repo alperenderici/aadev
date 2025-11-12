@@ -27,6 +27,8 @@ class AppConstants {
   static const String instagramUrl = 'https://instagram.com/aalperenderici';
   static const String youtubeUrl =
       'https://www.youtube.com/channel/UCLbG2_G2k7ei0oOqX_1b_MQ';
+  static const String goodreadsUrl =
+      'https://www.goodreads.com/user/show/150602298-alperen-derici';
   static const String untappdUrl = 'https://untappd.com/user/alperenderici';
 
   // Responsive Breakpoints

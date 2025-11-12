@@ -28,7 +28,7 @@ class ExperiencesData {
       titleKey: 'exp_fitgo_title',
       descriptionKey: 'exp_fitgo_desc',
       companyName: 'Fitgo',
-      screenshot: AssetPaths.fitgoPresentation,
+      screenshot: AssetPaths.fitgoScreenshot,
       technologies: [
         'Flutter (Riverpod + Hooks)',
         'Supabase',

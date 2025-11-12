@@ -8,6 +8,7 @@ class AssetPaths {
   static const String fitgoPresentation = 'assets/images/fitgo_sunum.JPG';
 
   // Screenshots
+  static const String fitgoScreenshot = 'assets/screenshots/fitgo.png';
   static const String akilliekipLogoScreenshot =
       'assets/screenshots/akilliekip_logo.jpg';
   static const String alperBekatScreenshot =
@@ -33,11 +34,9 @@ class AssetPaths {
     'assets/certificates/01.11.2024.png',
     'assets/certificates/25.01.2023.png',
     'assets/certificates/19.08.2022.png',
-    'assets/certificates/29.10.2021(2).png',
-    'assets/certificates/29.10.2021.png',
     'assets/certificates/28.10.2021.png',
-    'assets/certificates/19.12.2021(2).png',
     'assets/certificates/19.12.2021.png',
+    'assets/certificates/19.12.2021(2).png',
     'assets/certificates/25.10.2020.png',
     'assets/certificates/10.12.2019.png',
   ];
