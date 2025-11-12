@@ -71,12 +71,12 @@ class Certificates {
     ),
     CertificateModel(
       imagePath: 'assets/certificates/19.12.2021.png',
-      titleEn: 'Flutter Kampı Başarım Sertifikası',
+      titleEn: 'Flutter Camp Achievement Certificate',
       titleTr: 'Flutter Kampı Başarım Sertifikası',
     ),
     CertificateModel(
       imagePath: 'assets/certificates/19.12.2021(2).png',
-      titleEn: 'Flutter Kampı Katılım Sertifikası',
+      titleEn: 'Flutter Camp Participation Certificate',
       titleTr: 'Flutter Kampı Katılım Sertifikası',
     ),
     CertificateModel(

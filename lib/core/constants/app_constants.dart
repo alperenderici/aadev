@@ -30,6 +30,8 @@ class AppConstants {
   static const String goodreadsUrl =
       'https://www.goodreads.com/user/show/150602298-alperen-derici';
   static const String untappdUrl = 'https://untappd.com/user/alperenderici';
+  static const String spotifyUrl =
+      'https://open.spotify.com/user/alperenderi%CC%87ci%CC%87?si=a6b5d16347cf469d';
 
   // Responsive Breakpoints
   static const double mobileBreakpoint = 600;

@@ -88,6 +88,13 @@ class SocialLinks {
       icon: FontAwesomeIcons.beerMugEmpty,
       color: Color(0xFFFFCC00),
     ),
+    SocialLinkModel(
+      name: 'Spotify',
+      url:
+          'https://open.spotify.com/user/alperenderi%CC%87ci%CC%87?si=a6b5d16347cf469d',
+      icon: FontAwesomeIcons.spotify,
+      color: Color(0xFF1DB954),
+    ),
   ];
 
   static List<SocialLinkModel> get primary =>
