@@ -46,10 +46,10 @@ class SocialLinksSection extends StatelessWidget {
       );
     }
 
-    // Desktop: 5+5 Grid Layout (2 rows, 5 columns each)
+    // Desktop: 6+6 Grid Layout (2 rows, 6 columns each)
     final links = SocialLinks.all;
-    final firstRow = links.take(5).toList();
-    final secondRow = links.skip(5).take(5).toList();
+    final firstRow = links.take(6).toList();
+    final secondRow = links.skip(6).take(6).toList();
 
     return Column(
       children: [
@@ -72,7 +72,7 @@ class SocialLinksSection extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: secondRow.asMap().entries.map((entry) {
-            final index = entry.key + 5; // Continue index from first row
+            final index = entry.key + 6; // Continue index from first row
             final link = entry.value;
             return Padding(
               padding: const EdgeInsets.symmetric(

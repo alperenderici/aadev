@@ -14,7 +14,7 @@ class GenerativeArtPage extends HookWidget {
     final isMobile = MediaQuery.of(context).size.width < 600;
 
     // Art type state
-    final selectedArtType = useState(ArtType.particles);
+    final selectedArtType = useState(ArtType.frame);
 
     // Control panel visibility for mobile
     final isControlPanelExpanded = useState(false);
@@ -53,6 +53,12 @@ class GenerativeArtPage extends HookWidget {
     final frameFlowIntensity = useState(1.0);
     final frameParticleCount = useState(1.0);
     final frameHue = useState(0.0);
+
+    // Flow control parameters
+    final flowSpeed = useState(1.0);
+    final flowParticleDensity = useState(1.0);
+    final flowTrailLength = useState(1.0);
+    final flowHue = useState(0.0);
 
     // Local function to build control panel
     Widget buildControlPanel() {
@@ -302,6 +308,57 @@ class GenerativeArtPage extends HookWidget {
               ),
             ],
           );
+        case ArtType.flow:
+          return ArtControls(
+            title: 'Flow Field',
+            controls: [
+              ArtControlItem(
+                label: 'Speed',
+                value: flowSpeed.value,
+                min: 0.1,
+                max: 3.0,
+                onChanged: (value) => flowSpeed.value = value,
+                valueLabel: '${flowSpeed.value.toStringAsFixed(1)}x',
+                icon: Icons.speed,
+                color: Colors.cyan,
+              ),
+              ArtControlItem(
+                label: 'Particle Density',
+                value: flowParticleDensity.value,
+                min: 0.5,
+                max: 2.0,
+                onChanged: (value) => flowParticleDensity.value = value,
+                valueLabel: '${flowParticleDensity.value.toStringAsFixed(1)}x',
+                icon: Icons.grain,
+                color: Colors.purple,
+              ),
+              ArtControlItem(
+                label: 'Trail Length',
+                value: flowTrailLength.value,
+                min: 0.3,
+                max: 2.0,
+                onChanged: (value) => flowTrailLength.value = value,
+                valueLabel: '${flowTrailLength.value.toStringAsFixed(1)}x',
+                icon: Icons.timeline,
+                color: Colors.pink,
+              ),
+              ArtControlItem(
+                label: 'Color Hue',
+                value: flowHue.value,
+                min: 0,
+                max: 360,
+                onChanged: (value) => flowHue.value = value,
+                valueLabel: '${flowHue.value.toStringAsFixed(0)}°',
+                icon: Icons.palette,
+                color: HSVColor.fromAHSV(
+                  1.0,
+                  flowHue.value > 0 ? flowHue.value : 180,
+                  0.8,
+                  1.0,
+                ).toColor(),
+              ),
+            ],
+          );
         case ArtType.frame:
           return ArtControls(
             title: 'Frame',
@@ -386,6 +443,10 @@ class GenerativeArtPage extends HookWidget {
               frameFlowIntensity: frameFlowIntensity.value,
               frameParticleCount: frameParticleCount.value,
               frameHue: frameHue.value,
+              flowSpeed: flowSpeed.value,
+              flowParticleDensity: flowParticleDensity.value,
+              flowTrailLength: flowTrailLength.value,
+              flowHue: flowHue.value,
             ),
           ),
 

@@ -7,6 +7,7 @@ import 'package:aad/features/generative_art/painters/fractals_painter.dart';
 import 'package:aad/features/generative_art/painters/noise_painter.dart';
 import 'package:aad/features/generative_art/painters/spirals_painter.dart';
 import 'package:aad/features/generative_art/painters/frame_painter.dart';
+import 'package:aad/features/generative_art/painters/flow_painter.dart';
 
 /// Generative Art Canvas Widget
 class GenerativeArtCanvas extends StatefulWidget {
@@ -47,6 +48,12 @@ class GenerativeArtCanvas extends StatefulWidget {
   final double frameParticleCount;
   final double frameHue;
 
+  // Flow controls
+  final double flowSpeed;
+  final double flowParticleDensity;
+  final double flowTrailLength;
+  final double flowHue;
+
   const GenerativeArtCanvas({
     super.key,
     required this.artType,
@@ -73,6 +80,10 @@ class GenerativeArtCanvas extends StatefulWidget {
     this.frameFlowIntensity = 1.0,
     this.frameParticleCount = 1.0,
     this.frameHue = 0.0,
+    this.flowSpeed = 1.0,
+    this.flowParticleDensity = 1.0,
+    this.flowTrailLength = 1.0,
+    this.flowHue = 0.0,
   });
 
   @override
@@ -152,6 +163,15 @@ class _GenerativeArtCanvasState extends State<GenerativeArtCanvas>
           speed: widget.noiseSpeed,
           flowStrength: widget.noiseFlowStrength,
           hue: widget.noiseHue,
+        );
+      case ArtType.flow:
+        return FlowPainter(
+          animation: _controller,
+          random: _random,
+          flowSpeed: widget.flowSpeed,
+          particleDensity: widget.flowParticleDensity,
+          trailLength: widget.flowTrailLength,
+          hue: widget.flowHue,
         );
       case ArtType.spirals:
         return SpiralsPainter(

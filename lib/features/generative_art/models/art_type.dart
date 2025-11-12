@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 
 /// Types of generative art
 enum ArtType {
-  particles('Particles', Icons.blur_on),
+  frame('Frame', Icons.photo_size_select_large),
   waves('Waves', Icons.waves),
   fractals('Fractals', Icons.grid_on),
   noise('Noise Field', Icons.grain),
+  flow('Flow Field', Icons.water),
   spirals('Spirals', Icons.rotate_right),
-  frame('Frame', Icons.photo_size_select_large);
+  particles('Particles', Icons.blur_on);
 
   final String name;
   final IconData icon;
