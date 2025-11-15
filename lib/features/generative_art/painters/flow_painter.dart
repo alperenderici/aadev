@@ -24,17 +24,19 @@ class FlowPainter extends CustomPainter {
     this.particleDensity = 1.0,
     this.trailLength = 1.0,
     this.hue = 0.0,
-  });
+  }) : super(repaint: animation);
 
   @override
   void paint(Canvas canvas, Size size) {
     if (size.width == 0 || size.height == 0) return;
 
-    final time = animation.value * 10; // Increased time multiplier for smoother animation
+    final time =
+        animation.value *
+        10; // Increased time multiplier for smoother animation
 
     // Initialize or update particles
-    if (_cachedParticles == null || 
-        _cachedSize != size || 
+    if (_cachedParticles == null ||
+        _cachedSize != size ||
         _cachedDensity != particleDensity) {
       _initializeParticles(size);
       _cachedSize = size;
@@ -79,7 +81,12 @@ class FlowPainter extends CustomPainter {
         size.width * 0.8,
         [
           HSVColor.fromAHSV(0.03, (hue + time * 2) % 360, 0.6, 0.3).toColor(),
-          HSVColor.fromAHSV(0.01, (hue + time * 2 + 180) % 360, 0.4, 0.2).toColor(),
+          HSVColor.fromAHSV(
+            0.01,
+            (hue + time * 2 + 180) % 360,
+            0.4,
+            0.2,
+          ).toColor(),
           Colors.transparent,
         ],
         [0.0, 0.5, 1.0],
@@ -159,7 +166,7 @@ class FlowPainter extends CustomPainter {
     if (particle.trail.length < 2) return;
 
     final maxTrailLength = (10 * trailLength).toInt().clamp(2, 20);
-    final trailSegments = particle.trail.length > maxTrailLength 
+    final trailSegments = particle.trail.length > maxTrailLength
         ? particle.trail.sublist(particle.trail.length - maxTrailLength)
         : particle.trail;
 
@@ -171,14 +178,10 @@ class FlowPainter extends CustomPainter {
       final trailPaint = Paint()
         ..strokeWidth = strokeWidth
         ..strokeCap = StrokeCap.round
-        ..shader = ui.Gradient.linear(
-          trailSegments[i],
-          trailSegments[i + 1],
-          [
-            HSVColor.fromAHSV(opacity * 0.5, particle.hue, 0.8, 1.0).toColor(),
-            HSVColor.fromAHSV(opacity, particle.hue, 0.9, 1.0).toColor(),
-          ],
-        );
+        ..shader = ui.Gradient.linear(trailSegments[i], trailSegments[i + 1], [
+          HSVColor.fromAHSV(opacity * 0.5, particle.hue, 0.8, 1.0).toColor(),
+          HSVColor.fromAHSV(opacity, particle.hue, 0.9, 1.0).toColor(),
+        ]);
 
       canvas.drawLine(trailSegments[i], trailSegments[i + 1], trailPaint);
     }
@@ -215,11 +218,7 @@ class FlowPainter extends CustomPainter {
     final corePaint = Paint()
       ..color = HSVColor.fromAHSV(0.9, particle.hue, 0.9, 1.0).toColor();
 
-    canvas.drawCircle(
-      Offset(particle.x, particle.y),
-      particleSize,
-      corePaint,
-    );
+    canvas.drawCircle(Offset(particle.x, particle.y), particleSize, corePaint);
   }
 
   /// Draw connections between nearby particles
@@ -294,13 +293,14 @@ class FlowPainter extends CustomPainter {
         final colorHue = (hue + (angle / (2 * pi)) * 120 + time * 10) % 360;
         final opacity = 0.1 + (sin(time + i * 0.5 + j * 0.5) * 0.5 + 0.5) * 0.1;
 
-        linePaint.color = HSVColor.fromAHSV(opacity, colorHue, 0.6, 1.0).toColor();
+        linePaint.color = HSVColor.fromAHSV(
+          opacity,
+          colorHue,
+          0.6,
+          1.0,
+        ).toColor();
 
-        canvas.drawLine(
-          Offset(x1, y1),
-          Offset(x2, y2),
-          linePaint,
-        );
+        canvas.drawLine(Offset(x1, y1), Offset(x2, y2), linePaint);
 
         // Draw arrow head
         final arrowSize = 4.0;
