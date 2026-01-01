@@ -77,7 +77,7 @@ class AppLocalizations {
       'contact_error': 'Failed to send message. Please try again.',
 
       // Footer
-      'footer_copyright': '© 2025 Ali Alperen Derici. All rights reserved.',
+      'footer_copyright': '© 2026 Ali Alperen Derici. All rights reserved.',
       'footer_built_with': 'Built with Flutter & ❤️',
 
       // Theme
@@ -98,10 +98,13 @@ class AppLocalizations {
       'common_view_less': 'View Less',
 
       // Experiences
+      'exp_opex_title': 'Opex Operation Management System',
+      'exp_opex_desc':
+          'Hotel operation management mobile and web applications with CRM.',
       'exp_upwork_title': 'Upwork',
       'exp_upwork_desc':
           'Developed several application MVPs. Such as Social Networking app, News & Politics, Lifestyle apps.',
-      'exp_fitgo_title': 'Fitgo',
+      'exp_fitgo_title': 'Train One',
       'exp_fitgo_desc':
           'Developed a comprehensive fitness and wellness platform with features including workout tracking, nutrition planning, and social features.',
       'exp_kanguru_title': 'Kanguru',
@@ -211,7 +214,7 @@ class AppLocalizations {
       'contact_error': 'Mesaj gönderilemedi. Lütfen tekrar deneyin.',
 
       // Footer
-      'footer_copyright': '© 2025 Ali Alperen Derici. Tüm hakları saklıdır.',
+      'footer_copyright': '© 2026 Ali Alperen Derici. Tüm hakları saklıdır.',
       'footer_built_with': 'Flutter & ❤️ ile yapıldı',
 
       // Theme
@@ -232,10 +235,13 @@ class AppLocalizations {
       'common_view_less': 'Daha Az',
 
       // Experiences
+      'exp_opex_title': 'Opex İşletme Yönetim Sistemi',
+      'exp_opex_desc':
+          'Otel operasyon yönetimi mobil ve web uygulamaları, CRM.',
       'exp_upwork_title': 'Upwork',
       'exp_upwork_desc':
           'Birkaç uygulama MVP\'si geliştirdim. Sosyal Ağ uygulaması, Haber & Politika, Yaşam Tarzı uygulamaları gibi.',
-      'exp_fitgo_title': 'Fitgo',
+      'exp_fitgo_title': 'Train One',
       'exp_fitgo_desc':
           'Antrenman takibi, beslenme planlaması ve sosyal özellikler içeren kapsamlı bir fitness ve wellness platformu geliştirdim.',
       'exp_kanguru_title': 'Kanguru',

@@ -93,7 +93,7 @@ class AboutSection extends StatelessWidget {
         'icon': Icons.rocket_launch,
         'title': 'Entrepreneurial Mindset',
         'description':
-            'Co-founded Fitgo health-tech startup, leading product development from concept to production.',
+            'Co-founded Train One health-tech startup, leading product development from concept to production.',
       },
       {
         'icon': Icons.code,

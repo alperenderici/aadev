@@ -6,7 +6,37 @@ class ExperiencesData {
   ExperiencesData._();
 
   static final List<ExperienceModel> experiences = [
-    // 1. Upwork - Current
+    // 1. Opex Operation Management System - Current
+    ExperienceModel(
+      id: 'opex',
+      titleKey: 'exp_opex_title',
+      descriptionKey: 'exp_opex_desc',
+      companyName: 'Opex',
+      screenshot: AssetPaths.opexScreenshot,
+      technologies: ['Flutter', 'GetX', 'Riverpod', 'MS SQL', 'RESTful API'],
+      startDate: DateTime(2026, 1),
+      isCurrent: true,
+    ),
+
+    // 2. Train One - Current
+    ExperienceModel(
+      id: 'fitgo',
+      titleKey: 'exp_fitgo_title',
+      descriptionKey: 'exp_fitgo_desc',
+      companyName: 'Train One',
+      screenshot: AssetPaths.fitgoScreenshot,
+      technologies: [
+        'Flutter (Riverpod + Hooks)',
+        'Supabase',
+        'Firebase',
+        'Figma',
+        'Domain-Driven Design (DDD)',
+      ],
+      startDate: DateTime(2025, 6),
+      isCurrent: true,
+    ),
+
+    // 3. Upwork - Current
     ExperienceModel(
       id: 'upwork',
       titleKey: 'exp_upwork_title',
@@ -18,29 +48,11 @@ class ExperiencesData {
         'Figma',
         'Localization',
       ],
-      startDate: DateTime(2024, 1),
+      startDate: DateTime(2025, 6),
       isCurrent: true,
     ),
 
-    // 2. Fitgo - Current
-    ExperienceModel(
-      id: 'fitgo',
-      titleKey: 'exp_fitgo_title',
-      descriptionKey: 'exp_fitgo_desc',
-      companyName: 'Fitgo',
-      screenshot: AssetPaths.fitgoScreenshot,
-      technologies: [
-        'Flutter (Riverpod + Hooks)',
-        'Supabase',
-        'Firebase',
-        'Figma',
-        'Domain-Driven Design (DDD)',
-      ],
-      startDate: DateTime(2023, 1),
-      isCurrent: true,
-    ),
-
-    // 3. Akıllı Konum Teknolojileri - Kanguru
+    // 4. Akıllı Konum Teknolojileri - Kanguru
     ExperienceModel(
       id: 'kanguru',
       titleKey: 'exp_kanguru_title',
@@ -55,11 +67,11 @@ class ExperiencesData {
         'Repository Pattern',
       ],
       startDate: DateTime(2023, 6),
-      endDate: DateTime(2024, 12),
+      endDate: DateTime(2025, 6),
       isCurrent: false,
     ),
 
-    // 4. Akıllı Konum Teknolojileri - Akıllı Ekip
+    // 5. Akıllı Konum Teknolojileri - Akıllı Ekip
     ExperienceModel(
       id: 'akilli_ekip',
       titleKey: 'exp_akilli_ekip_title',
@@ -74,10 +86,10 @@ class ExperiencesData {
         'Repository Pattern',
       ],
       startDate: DateTime(2023, 6),
-      endDate: DateTime(2024, 12),
+      endDate: DateTime(2025, 6),
       isCurrent: false,
     ),
-    // 5. Boly - Flutter Dev.
+    // 6. Boly - Flutter Dev.
     ExperienceModel(
       id: 'boly',
       titleKey: 'exp_boly_title',

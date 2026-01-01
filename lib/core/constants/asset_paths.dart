@@ -8,7 +8,8 @@ class AssetPaths {
   static const String fitgoPresentation = 'assets/images/fitgo_sunum.JPG';
 
   // Screenshots
-  static const String fitgoScreenshot = 'assets/screenshots/fitgo.png';
+  static const String fitgoScreenshot = 'assets/screenshots/t1_black_bg.png';
+  static const String opexScreenshot = 'assets/screenshots/opex_logo.png';
   static const String akilliekipLogoScreenshot =
       'assets/screenshots/akilliekip_logo.jpg';
   static const String alperBekatScreenshot =
