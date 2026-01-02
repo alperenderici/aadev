@@ -43,8 +43,8 @@ class AssetPaths {
   ];
 
   // CV and Cover Letters
-  static const String cvEnglish = 'assets/CV/AAD_CV_(EN).pdf';
-  static const String cvTurkish = 'assets/CV/AAD_CV_(TR).pdf';
+  static const String cvEnglish = 'assets/CV/AAD_CV_EN.pdf';
+  static const String cvTurkish = 'assets/CV/AAD_CV_TR.pdf';
   static const String coverLetterEnglish = 'assets/CV/AAD_CL_(EN).pdf';
   static const String coverLetterTurkish = 'assets/CV/AAD_CL_(TR).pdf';
 
