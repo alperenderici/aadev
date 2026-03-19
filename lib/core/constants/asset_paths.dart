@@ -27,6 +27,10 @@ class AssetPaths {
   static const String personalSiteScreenshot =
       'assets/screenshots/personal_site_ss.png';
   static const String mobilistScreenshot = 'assets/screenshots/mobilist_ss.png';
+  static const String upworkLogoScreenshot =
+      'assets/screenshots/upwork_logo.png';
+  static const String wellnowScreenshot = 'assets/screenshots/wellnow_02.jpg';
+  static const String analogBuddyLogo = 'assets/screenshots/logo.png';
 
   // Certificates
   static const String certificatesDir = 'assets/certificates/';

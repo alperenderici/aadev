@@ -135,6 +135,16 @@ class AppLocalizations {
       'exp_appy_desc':
           'As an intern at Appy Ventures, developed minimum viable product with responsive design.',
 
+      // WellNow
+      'exp_wellnow_title': 'WellNow',
+      'exp_wellnow_desc':
+          'Gyms, yoga, pilates, spas and more — discover them all, book with one tap!',
+
+      // Analog Buddy
+      'exp_analog_buddy_title': 'Analog Buddy',
+      'exp_analog_buddy_desc':
+          'A companion app for film photographers. Light metering, frame tracking, film simulation, negative scanning, and GPS shot logging — all in one minimalist app.',
+
       // Upwork Service
       'upwork_service_title': 'Freelance Services on Upwork',
       'upwork_service_desc':
@@ -271,6 +281,16 @@ class AppLocalizations {
       'exp_appy_title': 'Bir Uygulamanın MVP\'si',
       'exp_appy_desc':
           'Appy Ventures\'ta stajyer olarak, responsive tasarıma sahip minimum uygulanabilir ürün geliştirdim.',
+
+      // WellNow
+      'exp_wellnow_title': 'WellNow',
+      'exp_wellnow_desc':
+          'Spor salonları, yoga, pilates, spa ve daha fazlası — hepsini keşfet, tek tıkla rezerve et!',
+
+      // Analog Buddy
+      'exp_analog_buddy_title': 'Analog Buddy',
+      'exp_analog_buddy_desc':
+          'Film fotoğrafçıları için bir yardımcı uygulama. Işık ölçümü, kare takibi, film simülasyonu, negatif tarama ve GPS ile konum kaydı — hepsi tek minimalist uygulamada.',
 
       // Upwork Hizmeti
       'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',

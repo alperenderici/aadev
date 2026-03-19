@@ -6,19 +6,7 @@ class ExperiencesData {
   ExperiencesData._();
 
   static final List<ExperienceModel> experiences = [
-    // 1. Opex Operation Management System - Current
-    ExperienceModel(
-      id: 'opex',
-      titleKey: 'exp_opex_title',
-      descriptionKey: 'exp_opex_desc',
-      companyName: 'Opex',
-      screenshot: AssetPaths.opexScreenshot,
-      technologies: ['Flutter', 'GetX', 'Riverpod', 'MS SQL', 'RESTful API'],
-      startDate: DateTime(2026, 1),
-      isCurrent: true,
-    ),
-
-    // 2. Train One - Current
+    // 1. Train One - Current
     ExperienceModel(
       id: 'fitgo',
       titleKey: 'exp_fitgo_title',
@@ -36,12 +24,13 @@ class ExperiencesData {
       isCurrent: true,
     ),
 
-    // 3. Upwork - Current
+    // 2. Upwork - Current
     ExperienceModel(
       id: 'upwork',
       titleKey: 'exp_upwork_title',
       descriptionKey: 'exp_upwork_desc',
       companyName: 'Upwork',
+      screenshot: AssetPaths.upworkLogoScreenshot,
       technologies: [
         'Flutter (Riverpod + Hooks)',
         'AR',
@@ -52,7 +41,43 @@ class ExperiencesData {
       isCurrent: true,
     ),
 
-    // 4. Akıllı Konum Teknolojileri - Kanguru
+    // 3. WellNow - Current
+    ExperienceModel(
+      id: 'wellnow',
+      titleKey: 'exp_wellnow_title',
+      descriptionKey: 'exp_wellnow_desc',
+      companyName: 'WellNow',
+      screenshot: AssetPaths.wellnowScreenshot,
+      technologies: ['Flutter', 'Riverpod', 'Firebase', 'TypeScript'],
+      isCurrent: true,
+    ),
+
+    // 4. Analog Buddy - Current
+    ExperienceModel(
+      id: 'analog_buddy',
+      titleKey: 'exp_analog_buddy_title',
+      descriptionKey: 'exp_analog_buddy_desc',
+      companyName: 'Analog Buddy',
+      screenshot: AssetPaths.analogBuddyLogo,
+      technologies: ['Flutter'],
+      startDate: DateTime(2026, 3),
+      isCurrent: true,
+      liveUrl: 'https://apps.apple.com/tr/app/analog-buddy/id6760268456',
+    ),
+
+    // 5. Opex Operation Management System - Current (last)
+    ExperienceModel(
+      id: 'opex',
+      titleKey: 'exp_opex_title',
+      descriptionKey: 'exp_opex_desc',
+      companyName: 'Opex',
+      screenshot: AssetPaths.opexScreenshot,
+      technologies: ['Flutter', 'GetX', 'MS SQL', 'RESTful API'],
+      startDate: DateTime(2026, 1),
+      isCurrent: true,
+    ),
+
+    // 6. Akıllı Konum Teknolojileri - Kanguru
     ExperienceModel(
       id: 'kanguru',
       titleKey: 'exp_kanguru_title',
@@ -71,7 +96,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 5. Akıllı Konum Teknolojileri - Akıllı Ekip
+    // 7. Akıllı Konum Teknolojileri - Akıllı Ekip
     ExperienceModel(
       id: 'akilli_ekip',
       titleKey: 'exp_akilli_ekip_title',
@@ -89,7 +114,8 @@ class ExperiencesData {
       endDate: DateTime(2025, 6),
       isCurrent: false,
     ),
-    // 6. Boly - Flutter Dev.
+
+    // 8. Boly - Flutter Dev.
     ExperienceModel(
       id: 'boly',
       titleKey: 'exp_boly_title',
@@ -102,7 +128,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 6. Hygge - Web App
+    // 9. Hygge - Web App
     ExperienceModel(
       id: 'hygge',
       titleKey: 'exp_hygge_title',
@@ -115,7 +141,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 7. Product Development Solution - BİKO Mühendislik
+    // 10. Product Development Solution - BİKO Mühendislik
     ExperienceModel(
       id: 'biko',
       titleKey: 'exp_biko_title',
@@ -133,7 +159,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 8. Personal Website - Alper Bekat
+    // 11. Personal Website - Alper Bekat
     ExperienceModel(
       id: 'alper_bekat',
       titleKey: 'exp_alper_bekat_title',
@@ -146,7 +172,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 9. Restaurant Loyalty App - Gaga's Hot Fried Chicken
+    // 12. Restaurant Loyalty App - Gaga's Hot Fried Chicken
     ExperienceModel(
       id: 'gagas',
       titleKey: 'exp_gagas_title',
@@ -159,7 +185,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 10. Mrlt - Web App
+    // 13. Mrlt - Web App
     ExperienceModel(
       id: 'mrlt',
       titleKey: 'exp_mrlt_title',
@@ -172,7 +198,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 11. Jr. Flutter Dev. - Mobilist
+    // 14. Jr. Flutter Dev. - Mobilist
     ExperienceModel(
       id: 'mobilist',
       titleKey: 'exp_mobilist_title',
@@ -190,7 +216,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 12. MVP Of An Application - Appy Ventures (Intern)
+    // 15. MVP Of An Application - Appy Ventures (Intern)
     ExperienceModel(
       id: 'appy_ventures',
       titleKey: 'exp_appy_title',
