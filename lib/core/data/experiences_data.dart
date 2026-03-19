@@ -6,7 +6,32 @@ class ExperiencesData {
   ExperiencesData._();
 
   static final List<ExperienceModel> experiences = [
-    // 1. Train One - Current
+    // 1. Opex Operation Management System - Current
+    ExperienceModel(
+      id: 'opex',
+      titleKey: 'exp_opex_title',
+      descriptionKey: 'exp_opex_desc',
+      companyName: 'Opex',
+      screenshot: AssetPaths.opexScreenshot,
+      technologies: ['Flutter', 'GetX', 'MS SQL', 'RESTful API'],
+      startDate: DateTime(2026, 1),
+      isCurrent: true,
+    ),
+
+    // 2. Analog Buddy - Current
+    ExperienceModel(
+      id: 'analog_buddy',
+      titleKey: 'exp_analog_buddy_title',
+      descriptionKey: 'exp_analog_buddy_desc',
+      companyName: 'Analog Buddy',
+      screenshot: AssetPaths.analogBuddyLogo,
+      technologies: ['Flutter'],
+      startDate: DateTime(2026, 3),
+      isCurrent: false,
+      liveUrl: 'https://apps.apple.com/tr/app/analog-buddy/id6760268456',
+    ),
+
+    // 3. Train One - Current
     ExperienceModel(
       id: 'fitgo',
       titleKey: 'exp_fitgo_title',
@@ -24,7 +49,7 @@ class ExperiencesData {
       isCurrent: true,
     ),
 
-    // 2. Upwork - Current
+    // 4. Upwork - Current
     ExperienceModel(
       id: 'upwork',
       titleKey: 'exp_upwork_title',
@@ -41,7 +66,7 @@ class ExperiencesData {
       isCurrent: true,
     ),
 
-    // 3. WellNow - Current
+    // 5. WellNow - Current
     ExperienceModel(
       id: 'wellnow',
       titleKey: 'exp_wellnow_title',
@@ -49,31 +74,6 @@ class ExperiencesData {
       companyName: 'WellNow',
       screenshot: AssetPaths.wellnowScreenshot,
       technologies: ['Flutter', 'Riverpod', 'Firebase', 'TypeScript'],
-      isCurrent: true,
-    ),
-
-    // 4. Analog Buddy - Current
-    ExperienceModel(
-      id: 'analog_buddy',
-      titleKey: 'exp_analog_buddy_title',
-      descriptionKey: 'exp_analog_buddy_desc',
-      companyName: 'Analog Buddy',
-      screenshot: AssetPaths.analogBuddyLogo,
-      technologies: ['Flutter'],
-      startDate: DateTime(2026, 3),
-      isCurrent: true,
-      liveUrl: 'https://apps.apple.com/tr/app/analog-buddy/id6760268456',
-    ),
-
-    // 5. Opex Operation Management System - Current (last)
-    ExperienceModel(
-      id: 'opex',
-      titleKey: 'exp_opex_title',
-      descriptionKey: 'exp_opex_desc',
-      companyName: 'Opex',
-      screenshot: AssetPaths.opexScreenshot,
-      technologies: ['Flutter', 'GetX', 'MS SQL', 'RESTful API'],
-      startDate: DateTime(2026, 1),
       isCurrent: true,
     ),
 

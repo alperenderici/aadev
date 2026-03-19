@@ -136,7 +136,7 @@ class _ExperienceCard extends StatelessWidget {
     final imagePath = experience.screenshot ?? experience.companyLogo;
     if (imagePath == null) return const SizedBox.shrink();
 
-    return ClipRRect(
+    final image = ClipRRect(
       borderRadius: BorderRadius.circular(AppConstants.radiusM),
       child: Image.asset(
         imagePath,
@@ -150,6 +150,19 @@ class _ExperienceCard extends StatelessWidget {
         },
       ),
     );
+
+    if (experience.id == 'upwork') {
+      return Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(AppConstants.radiusM),
+        ),
+        padding: const EdgeInsets.all(AppConstants.spacingM),
+        child: image,
+      );
+    }
+
+    return image;
   }
 
   Widget _buildContent(
