@@ -135,10 +135,10 @@ class AppLocalizations {
       'exp_appy_desc':
           'As an intern at Appy Ventures, developed minimum viable product with responsive design.',
 
-      // WellNow
+      // WellNow / Geo Spor
       'exp_wellnow_title': 'WellNow',
       'exp_wellnow_desc':
-          'Gyms, yoga, pilates, spas and more — discover them all, book with one tap!',
+          'Flutter developer at Geo Spor (geosportsgroup.com), building three apps: WellNow — discover and book gyms, yoga, pilates, spas and more with one tap (wellnowapp.com); Fabrika Mensa — a canteen management app; and Party Planner (draft) — an event planning app.',
 
       // Analog Buddy
       'exp_analog_buddy_title': 'Analog Buddy',
@@ -282,10 +282,10 @@ class AppLocalizations {
       'exp_appy_desc':
           'Appy Ventures\'ta stajyer olarak, responsive tasarıma sahip minimum uygulanabilir ürün geliştirdim.',
 
-      // WellNow
+      // WellNow / Geo Spor
       'exp_wellnow_title': 'WellNow',
       'exp_wellnow_desc':
-          'Spor salonları, yoga, pilates, spa ve daha fazlası — hepsini keşfet, tek tıkla rezerve et!',
+          'Geo Spor (geosportsgroup.com) bünyesinde Flutter geliştirici olarak üç uygulama geliştirdim: WellNow — spor salonları, yoga, pilates, spa ve daha fazlasını keşfet, tek tıkla rezerve et (wellnowapp.com); Fabrika Mensa — kantin yönetim uygulaması; Party Planner (taslak) — etkinlik planlama uygulaması.',
 
       // Analog Buddy
       'exp_analog_buddy_title': 'Analog Buddy',

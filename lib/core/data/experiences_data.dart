@@ -49,7 +49,19 @@ class ExperiencesData {
       isCurrent: true,
     ),
 
-    // 4. Upwork - Current
+    // 4. WellNow / Geo Spor - Current
+    ExperienceModel(
+      id: 'wellnow',
+      titleKey: 'exp_wellnow_title',
+      descriptionKey: 'exp_wellnow_desc',
+      companyName: 'Geo Spor',
+      screenshot: AssetPaths.wellnowScreenshot,
+      technologies: ['Flutter', 'Riverpod', 'Firebase', 'TypeScript'],
+      liveUrl: 'https://geosportsgroup.com',
+      isCurrent: true,
+    ),
+
+    // 5. Upwork
     ExperienceModel(
       id: 'upwork',
       titleKey: 'exp_upwork_title',
@@ -65,17 +77,6 @@ class ExperiencesData {
       startDate: DateTime(2025, 6),
       endDate: DateTime(2025, 12, 31),
       isCurrent: false,
-    ),
-
-    // 5. WellNow - Current
-    ExperienceModel(
-      id: 'wellnow',
-      titleKey: 'exp_wellnow_title',
-      descriptionKey: 'exp_wellnow_desc',
-      companyName: 'WellNow',
-      screenshot: AssetPaths.wellnowScreenshot,
-      technologies: ['Flutter', 'Riverpod', 'Firebase', 'TypeScript'],
-      isCurrent: true,
     ),
 
     // 6. Akıllı Konum Teknolojileri - Kanguru
