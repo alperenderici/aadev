@@ -63,7 +63,8 @@ class ExperiencesData {
         'Localization',
       ],
       startDate: DateTime(2025, 6),
-      isCurrent: true,
+      endDate: DateTime(2025, 12, 31),
+      isCurrent: false,
     ),
 
     // 5. WellNow - Current
