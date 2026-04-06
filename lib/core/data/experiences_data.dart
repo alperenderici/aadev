@@ -6,12 +6,12 @@ class ExperiencesData {
   ExperiencesData._();
 
   static final List<ExperienceModel> experiences = [
-    // 1. Opex Operation Management System - Current
+    // 1. Opex - Current
     ExperienceModel(
       id: 'opex',
       titleKey: 'exp_opex_title',
       descriptionKey: 'exp_opex_desc',
-      companyName: 'Opex',
+      companyName: 'Opex Operation Management System',
       screenshot: AssetPaths.opexScreenshot,
       technologies: ['Flutter', 'GetX', 'MS SQL', 'RESTful API'],
       startDate: DateTime(2026, 1),

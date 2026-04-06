@@ -98,7 +98,7 @@ class AppLocalizations {
       'common_view_less': 'View Less',
 
       // Experiences
-      'exp_opex_title': 'Opex Operation Management System',
+      'exp_opex_title': 'Opex Quality, Voyage, Maxx Royal, Akra',
       'exp_opex_desc':
           'Hotel operation management mobile and web applications with CRM.',
       'exp_upwork_title': 'Upwork',
@@ -138,7 +138,7 @@ class AppLocalizations {
       // WellNow / Geo Spor
       'exp_wellnow_title': 'WellNow',
       'exp_wellnow_desc':
-          'Flutter developer at Geo Spor (geosportsgroup.com), building three apps: WellNow — discover and book gyms, yoga, pilates, spas and more with one tap (wellnowapp.com); Fabrika Mensa — a canteen management app; and Party Planner (draft) — an event planning app.',
+          'Full Stack developer at Geo Spor (geosportsgroup.com), building three apps: WellNow — discover and book gyms, yoga, pilates, spas and more with one tap (wellnowapp.com); Fabrika Mensa — industrial site tenant management system; and Party Planner (draft) — an event planning app.',
 
       // Analog Buddy
       'exp_analog_buddy_title': 'Analog Buddy',
@@ -245,7 +245,7 @@ class AppLocalizations {
       'common_view_less': 'Daha Az',
 
       // Experiences
-      'exp_opex_title': 'Opex İşletme Yönetim Sistemi',
+      'exp_opex_title': 'Opex Quality, Voyage, Maxx Royal, Akra',
       'exp_opex_desc':
           'Otel operasyon yönetimi mobil ve web uygulamaları, CRM.',
       'exp_upwork_title': 'Upwork',
@@ -285,7 +285,7 @@ class AppLocalizations {
       // WellNow / Geo Spor
       'exp_wellnow_title': 'WellNow',
       'exp_wellnow_desc':
-          'Geo Spor (geosportsgroup.com) bünyesinde Flutter geliştirici olarak üç uygulama geliştirdim: WellNow — spor salonları, yoga, pilates, spa ve daha fazlasını keşfet, tek tıkla rezerve et (wellnowapp.com); Fabrika Mensa — kantin yönetim uygulaması; Party Planner (taslak) — etkinlik planlama uygulaması.',
+          'Geo Spor (geosportsgroup.com) bünyesinde Full Stack geliştirici olarak üç uygulama geliştirdim: WellNow — spor salonları, yoga, pilates, spa ve daha fazlasını keşfet, tek tıkla rezerve et (wellnowapp.com); Fabrika Mensa — endüstriyel site kiracı yönetim sistemi; Party Planner (taslak) — etkinlik planlama uygulaması.',
 
       // Analog Buddy
       'exp_analog_buddy_title': 'Analog Buddy',
