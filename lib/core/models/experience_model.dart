@@ -6,6 +6,7 @@ class ExperienceModel {
   final String? companyName;
   final String? companyLogo;
   final String? screenshot;
+  final String? additionalScreenshot;
   final List<String> technologies;
   final String? liveUrl;
   final String? githubUrl;
@@ -20,6 +21,7 @@ class ExperienceModel {
     this.companyName,
     this.companyLogo,
     this.screenshot,
+    this.additionalScreenshot,
     required this.technologies,
     this.liveUrl,
     this.githubUrl,

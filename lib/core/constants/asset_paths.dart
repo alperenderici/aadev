@@ -30,7 +30,10 @@ class AssetPaths {
   static const String upworkLogoScreenshot =
       'assets/screenshots/upwork_logo.png';
   static const String wellnowScreenshot = 'assets/screenshots/wellnow_02.jpg';
-  static const String analogBuddyLogo = 'assets/screenshots/AnalogBuddy_logo.jpg';
+  static const String partyWizardScreenshot =
+      'assets/screenshots/party_wizard.png';
+  static const String analogBuddyLogo =
+      'assets/screenshots/AnalogBuddy_logo.jpg';
 
   // Certificates
   static const String certificatesDir = 'assets/certificates/';

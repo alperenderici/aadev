@@ -136,6 +136,20 @@ class _ExperienceCard extends StatelessWidget {
     final imagePath = experience.screenshot ?? experience.companyLogo;
     if (imagePath == null) return const SizedBox.shrink();
 
+    final primaryImage = _assetImage(context, imagePath);
+    if (experience.additionalScreenshot == null) return primaryImage;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        primaryImage,
+        const SizedBox(height: AppConstants.spacingM),
+        _assetImage(context, experience.additionalScreenshot!),
+      ],
+    );
+  }
+
+  Widget _assetImage(BuildContext context, String imagePath) {
     final image = ClipRRect(
       borderRadius: BorderRadius.circular(AppConstants.radiusM),
       child: Image.asset(

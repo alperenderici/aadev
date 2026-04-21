@@ -14,7 +14,7 @@ class AppConstants {
   // Social Media Links d
   static const String githubUrl = 'https://github.com/alperenderici';
   static const String linkedinUrl =
-      'https://linkedin.com/in/ali-alperen-derici-38870114a';
+      'https://www.linkedin.com/in/alialperenderici';
   static const String upworkUrl =
       'https://www.upwork.com/freelancers/~01066de01bf9c1790f';
   static const String upworkServiceUrl =

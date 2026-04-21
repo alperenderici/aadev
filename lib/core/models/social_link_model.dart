@@ -31,7 +31,7 @@ class SocialLinks {
     ),
     SocialLinkModel(
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/ali-alperen-derici-38870114a',
+      url: 'https://www.linkedin.com/in/alialperenderici',
       icon: FontAwesomeIcons.linkedin,
       color: Color(0xFF0077B5),
       isPrimary: true,

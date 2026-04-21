@@ -1,4 +1,4 @@
-# 🎨 Ali Alperen Derici - Professional Portfolio Website
+github# 🎨 Ali Alperen Derici - Professional Portfolio Website
 
 <div align="center">
 
@@ -352,7 +352,7 @@ Feel free to use this portfolio as inspiration or a template for your own websit
 **Ali Alperen Derici**
 - 🌐 Website: [alialperenderici.dev](https://alialperenderici.dev)
 - 💼 GitHub: [@alperenderici](https://github.com/alperenderici)
-- 💼 LinkedIn: [Ali Alperen Derici](https://linkedin.com/in/alperenderici)
+- 💼 LinkedIn: [Ali Alperen Derici](https://www.linkedin.com/in/alialperenderici)
 - 💼 Upwork: [Ali Alperen Derici](https://www.upwork.com/freelancers/~01f3c97a8c1e3e3e3e)
 - 📧 Email: alialperenderici@gmail.com
 
