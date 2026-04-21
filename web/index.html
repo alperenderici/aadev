@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <base href="$FLUTTER_BASE_HREF">
 
@@ -8,20 +8,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Ali Alperen Derici - Professional Flutter Developer. Passionate about creating beautiful, performant mobile and web applications.">
-  <meta name="keywords" content="Flutter Developer, Mobile App Development, Web Development, Ali Alperen Derici, Flutter, Dart, Firebase, Riverpod">
+  <meta name="description" content="Ali Alperen Derici — Flutter developer building iOS, Android, and web apps. Available for freelance mobile app development, MVPs, and cross-platform products. Mobil uygulama geliştirici / Flutter developer Türkiye.">
+  <meta name="keywords" content="Flutter developer, mobile app developer, hire Flutter developer, Flutter freelancer, Flutter Türkiye, mobil uygulama geliştirici, mobil uygulama yaptırma, iOS app developer, Android app developer, cross-platform app, Dart, Firebase, Supabase, Riverpod, MVP development">
   <meta name="author" content="Ali Alperen Derici">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://alialperenderici.dev/">
+  <link rel="alternate" hreflang="en" href="https://alialperenderici.dev/">
+  <link rel="alternate" hreflang="tr" href="https://alialperenderici.dev/">
+  <link rel="alternate" hreflang="x-default" href="https://alialperenderici.dev/">
 
   <!-- Open Graph Meta Tags -->
-  <meta property="og:title" content="Ali Alperen Derici - Flutter Developer">
-  <meta property="og:description" content="Professional Flutter Developer specializing in cross-platform mobile and web applications">
+  <meta property="og:site_name" content="Ali Alperen Derici">
+  <meta property="og:title" content="Ali Alperen Derici — Flutter Developer for Hire">
+  <meta property="og:description" content="Freelance Flutter developer building cross-platform iOS, Android, and web apps. MVPs, production apps, and design-to-code delivery.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alialperenderici.dev">
+  <meta property="og:url" content="https://alialperenderici.dev/">
+  <meta property="og:image" content="https://alialperenderici.dev/icons/Icon-512.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="tr_TR">
 
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Ali Alperen Derici - Flutter Developer">
-  <meta name="twitter:description" content="Professional Flutter Developer specializing in cross-platform mobile and web applications">
+  <meta name="twitter:title" content="Ali Alperen Derici — Flutter Developer for Hire">
+  <meta name="twitter:description" content="Freelance Flutter developer building cross-platform iOS, Android, and web apps.">
+  <meta name="twitter:image" content="https://alialperenderici.dev/icons/Icon-512.png">
+  <meta name="twitter:site" content="@grandealperen">
+  <meta name="twitter:creator" content="@grandealperen">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -33,8 +45,71 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>Ali Alperen Derici</title>
+  <title>Ali Alperen Derici — Flutter Developer for Hire | Mobil Uygulama Geliştirici</title>
   <link rel="manifest" href="manifest.json">
+
+  <!-- Structured data: Person + ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://alialperenderici.dev/#person",
+        "name": "Ali Alperen Derici",
+        "url": "https://alialperenderici.dev/",
+        "image": "https://alialperenderici.dev/icons/Icon-512.png",
+        "jobTitle": "Flutter Developer",
+        "description": "Flutter developer building cross-platform iOS, Android, and web applications.",
+        "sameAs": [
+          "https://github.com/alperenderici",
+          "https://www.linkedin.com/in/alialperenderici",
+          "https://www.upwork.com/freelancers/~01066de01bf9c1790f",
+          "https://medium.com/@alperenderici",
+          "https://twitter.com/grandealperen"
+        ],
+        "knowsAbout": [
+          "Flutter",
+          "Dart",
+          "Mobile App Development",
+          "iOS Development",
+          "Android Development",
+          "Firebase",
+          "Supabase",
+          "Riverpod",
+          "Cross-platform Development",
+          "MVP Development"
+        ],
+        "email": "mailto:alialperenderici@gmail.com"
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://alialperenderici.dev/#service",
+        "name": "Ali Alperen Derici — Flutter Development Services",
+        "url": "https://alialperenderici.dev/",
+        "image": "https://alialperenderici.dev/icons/Icon-512.png",
+        "provider": { "@id": "https://alialperenderici.dev/#person" },
+        "areaServed": "Worldwide",
+        "serviceType": [
+          "Flutter mobile app development",
+          "iOS app development",
+          "Android app development",
+          "Cross-platform MVP development",
+          "Flutter web development"
+        ],
+        "description": "Freelance Flutter development for iOS, Android, and web: MVPs, production apps, and design-to-code delivery."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://alialperenderici.dev/#website",
+        "url": "https://alialperenderici.dev/",
+        "name": "Ali Alperen Derici",
+        "inLanguage": ["en", "tr"],
+        "publisher": { "@id": "https://alialperenderici.dev/#person" }
+      }
+    ]
+  }
+  </script>
 
   <style>
     /* Enable text selection for Flutter Web */
@@ -47,10 +122,15 @@
     /* Loading indicator */
     .loading {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
       height: 100vh;
       background: #fafafa;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: #222;
+      padding: 24px;
+      text-align: center;
     }
 
     .loading-spinner {
@@ -60,6 +140,31 @@
       border-top: 4px solid #2196F3;
       border-radius: 50%;
       animation: spin 1s linear infinite;
+      margin-bottom: 24px;
+    }
+
+    .seo-intro {
+      max-width: 720px;
+    }
+
+    .seo-intro h1 {
+      font-size: 1.25rem;
+      margin: 0 0 8px;
+    }
+
+    .seo-intro p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin: 0 0 12px;
+      opacity: 0.85;
+    }
+
+    .seo-intro ul {
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      opacity: 0.8;
+      display: inline-block;
     }
 
     @keyframes spin {
@@ -70,6 +175,7 @@
     @media (prefers-color-scheme: dark) {
       .loading {
         background: #121212;
+        color: #eee;
       }
       .loading-spinner {
         border-color: #333;
@@ -80,7 +186,36 @@
 </head>
 <body>
   <div class="loading">
-    <div class="loading-spinner"></div>
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <main class="seo-intro">
+      <h1>Ali Alperen Derici — Flutter Developer</h1>
+      <p>
+        Freelance Flutter developer building cross-platform iOS, Android, and web apps.
+        Available for mobile app development, MVPs, and production Flutter projects.
+      </p>
+      <p>
+        Mobil uygulama geliştirici ve Flutter developer — iOS, Android ve web için
+        çapraz platform uygulamalar geliştiriyorum. Mobil uygulama yaptırmak isteyenler
+        ve Flutter geliştirici arayan ekipler için freelance olarak çalışıyorum.
+      </p>
+      <ul>
+        <li>Flutter, Dart, Riverpod, Firebase, Supabase</li>
+        <li>iOS &amp; Android native integrations</li>
+        <li>MVP development and production-grade cross-platform apps</li>
+        <li>Design-to-code delivery from Figma</li>
+      </ul>
+      <p>
+        Contact:
+        <a href="mailto:alialperenderici@gmail.com">alialperenderici@gmail.com</a>
+        &middot;
+        <a href="https://www.linkedin.com/in/alialperenderici" rel="noopener">LinkedIn</a>
+        &middot;
+        <a href="https://github.com/alperenderici" rel="noopener">GitHub</a>
+      </p>
+      <noscript>
+        <p><strong>JavaScript is required to view the interactive portfolio.</strong></p>
+      </noscript>
+    </main>
   </div>
   <script src="flutter_bootstrap.js" async></script>
 </body>
