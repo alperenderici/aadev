@@ -25,8 +25,8 @@ class SectionTitle extends StatelessWidget {
       crossAxisAlignment: textAlign == TextAlign.center
           ? CrossAxisAlignment.center
           : textAlign == TextAlign.right
-              ? CrossAxisAlignment.end
-              : CrossAxisAlignment.start,
+          ? CrossAxisAlignment.end
+          : CrossAxisAlignment.start,
       children: [
         Text(
           title,
@@ -58,4 +58,3 @@ class SectionTitle extends StatelessWidget {
     return content;
   }
 }
-

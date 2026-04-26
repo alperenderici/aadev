@@ -34,6 +34,8 @@ class AssetPaths {
       'assets/screenshots/party_wizard.png';
   static const String analogBuddyLogo =
       'assets/screenshots/AnalogBuddy_logo.jpg';
+  static const String rembetikaLogo =
+      'assets/screenshots/rembatika_app_logo.png';
 
   // Certificates
   static const String certificatesDir = 'assets/certificates/';

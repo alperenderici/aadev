@@ -60,4 +60,3 @@ class ResponsiveSection extends StatelessWidget {
     return content;
   }
 }
-

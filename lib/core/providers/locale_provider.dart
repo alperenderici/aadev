@@ -34,4 +34,3 @@ class LocaleNotifier extends _$LocaleNotifier {
         : const Locale('en', 'US');
   }
 }
-

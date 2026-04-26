@@ -33,6 +33,7 @@ I turn startup ideas into production-ready products using clean architecture, sc
 - **[Train One](https://tra1none.com/)** – Co-founded fitness platform; MVP connecting trainers & users via personalized digital coaching (Flutter, Supabase, DDD)
 - **WellNow (Geo Spor)** – Flutter/Firebase wellness suite: [WellNow](https://wellnowapp.com/) ([App Store](https://apps.apple.com/us/app/wellnow/id6755144384)) – gym & spa discovery & booking; Fabrika Mensa – industrial site tenant management; Party Wizard – event planning app
 - **[Analog Buddy](https://apps.apple.com/tr/app/analog-buddy/id6760268456)** – iOS companion app for film photographers: light metering, frame tracking, negative scanning & GPS shot logging
+- **[Rembetika](https://rembetikaapp.com/)** ([App Store](https://apps.apple.com/us/app/rembetika/id6762800032)) – Professional tuner for traditional Rebetiko instruments: real-time pitch detection, customizable A4 reference & in-depth tuning info (Flutter, Riverpod, GoRouter, RevenueCat, Firebase, FFT)
 - **To Do for ADHD** – AI-enhanced productivity app rebuilt with Flutter (RevenueCat, Meta, Superwall)
 - **QR Platform** – Next.js + Tailwind web app for industrial document access via QR codes
 - **Hygge Fortune App** – Spin wheel app for user engagement built with React JS & Firebase

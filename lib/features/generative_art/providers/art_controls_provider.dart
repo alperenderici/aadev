@@ -44,11 +44,7 @@ class ParticleControlsState {
     this.size = 1.0,
   });
 
-  ParticleControlsState copyWith({
-    double? speed,
-    double? hue,
-    double? size,
-  }) {
+  ParticleControlsState copyWith({double? speed, double? hue, double? size}) {
     return ParticleControlsState(
       speed: speed ?? this.speed,
       hue: hue ?? this.hue,
@@ -311,4 +307,3 @@ class FrameControlsState {
     );
   }
 }
-

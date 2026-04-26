@@ -102,11 +102,7 @@ class ParticleControls extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(
-              icon,
-              color: color ?? Colors.white70,
-              size: 20,
-            ),
+            Icon(icon, color: color ?? Colors.white70, size: 20),
             const SizedBox(width: 8),
             Text(
               label,
@@ -143,15 +139,9 @@ class ParticleControls extends StatelessWidget {
             overlayColor: (color ?? Colors.white).withValues(alpha: 0.2),
             trackHeight: 4,
           ),
-          child: Slider(
-            value: value,
-            min: min,
-            max: max,
-            onChanged: onChanged,
-          ),
+          child: Slider(value: value, min: min, max: max, onChanged: onChanged),
         ),
       ],
     );
   }
 }
-

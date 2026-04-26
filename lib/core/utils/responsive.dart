@@ -83,10 +83,7 @@ class Responsive {
 class ResponsiveBuilder extends StatelessWidget {
   final Widget Function(BuildContext context, DeviceType deviceType) builder;
 
-  const ResponsiveBuilder({
-    super.key,
-    required this.builder,
-  });
+  const ResponsiveBuilder({super.key, required this.builder});
 
   @override
   Widget build(BuildContext context) {
@@ -123,4 +120,3 @@ class ResponsiveLayout extends StatelessWidget {
     );
   }
 }
-

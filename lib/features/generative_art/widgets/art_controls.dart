@@ -5,11 +5,7 @@ class ArtControls extends StatelessWidget {
   final String title;
   final List<ArtControlItem> controls;
 
-  const ArtControls({
-    super.key,
-    required this.title,
-    required this.controls,
-  });
+  const ArtControls({super.key, required this.title, required this.controls});
 
   @override
   Widget build(BuildContext context) {
@@ -38,10 +34,12 @@ class ArtControls extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-          ...controls.map((control) => Padding(
-                padding: const EdgeInsets.only(bottom: 20),
-                child: _buildControl(control),
-              )),
+          ...controls.map(
+            (control) => Padding(
+              padding: const EdgeInsets.only(bottom: 20),
+              child: _buildControl(control),
+            ),
+          ),
         ],
       ),
     );
@@ -91,7 +89,9 @@ class ArtControls extends StatelessWidget {
             activeTrackColor: control.color ?? Colors.white,
             inactiveTrackColor: Colors.white.withValues(alpha: 0.2),
             thumbColor: control.color ?? Colors.white,
-            overlayColor: (control.color ?? Colors.white).withValues(alpha: 0.2),
+            overlayColor: (control.color ?? Colors.white).withValues(
+              alpha: 0.2,
+            ),
             trackHeight: 4,
           ),
           child: Slider(
@@ -128,4 +128,3 @@ class ArtControlItem {
     this.color,
   });
 }
-

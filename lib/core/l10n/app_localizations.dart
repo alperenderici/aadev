@@ -145,6 +145,11 @@ class AppLocalizations {
       'exp_analog_buddy_desc':
           'A companion app for film photographers. Light metering, frame tracking, film simulation, negative scanning, and GPS shot logging — all in one minimalist app.',
 
+      // Rembetika
+      'exp_rembetika_title': 'Rembetika',
+      'exp_rembetika_desc':
+          'A professional tuner for traditional Rebetiko instruments. Real-time pitch detection, customizable A4 reference, and in-depth tuning information.',
+
       // Upwork Service
       'upwork_service_title': 'Freelance Services on Upwork',
       'upwork_service_desc':
@@ -291,6 +296,11 @@ class AppLocalizations {
       'exp_analog_buddy_title': 'Analog Buddy',
       'exp_analog_buddy_desc':
           'Film fotoğrafçıları için bir yardımcı uygulama. Işık ölçümü, kare takibi, film simülasyonu, negatif tarama ve GPS ile konum kaydı — hepsi tek minimalist uygulamada.',
+
+      // Rembetika
+      'exp_rembetika_title': 'Rembetika',
+      'exp_rembetika_desc':
+          'Geleneksel Rebetiko enstrümanları için profesyonel akordaj uygulaması. Gerçek zamanlı tespit, özelleştirilebilir A4 referansı ve derinlemesine akort bilgisi.',
 
       // Upwork Hizmeti
       'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',
