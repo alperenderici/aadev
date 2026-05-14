@@ -28,7 +28,7 @@ class ExperiencesData {
       technologies: ['Flutter'],
       startDate: DateTime(2026, 3),
       isCurrent: false,
-      liveUrl: 'https://apps.apple.com/tr/app/analog-buddy/id6760268456',
+      liveUrl: 'https://analogbuddy.com/',
     ),
 
     // 3. Rembetika

@@ -170,6 +170,7 @@ class AppLocalizations {
       'event_cloud_jam_a_thon': 'Cloud Jam a Thon',
       'event_hack_n_break': 'Hack\'N Break',
       'event_create_in_izmir': 'Create In Izmir Pitching Day',
+      'event_tmug_app_community_night_izmir': 'TMUG APP Community Night İzmir',
     },
     'tr': {
       // Navigation
@@ -322,6 +323,7 @@ class AppLocalizations {
       'event_cloud_jam_a_thon': 'Cloud Jam a Thon',
       'event_hack_n_break': 'Hack\'N Break',
       'event_create_in_izmir': 'Create In Izmir Pitching Day',
+      'event_tmug_app_community_night_izmir': 'TMUG APP Community Night İzmir',
     },
   };
 

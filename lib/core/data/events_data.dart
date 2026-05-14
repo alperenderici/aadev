@@ -59,5 +59,11 @@ class EventsData {
       date: DateTime(2025, 10),
       location: 'Izmir, Turkey',
     ),
+    EventModel(
+      id: 'tmug_app_community_night_izmir',
+      nameKey: 'event_tmug_app_community_night_izmir',
+      date: DateTime(2026, 4),
+      location: 'Izmir, Turkey',
+    ),
   ];
 }
