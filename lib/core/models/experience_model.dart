@@ -13,6 +13,7 @@ class ExperienceModel {
   final DateTime? startDate;
   final DateTime? endDate;
   final bool isCurrent;
+  final bool isStopped;
 
   const ExperienceModel({
     required this.id,
@@ -28,6 +29,7 @@ class ExperienceModel {
     this.startDate,
     this.endDate,
     this.isCurrent = false,
+    this.isStopped = false,
   });
 
   String get duration {

@@ -36,10 +36,12 @@ class AssetPaths {
       'assets/screenshots/AnalogBuddy_logo.jpg';
   static const String rembetikaLogo =
       'assets/screenshots/rembatika_app_logo.png';
+  static const String caprollLogo = 'assets/screenshots/caproll_icon.png';
 
   // Certificates
   static const String certificatesDir = 'assets/certificates/';
   static const List<String> certificates = [
+    'assets/certificates/91926908448339.png',
     'assets/certificates/02.04.2025.png',
     'assets/certificates/01.11.2024.png',
     'assets/certificates/25.01.2023.png',

@@ -43,6 +43,11 @@ class Certificates {
 
   static const List<CertificateModel> _certificates = [
     CertificateModel(
+      imagePath: 'assets/certificates/91926908448339.png',
+      titleEn: 'Build With AI Online Türkiye Participation Certificate',
+      titleTr: 'Build With AI Online Türkiye Katılım Sertifikası',
+    ),
+    CertificateModel(
       imagePath: 'assets/certificates/02.04.2025.png',
       titleEn:
           'Certificate Regarding the Implementation of Occupational Health and Safety Services',

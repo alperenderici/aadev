@@ -215,6 +215,24 @@ class _ExperienceCard extends StatelessWidget {
                   ),
                 ),
               ),
+            if (experience.isStopped)
+              Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppConstants.spacingM,
+                  vertical: AppConstants.spacingS,
+                ),
+                decoration: BoxDecoration(
+                  color: Colors.orange,
+                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+                ),
+                child: Text(
+                  l10n.translate('experience_stopped'),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
           ],
         ),
         if (experience.companyName != null) ...[

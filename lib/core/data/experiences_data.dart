@@ -51,7 +51,29 @@ class ExperiencesData {
       liveUrl: 'https://rembetikaapp.com/',
     ),
 
-    // 4. Train One - Current
+    // 4. Caproll - Stopped
+    ExperienceModel(
+      id: 'caproll',
+      titleKey: 'exp_caproll_title',
+      descriptionKey: 'exp_caproll_desc',
+      companyName: 'Caproll',
+      screenshot: AssetPaths.caprollLogo,
+      technologies: [
+        'Flutter',
+        'Riverpod',
+        'Supabase',
+        'Firebase',
+        'TypeScript',
+        'Edge Functions',
+      ],
+      liveUrl: 'https://caproll.app/',
+      startDate: DateTime(2026, 4),
+      endDate: DateTime(2026, 5),
+      isStopped: true,
+      isCurrent: false,
+    ),
+
+    // 6. Train One - Current
     ExperienceModel(
       id: 'fitgo',
       titleKey: 'exp_fitgo_title',
@@ -69,7 +91,7 @@ class ExperiencesData {
       isCurrent: true,
     ),
 
-    // 5. WellNow / Geo Spor - Current
+    // 7. WellNow / Geo Spor - Current
     ExperienceModel(
       id: 'wellnow',
       titleKey: 'exp_wellnow_title',
@@ -88,7 +110,7 @@ class ExperiencesData {
       isCurrent: true,
     ),
 
-    // 6. Upwork
+    // 8. Upwork
     ExperienceModel(
       id: 'upwork',
       titleKey: 'exp_upwork_title',
@@ -106,7 +128,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 7. Akıllı Konum Teknolojileri - Kanguru
+    // 9. Akıllı Konum Teknolojileri - Kanguru
     ExperienceModel(
       id: 'kanguru',
       titleKey: 'exp_kanguru_title',
@@ -125,7 +147,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 8. Akıllı Konum Teknolojileri - Akıllı Ekip
+    // 10. Akıllı Konum Teknolojileri - Akıllı Ekip
     ExperienceModel(
       id: 'akilli_ekip',
       titleKey: 'exp_akilli_ekip_title',
@@ -144,7 +166,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 9. Boly - Flutter Dev.
+    // 11. Boly - Flutter Dev.
     ExperienceModel(
       id: 'boly',
       titleKey: 'exp_boly_title',
@@ -157,7 +179,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 10. Hygge - Web App
+    // 12. Hygge - Web App
     ExperienceModel(
       id: 'hygge',
       titleKey: 'exp_hygge_title',
@@ -170,7 +192,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 11. Product Development Solution - BİKO Mühendislik
+    // 13. Product Development Solution - BİKO Mühendislik
     ExperienceModel(
       id: 'biko',
       titleKey: 'exp_biko_title',
@@ -188,7 +210,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 12. Personal Website - Alper Bekat
+    // 14. Personal Website - Alper Bekat
     ExperienceModel(
       id: 'alper_bekat',
       titleKey: 'exp_alper_bekat_title',
@@ -201,7 +223,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 13. Restaurant Loyalty App - Gaga's Hot Fried Chicken
+    // 15. Restaurant Loyalty App - Gaga's Hot Fried Chicken
     ExperienceModel(
       id: 'gagas',
       titleKey: 'exp_gagas_title',
@@ -214,7 +236,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 14. Mrlt - Web App
+    // 16. Mrlt - Web App
     ExperienceModel(
       id: 'mrlt',
       titleKey: 'exp_mrlt_title',
@@ -227,7 +249,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 15. Jr. Flutter Dev. - Mobilist
+    // 17. Jr. Flutter Dev. - Mobilist
     ExperienceModel(
       id: 'mobilist',
       titleKey: 'exp_mobilist_title',
@@ -245,7 +267,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 16. MVP Of An Application - Appy Ventures (Intern)
+    // 18. MVP Of An Application - Appy Ventures (Intern)
     ExperienceModel(
       id: 'appy_ventures',
       titleKey: 'exp_appy_title',

@@ -45,6 +45,7 @@ class AppLocalizations {
       // Experience Section
       'experience_title': 'Experience & Projects',
       'experience_current': 'Current',
+      'experience_stopped': 'Stopped',
       'experience_view_project': 'View Project',
       'experience_view_code': 'View Code',
       'experience_technologies': 'Technologies',
@@ -150,6 +151,11 @@ class AppLocalizations {
       'exp_rembetika_desc':
           'A professional tuner for traditional Rebetiko instruments. Real-time pitch detection, customizable A4 reference, and in-depth tuning information.',
 
+      // Caproll
+      'exp_caproll_title': 'Caproll',
+      'exp_caproll_desc':
+          'A private photo-sharing platform for weddings and special events. Guests scan a QR code and upload photos to a locked gallery that is revealed simultaneously to all participants at a host-chosen moment. No app download required — camera access via browser.',
+
       // Upwork Service
       'upwork_service_title': 'Freelance Services on Upwork',
       'upwork_service_desc':
@@ -198,6 +204,7 @@ class AppLocalizations {
       // Experience Section
       'experience_title': 'Deneyim & Projeler',
       'experience_current': 'Güncel',
+      'experience_stopped': 'Durduruldu',
       'experience_view_project': 'Projeyi Görüntüle',
       'experience_view_code': 'Kodu Görüntüle',
       'experience_technologies': 'Teknolojiler',
@@ -302,6 +309,11 @@ class AppLocalizations {
       'exp_rembetika_title': 'Rembetika',
       'exp_rembetika_desc':
           'Geleneksel Rebetiko enstrümanları için profesyonel akordaj uygulaması. Gerçek zamanlı tespit, özelleştirilebilir A4 referansı ve derinlemesine akort bilgisi.',
+
+      // Caproll
+      'exp_caproll_title': 'Caproll',
+      'exp_caproll_desc':
+          'Düğün ve özel etkinlikler için gizli fotoğraf paylaşım platformu. Misafirler QR kod okutup tarayıcıdan galeriye fotoğraf yükler; host\'un belirlediği anda tüm katılımcılara aynı anda açılır. Uygulama indirmeye gerek yok — tarayıcıdan kamera erişimi.',
 
       // Upwork Hizmeti
       'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',
