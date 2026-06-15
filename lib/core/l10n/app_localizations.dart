@@ -154,7 +154,7 @@ class AppLocalizations {
       // Caproll
       'exp_caproll_title': 'Caproll',
       'exp_caproll_desc':
-          'A private photo-sharing platform for weddings and special events. Guests scan a QR code and upload photos to a locked gallery that is revealed simultaneously to all participants at a host-chosen moment. No app download required — camera access via browser.',
+          'A private photo-sharing platform for weddings and special events. Guests scan a QR code and upload photos to a locked gallery that is revealed simultaneously to all participants at a host-chosen moment. Available on iOS, Android and Web.',
 
       // Upwork Service
       'upwork_service_title': 'Freelance Services on Upwork',
@@ -313,7 +313,7 @@ class AppLocalizations {
       // Caproll
       'exp_caproll_title': 'Caproll',
       'exp_caproll_desc':
-          'Düğün ve özel etkinlikler için gizli fotoğraf paylaşım platformu. Misafirler QR kod okutup tarayıcıdan galeriye fotoğraf yükler; host\'un belirlediği anda tüm katılımcılara aynı anda açılır. Uygulama indirmeye gerek yok — tarayıcıdan kamera erişimi.',
+          'Düğün ve özel etkinlikler için gizli fotoğraf paylaşım platformu. Misafirler QR kod okutup galeriye fotoğraf yükler; host\'un belirlediği anda tüm katılımcılara aynı anda açılır. iOS, Android ve Web\'de kullanılabilir.',
 
       // Upwork Hizmeti
       'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',
