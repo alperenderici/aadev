@@ -504,8 +504,10 @@ class GenerativeArtPage extends HookWidget {
             Positioned(
               right: 16,
               top: 100,
+              bottom: 170,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   // Floating toggle button
                   FloatingActionButton(
@@ -523,9 +525,13 @@ class GenerativeArtPage extends HookWidget {
                   // Expandable control panel
                   if (isControlPanelExpanded.value) ...[
                     const SizedBox(height: 8),
-                    Container(
-                      constraints: const BoxConstraints(maxWidth: 280),
-                      child: buildControlPanel(),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        child: Container(
+                          constraints: const BoxConstraints(maxWidth: 280),
+                          child: buildControlPanel(),
+                        ),
+                      ),
                     ),
                   ],
                 ],
