@@ -139,7 +139,7 @@ class AppLocalizations {
       // WellNow / Geo Spor
       'exp_wellnow_title': 'WellNow & Party Wizard',
       'exp_wellnow_desc':
-          'Full Stack developer at Geo Spor (geosportsgroup.com), building apps including WellNow — discover and book gyms, yoga, pilates, spas and more with one tap (wellnowapp.com); Fabrika Mensa — industrial site tenant management system; and a customer app for Pink Point Ballet & Pilates Studio.',
+          'Full Stack developer at Geo Spor, building apps including WellNow — discover and book gyms, yoga, pilates, spas and more with one tap; Fabrika Mensa — industrial site tenant management system; and a customer app for Pink Point Ballet & Pilates Studio.',
 
       // Analog Buddy
       'exp_analog_buddy_title': 'Analog Buddy',
@@ -298,7 +298,7 @@ class AppLocalizations {
       // WellNow / Geo Spor
       'exp_wellnow_title': 'WellNow & Party Wizard',
       'exp_wellnow_desc':
-          'Geo Spor (geosportsgroup.com) bünyesinde Full Stack geliştirici olarak birden fazla uygulama geliştirdim: WellNow — spor salonları, yoga, pilates, spa ve daha fazlasını keşfet, tek tıkla rezerve et (wellnowapp.com); Fabrika Mensa — endüstriyel site kiracı yönetim sistemi; ve Pink Point Ballet & Pilates Studio için bir müşteri uygulaması.',
+          'Geo Spor bünyesinde Full Stack geliştirici olarak birden fazla uygulama geliştirdim: WellNow — spor salonları, yoga, pilates, spa ve daha fazlasını keşfet, tek tıkla rezerve et; Fabrika Mensa — endüstriyel site kiracı yönetim sistemi; ve Pink Point Ballet & Pilates Studio için bir müşteri uygulaması.',
 
       // Analog Buddy
       'exp_analog_buddy_title': 'Analog Buddy',

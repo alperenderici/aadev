@@ -133,50 +133,30 @@ class _ExperienceCard extends StatelessWidget {
   }
 
   Widget _buildImage(BuildContext context) {
-    final imagePath = experience.screenshot ?? experience.companyLogo;
-    if (imagePath == null) return const SizedBox.shrink();
-
-    var primaryImage = _assetImage(context, imagePath);
-
-    // When both a screenshot and a company logo are set, overlay the logo
-    // as a badge on top of the screenshot instead of showing it separately.
-    if (experience.screenshot != null && experience.companyLogo != null) {
-      primaryImage = Stack(
-        children: [
-          primaryImage,
-          Positioned(
-            right: AppConstants.spacingS,
-            bottom: AppConstants.spacingS,
-            child: _companyLogoBadge(context),
-          ),
-        ],
-      );
+    // When both a company logo and a screenshot are set, show the logo as
+    // its own image above the screenshot in the column instead of using it
+    // as a screenshot fallback.
+    final images = <String>[];
+    if (experience.companyLogo != null && experience.screenshot != null) {
+      images.add(experience.companyLogo!);
+    }
+    final mainImage = experience.screenshot ?? experience.companyLogo;
+    if (mainImage != null) images.add(mainImage);
+    if (experience.additionalScreenshot != null) {
+      images.add(experience.additionalScreenshot!);
     }
 
-    if (experience.additionalScreenshot == null) return primaryImage;
+    if (images.isEmpty) return const SizedBox.shrink();
+    if (images.length == 1) return _assetImage(context, images.first);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        primaryImage,
-        const SizedBox(height: AppConstants.spacingM),
-        _assetImage(context, experience.additionalScreenshot!),
+        for (var i = 0; i < images.length; i++) ...[
+          if (i > 0) const SizedBox(height: AppConstants.spacingM),
+          _assetImage(context, images[i]),
+        ],
       ],
-    );
-  }
-
-  Widget _companyLogoBadge(BuildContext context) {
-    return Container(
-      height: 28,
-      padding: const EdgeInsets.symmetric(
-        horizontal: AppConstants.spacingS,
-        vertical: 4,
-      ),
-      decoration: BoxDecoration(
-        color: Colors.black.withValues(alpha: 0.35),
-        borderRadius: BorderRadius.circular(AppConstants.radiusS),
-      ),
-      child: Image.asset(experience.companyLogo!, fit: BoxFit.contain),
     );
   }
 
