@@ -32,6 +32,8 @@ class AssetPaths {
   static const String wellnowScreenshot = 'assets/screenshots/wellnow_02.jpg';
   static const String partyWizardScreenshot =
       'assets/screenshots/party_wizard.png';
+  static const String geoSporLogoWhite =
+      'assets/screenshots/geo-logo-beyaz.png';
   static const String analogBuddyLogo =
       'assets/screenshots/AnalogBuddy_logo.jpg';
   static const String rembetikaLogo =

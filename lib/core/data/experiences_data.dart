@@ -90,6 +90,7 @@ class ExperiencesData {
       titleKey: 'exp_wellnow_title',
       descriptionKey: 'exp_wellnow_desc',
       companyName: 'Geo Spor',
+      companyLogo: AssetPaths.geoSporLogoWhite,
       screenshot: AssetPaths.wellnowScreenshot,
       additionalScreenshot: AssetPaths.partyWizardScreenshot,
       technologies: [

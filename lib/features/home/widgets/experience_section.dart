@@ -136,7 +136,23 @@ class _ExperienceCard extends StatelessWidget {
     final imagePath = experience.screenshot ?? experience.companyLogo;
     if (imagePath == null) return const SizedBox.shrink();
 
-    final primaryImage = _assetImage(context, imagePath);
+    var primaryImage = _assetImage(context, imagePath);
+
+    // When both a screenshot and a company logo are set, overlay the logo
+    // as a badge on top of the screenshot instead of showing it separately.
+    if (experience.screenshot != null && experience.companyLogo != null) {
+      primaryImage = Stack(
+        children: [
+          primaryImage,
+          Positioned(
+            right: AppConstants.spacingS,
+            bottom: AppConstants.spacingS,
+            child: _companyLogoBadge(context),
+          ),
+        ],
+      );
+    }
+
     if (experience.additionalScreenshot == null) return primaryImage;
 
     return Column(
@@ -146,6 +162,21 @@ class _ExperienceCard extends StatelessWidget {
         const SizedBox(height: AppConstants.spacingM),
         _assetImage(context, experience.additionalScreenshot!),
       ],
+    );
+  }
+
+  Widget _companyLogoBadge(BuildContext context) {
+    return Container(
+      height: 28,
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppConstants.spacingS,
+        vertical: 4,
+      ),
+      decoration: BoxDecoration(
+        color: Colors.black.withValues(alpha: 0.35),
+        borderRadius: BorderRadius.circular(AppConstants.radiusS),
+      ),
+      child: Image.asset(experience.companyLogo!, fit: BoxFit.contain),
     );
   }
 
