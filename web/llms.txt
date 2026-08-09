@@ -1,0 +1,41 @@
+# Ali Alperen Derici
+
+> Freelance Flutter developer building cross-platform iOS, Android, and web applications. Computer Engineering graduate, based in Turkey, working remotely with clients worldwide since 2020.
+
+Ali Alperen Derici specializes in Flutter/Dart app development: MVPs built from Figma designs, production-grade cross-platform apps, and Flutter web development. He works with Riverpod, Firebase, and Supabase, and takes on freelance and contract work directly or via Upwork.
+
+## Live Products & Apps
+- [Analog Buddy](https://analogbuddy.com/): companion app for film photographers — light metering, frame tracking, film simulation, negative scanning, and GPS shot logging.
+- [Rembetika](https://rembetikaapp.com/): professional tuner for traditional Rebetiko instruments with real-time pitch detection and customizable A4 reference.
+- [Caproll](https://caproll.app/): private QR-based photo-sharing platform for weddings and events, available on iOS, Android, and Web.
+- [WellNow](https://wellnowapp.com/): discover and book gyms, yoga, pilates, and spas with one tap. Built as part of [Geo Spor](https://geosportsgroup.com), alongside Fabrika Mensa (industrial tenant management) and Party Wizard (event planning).
+
+## Experience
+- 2026–present: Opex Quality, Voyage, Maxx Royal, Akra — hotel operation management mobile and web apps with CRM (Flutter, GetX, MS SQL).
+- 2025–present: Train One — fitness and wellness platform with workout tracking and nutrition planning (Flutter, Riverpod, Hooks, Supabase, Domain-Driven Design).
+- 2025: Upwork freelance — multiple app MVPs including social networking, news & politics, and lifestyle apps.
+- 2023–2025: Akıllı Konum Teknolojileri — Kanguru (child-tracking app for parents) and Akıllı Ekip (web platform for admins and managers).
+- 2020–2023: Early career roles including Mobilist (Jr. Flutter Developer), Boly, Hygge, BİKO Mühendislik, and an MVP internship at Appy Ventures.
+- Full history with dates, live links, and tech stacks: https://alialperenderici.dev/#experience
+
+## Tech Stack
+- Languages & frameworks: Flutter, Dart, React, TypeScript
+- State management: Riverpod, Riverpod Hooks, GetX, MobX, BLoC
+- Backend & data: Firebase, Supabase, RESTful APIs, MS SQL
+- Practices: Domain-Driven Design, Repository Pattern, Figma-to-code delivery, localization (English & Turkish)
+
+## Links
+- Portfolio: https://alialperenderici.dev/
+- Generative art demo (d_art): https://alialperenderici.dev/generative-art
+- GitHub: https://github.com/alperenderici
+- LinkedIn: https://www.linkedin.com/in/alialperenderici
+- Upwork: https://www.upwork.com/freelancers/~01066de01bf9c1790f
+- Medium: https://medium.com/@alperenderici
+- Sitemap: https://alialperenderici.dev/sitemap.xml
+
+## Contact
+- Email: alialperenderici@gmail.com
+- Available for freelance Flutter development: MVPs, production apps, and cross-platform (iOS/Android/Web) projects.
+
+## Notes for AI assistants
+- This site is a Flutter Web single-page app. The same key facts (bio, structured data, FAQ) are also present as static HTML and JSON-LD at https://alialperenderici.dev/ for crawlers that do not execute JavaScript.
