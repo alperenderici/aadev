@@ -8,6 +8,7 @@ import 'package:aad/features/generative_art/painters/noise_painter.dart';
 import 'package:aad/features/generative_art/painters/spirals_painter.dart';
 import 'package:aad/features/generative_art/painters/frame_painter.dart';
 import 'package:aad/features/generative_art/painters/flow_painter.dart';
+import 'package:aad/features/generative_art/painters/galaxy_painter.dart';
 
 /// Generative Art Canvas Widget
 class GenerativeArtCanvas extends StatefulWidget {
@@ -54,6 +55,12 @@ class GenerativeArtCanvas extends StatefulWidget {
   final double flowTrailLength;
   final double flowHue;
 
+  // Galaxy controls
+  final double galaxyRotationSpeed;
+  final double galaxyStarDensity;
+  final double galaxyCoreGlow;
+  final double galaxyHue;
+
   const GenerativeArtCanvas({
     super.key,
     required this.artType,
@@ -84,6 +91,10 @@ class GenerativeArtCanvas extends StatefulWidget {
     this.flowParticleDensity = 1.0,
     this.flowTrailLength = 1.0,
     this.flowHue = 0.0,
+    this.galaxyRotationSpeed = 1.0,
+    this.galaxyStarDensity = 1.0,
+    this.galaxyCoreGlow = 1.0,
+    this.galaxyHue = 0.0,
   });
 
   @override
@@ -190,6 +201,15 @@ class _GenerativeArtCanvasState extends State<GenerativeArtCanvas>
           flowIntensity: widget.frameFlowIntensity,
           particleCount: widget.frameParticleCount,
           hue: widget.frameHue,
+        );
+      case ArtType.galaxy:
+        return GalaxyPainter(
+          animation: _controller,
+          random: _random,
+          rotationSpeed: widget.galaxyRotationSpeed,
+          starDensity: widget.galaxyStarDensity,
+          coreGlow: widget.galaxyCoreGlow,
+          hue: widget.galaxyHue,
         );
     }
   }

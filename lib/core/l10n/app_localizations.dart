@@ -101,7 +101,7 @@ class AppLocalizations {
       // Experiences
       'exp_opex_title': 'Opex Quality, Voyage, Maxx Royal, Akra',
       'exp_opex_desc':
-          'Hotel operation management mobile and web applications with CRM. Built the web app myself with Next.js.',
+          'Hotel operation management mobile and web applications with CRM. Renewed the web app myself with Next.js.',
       'exp_upwork_title': 'Upwork',
       'exp_upwork_desc':
           'Developed several application MVPs. Such as Social Networking app, News & Politics, Lifestyle apps.',
@@ -260,7 +260,7 @@ class AppLocalizations {
       // Experiences
       'exp_opex_title': 'Opex Quality, Voyage, Maxx Royal, Akra',
       'exp_opex_desc':
-          'Otel operasyon yönetimi mobil ve web uygulamaları, CRM. Web uygulamasını Next.js ile kendim geliştirdim.',
+          'Otel operasyon yönetimi mobil ve web uygulamaları, CRM. Web sitesini Next.js ile kendim yeniledim.',
       'exp_upwork_title': 'Upwork',
       'exp_upwork_desc':
           'Birkaç uygulama MVP\'si geliştirdim. Sosyal Ağ uygulaması, Haber & Politika, Yaşam Tarzı uygulamaları gibi.',

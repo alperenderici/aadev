@@ -60,6 +60,12 @@ class GenerativeArtPage extends HookWidget {
     final flowTrailLength = useState(1.0);
     final flowHue = useState(0.0);
 
+    // Galaxy control parameters
+    final galaxyRotationSpeed = useState(1.0);
+    final galaxyStarDensity = useState(1.0);
+    final galaxyCoreGlow = useState(1.0);
+    final galaxyHue = useState(0.0);
+
     // Local function to build control panel
     Widget buildControlPanel() {
       switch (selectedArtType.value) {
@@ -410,6 +416,57 @@ class GenerativeArtPage extends HookWidget {
               ),
             ],
           );
+        case ArtType.galaxy:
+          return ArtControls(
+            title: 'Galaxy',
+            controls: [
+              ArtControlItem(
+                label: 'Rotation Speed',
+                value: galaxyRotationSpeed.value,
+                min: 0.1,
+                max: 3.0,
+                onChanged: (value) => galaxyRotationSpeed.value = value,
+                valueLabel: '${galaxyRotationSpeed.value.toStringAsFixed(1)}x',
+                icon: Icons.rotate_right,
+                color: Colors.deepPurpleAccent,
+              ),
+              ArtControlItem(
+                label: 'Star Density',
+                value: galaxyStarDensity.value,
+                min: 0.5,
+                max: 2.5,
+                onChanged: (value) => galaxyStarDensity.value = value,
+                valueLabel: '${galaxyStarDensity.value.toStringAsFixed(1)}x',
+                icon: Icons.auto_awesome,
+                color: Colors.white,
+              ),
+              ArtControlItem(
+                label: 'Core Glow',
+                value: galaxyCoreGlow.value,
+                min: 0.5,
+                max: 2.5,
+                onChanged: (value) => galaxyCoreGlow.value = value,
+                valueLabel: '${galaxyCoreGlow.value.toStringAsFixed(1)}x',
+                icon: Icons.blur_on,
+                color: Colors.pinkAccent,
+              ),
+              ArtControlItem(
+                label: 'Color Hue',
+                value: galaxyHue.value,
+                min: 0,
+                max: 360,
+                onChanged: (value) => galaxyHue.value = value,
+                valueLabel: '${galaxyHue.value.toStringAsFixed(0)}°',
+                icon: Icons.palette,
+                color: HSVColor.fromAHSV(
+                  1.0,
+                  galaxyHue.value > 0 ? galaxyHue.value : 260,
+                  0.8,
+                  1.0,
+                ).toColor(),
+              ),
+            ],
+          );
       }
     }
 
@@ -447,6 +504,10 @@ class GenerativeArtPage extends HookWidget {
               flowParticleDensity: flowParticleDensity.value,
               flowTrailLength: flowTrailLength.value,
               flowHue: flowHue.value,
+              galaxyRotationSpeed: galaxyRotationSpeed.value,
+              galaxyStarDensity: galaxyStarDensity.value,
+              galaxyCoreGlow: galaxyCoreGlow.value,
+              galaxyHue: galaxyHue.value,
             ),
           ),
 

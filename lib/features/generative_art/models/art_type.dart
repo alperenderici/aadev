@@ -8,7 +8,8 @@ enum ArtType {
   noise('Noise Field', Icons.grain),
   flow('Flow Field', Icons.water),
   spirals('Spirals', Icons.rotate_right),
-  particles('Particles', Icons.blur_on);
+  particles('Particles', Icons.blur_on),
+  galaxy('Galaxy', Icons.auto_awesome);
 
   final String name;
   final IconData icon;
