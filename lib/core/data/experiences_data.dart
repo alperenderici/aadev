@@ -13,9 +13,10 @@ class ExperiencesData {
       descriptionKey: 'exp_opex_desc',
       companyName: 'Opex Operation Management System',
       screenshot: AssetPaths.opexScreenshot,
-      technologies: ['Flutter', 'GetX', 'MS SQL', 'RESTful API'],
+      technologies: ['Flutter', 'GetX', 'MS SQL', 'RESTful API', 'Next.js'],
       startDate: DateTime(2026, 1),
       isCurrent: true,
+      liveUrl: 'https://opex.app/',
     ),
 
     // 2. Analog Buddy - Current
