@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>35mm · Mükerrer Kare Temizliği</title>
+<style>
+  :root {
+    --bg: #0b0b0c; --surface: #141416; --border: #2a2a2e;
+    --text: #ededef; --muted: #9a9aa2; --faint: #6a6a72;
+    --accent: #e0a458; --danger: #d9534f;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10; background: rgba(11,11,12,.94);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+    padding: 14px 24px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+  }
+  h1 { font: bold 17px/1 ui-monospace, monospace; margin: 0; letter-spacing: -.3px; }
+  .stat { color: var(--muted); font: 12px/1 ui-monospace, monospace; letter-spacing: .5px; }
+  .stat b { color: var(--danger); font-weight: 700; }
+  .spacer { flex: 1; }
+  button {
+    background: var(--surface); color: var(--text); border: 1px solid var(--border);
+    border-radius: 6px; padding: 8px 14px; font-size: 13px; cursor: pointer;
+  }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: var(--accent); color: #1a1204; border-color: var(--accent); font-weight: 600; }
+  .hint { padding: 16px 24px; color: var(--muted); border-bottom: 1px solid var(--border); background: var(--surface); }
+  .hint kbd { background: #000; border: 1px solid var(--border); border-radius: 4px; padding: 1px 6px; font: 12px ui-monospace, monospace; color: var(--text); }
+
+  h2 { font-size: 15px; margin: 0 0 4px; }
+  .sect { padding: 26px 24px 6px; }
+  .sub { color: var(--faint); font: 11px/1 ui-monospace, monospace; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+
+  .pair {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 14px; margin-bottom: 10px; display: flex; gap: 14px;
+    align-items: center; flex-wrap: wrap;
+  }
+  .pair .who { font: 13px ui-monospace, monospace; }
+  .pair .who b { color: var(--accent); }
+  .pair .num { color: var(--muted); font: 12px ui-monospace, monospace; }
+
+  .group {
+    display: flex; gap: 10px; padding: 10px; margin-bottom: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; overflow-x: auto;
+  }
+  .tile { position: relative; width: 168px; flex: 0 0 auto; cursor: pointer; user-select: none; }
+  .tile .shot {
+    position: relative; height: 130px; background: #000;
+    border: 2px solid transparent; border-radius: 4px; overflow: hidden;
+  }
+  .tile img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .tile .cap { margin-top: 5px; font: 10px/1.35 ui-monospace, monospace; color: var(--muted); word-break: break-all; }
+  .tile .cap .kb { color: var(--faint); }
+  .tile.best .cap .kb { color: #6cc07a; }
+  .tile.del .shot { border-color: var(--danger); opacity: .42; }
+  .tile.del .shot::after {
+    content: "SİL"; position: absolute; inset: 0; display: flex;
+    align-items: center; justify-content: center; font: 700 15px ui-monospace, monospace;
+    color: #fff; background: rgba(217,83,79,.55); letter-spacing: 2px;
+  }
+  .tile:not(.del):hover .shot { border-color: var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <h1>35mm · mükerrer temizliği</h1>
+  <span class="stat" id="stat"></span>
+  <span class="spacer"></span>
+  <button id="reset">Sıfırla</button>
+  <button class="primary" id="save">deletions.json indir</button>
+</header>
+
+<p class="hint">
+  Silmek istediğin kopyaya <b>tıkla</b> — kırmızıya döner. Tekrar tıklarsan vazgeçer.
+  Her grupta <b>en az bir kare kalmalı</b>; hepsini işaretlersen indirirken uyarır.
+  Altındaki <span style="color:#6cc07a">yeşil boyut</span> o grubun en büyük dosyası,
+  yani genelde daha iyi tarama — onu bırakmak mantıklı.
+  Bütün bir rulo başka bir rulonun kopyasıysa üstteki <b>örtüşen rulolar</b>
+  bölümünden tek tıkla halledebilirsin.
+  Bitince <b>deletions.json indir</b> deyip:
+  <kbd>python3 tool/apply_deletions.py ~/Downloads/deletions.json</kbd>
+</p>
+
+<main id="main"></main>
+
+<script>
+const KEY = 'film-deletions-v1';
+let del = new Set();
+try { del = new Set(JSON.parse(localStorage.getItem(KEY) || '[]')); } catch (_) {}
+
+let DATA = null;
+const tileIndex = new Map();   // "slug/index" -> [tile elements]
+
+const pad = n => String(n).padStart(3, '0');
+const keyOf = f => f.slug + '/' + f.index;
+
+function save() { localStorage.setItem(KEY, JSON.stringify([...del])); }
+
+function refresh() {
+  document.getElementById('stat').innerHTML =
+    `<b>${del.size}</b> kare silinecek · ${DATA.groups.length} grup`;
+}
+
+function paint(key) {
+  for (const t of tileIndex.get(key) || []) t.classList.toggle('del', del.has(key));
+}
+
+function toggle(key) {
+  if (del.has(key)) del.delete(key); else del.add(key);
+  save(); paint(key); refresh();
+}
+
+function tile(f, bestKey) {
+  const key = keyOf(f);
+  const el = document.createElement('div');
+  el.className = 'tile' + (key === bestKey ? ' best' : '');
+  const kb = Math.round((DATA.sizes[key] || 0) / 1024);
+  el.innerHTML =
+    `<div class="shot"><img loading="lazy" src="../web/film/${f.slug}/t/${pad(f.index + 1)}.webp"></div>` +
+    `<div class="cap">${f.slug}/${pad(f.index + 1)}<br><span class="kb">${kb} KB</span></div>`;
+  el.addEventListener('click', () => toggle(key));
+  if (!tileIndex.has(key)) tileIndex.set(key, []);
+  tileIndex.get(key).push(el);
+  return el;
+}
+
+fetch('duplicates.json').then(r => r.json()).then(data => {
+  DATA = data;
+  const main = document.getElementById('main');
+
+  // Whole rolls that are copies of each other: one click beats ninety.
+  if (data.roll_overlap.length) {
+    const sect = document.createElement('div');
+    sect.className = 'sect';
+    sect.innerHTML = `<h2>Örtüşen rulolar</h2>
+      <div class="sub">bir rulonun kareleri büyük ölçüde başka bir ruloda da var</div>`;
+    for (const p of data.roll_overlap) {
+      const row = document.createElement('div');
+      row.className = 'pair';
+      row.innerHTML =
+        `<span class="who"><b>${p.a}</b> ↔ <b>${p.b}</b></span>` +
+        `<span class="num">${p.shared} ortak kare · ${p.a} %${p.a_pct} · ${p.b} %${p.b_pct}</span>`;
+      const spacer = document.createElement('span');
+      spacer.className = 'spacer';
+      row.appendChild(spacer);
+
+      for (const which of [p.a, p.b]) {
+        const b = document.createElement('button');
+        b.textContent = `${which} tarafını sil`;
+        b.addEventListener('click', () => {
+          for (const g of data.groups) {
+            const slugs = new Set(g.map(f => f.slug));
+            if (!slugs.has(p.a) || !slugs.has(p.b)) continue;
+            // Never empty a group: only drop this roll's copies when another
+            // roll in the same group still has one that is not marked.
+            const survivors = g.filter(f => f.slug !== which && !del.has(keyOf(f)));
+            if (!survivors.length) continue;
+            for (const f of g) if (f.slug === which) { del.add(keyOf(f)); paint(keyOf(f)); }
+          }
+          save(); refresh();
+        });
+        row.appendChild(b);
+      }
+      sect.appendChild(row);
+    }
+    main.appendChild(sect);
+  }
+
+  // Frame-by-frame groups
+  const sect = document.createElement('div');
+  sect.className = 'sect';
+  sect.innerHTML = `<h2>Mükerrer gruplar</h2>
+    <div class="sub">${data.groups.length} grup · ${data.groups.reduce((s, g) => s + g.length - 1, 0)} fazladan kopya</div>`;
+  for (const g of data.groups) {
+    let bestKey = null, bestSize = -1;
+    for (const f of g) {
+      const s = data.sizes[keyOf(f)] || 0;
+      if (s > bestSize) { bestSize = s; bestKey = keyOf(f); }
+    }
+    const row = document.createElement('div');
+    row.className = 'group';
+    for (const f of g) row.appendChild(tile(f, bestKey));
+    sect.appendChild(row);
+  }
+  main.appendChild(sect);
+
+  // Flat frames the fingerprint could not judge — left to the eye.
+  if (data.faint.length) {
+    const fs = document.createElement('div');
+    fs.className = 'sect';
+    fs.innerHTML = `<h2>Parmak izi çıkmayan kareler</h2>
+      <div class="sub">${data.faint.length} kare · fazla düz/soluk olduğu için eşleştirilemedi, gözünle bak</div>`;
+    const row = document.createElement('div');
+    row.className = 'group';
+    row.style.flexWrap = 'wrap';
+    for (const f of data.faint) row.appendChild(tile(f, null));
+    fs.appendChild(row);
+    main.appendChild(fs);
+  }
+
+  for (const key of del) paint(key);
+  refresh();
+});
+
+document.getElementById('save').addEventListener('click', () => {
+  const emptied = DATA.groups.filter(g => g.every(f => del.has(keyOf(f))));
+  if (emptied.length && !confirm(
+      `${emptied.length} grupta hiç kare kalmıyor — o fotoğraflar tamamen silinecek. Devam?`)) {
+    return;
+  }
+  const out = {};
+  for (const key of del) {
+    const i = key.lastIndexOf('/');
+    (out[key.slice(0, i)] ||= []).push(Number(key.slice(i + 1)));
+  }
+  for (const k of Object.keys(out)) out[k].sort((a, b) => a - b);
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'deletions.json';
+  a.click();
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  if (!confirm('Bütün silme işaretlerin kaldırılacak. Emin misin?')) return;
+  localStorage.removeItem(KEY);
+  location.reload();
+});
+</script>
+</body>
+</html>

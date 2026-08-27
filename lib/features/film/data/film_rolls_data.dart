@@ -34,7 +34,7 @@ class FilmRollsData {
       // kaynak klasör: ektar-2025
     ),
     FilmRoll(
-      id: 'fotograf-fabrikasi-2025-06',
+      id: 'rulo-01',
       title: 'İsimsiz Rulo 1',
       shotOn: '2025',
       developedAt: 'Fotoğraf Fabrikası',
@@ -47,7 +47,7 @@ class FilmRollsData {
       // kaynak klasör: fotograffabrikasi_2-adet-tarama_2025-06-04_1649
     ),
     FilmRoll(
-      id: '1885-film-lab',
+      id: 'rulo-02',
       title: 'İsimsiz Rulo 2',
       developedAt: '1885 Film Lab Studio',
       frameCount: 30,
@@ -78,7 +78,7 @@ class FilmRollsData {
       // kaynak klasör: Kodak 400
     ),
     FilmRoll(
-      id: '2024-05-10-0916',
+      id: 'rulo-03',
       title: 'İsimsiz Rulo 3',
       shotOn: '2024',
       frameCount: 26,
@@ -88,7 +88,7 @@ class FilmRollsData {
       // kaynak klasör: 2024-05-10_0916
     ),
     FilmRoll(
-      id: '2024-05-10-1521',
+      id: 'rulo-04',
       title: 'İsimsiz Rulo 4',
       shotOn: '2024',
       frameCount: 22,
@@ -194,7 +194,7 @@ class FilmRollsData {
       // kaynak klasör: pan400
     ),
     FilmRoll(
-      id: 'pro-foto',
+      id: 'rulo-05',
       title: 'İsimsiz Rulo 5',
       frameCount: 60,
       orientations: 'plllllllppplppllllplpppllplllppplplpllllllllllllllllllllllll',
@@ -203,7 +203,7 @@ class FilmRollsData {
       // kaynak klasör: Pro foto
     ),
     FilmRoll(
-      id: 'ayca-makina',
+      id: 'rulo-06',
       title: 'İsimsiz Rulo 6',
       camera: 'Ayça\'nın makinesi',
       frameCount: 38,
@@ -213,7 +213,7 @@ class FilmRollsData {
       // kaynak klasör: Ayçamak.
     ),
     FilmRoll(
-      id: 'yigit-makina',
+      id: 'rulo-07',
       title: 'İsimsiz Rulo 7',
       camera: 'Yiğit\'in makinesi',
       frameCount: 18,
@@ -223,7 +223,7 @@ class FilmRollsData {
       // kaynak klasör: Yiğitin makina
     ),
     FilmRoll(
-      id: 'fiss',
+      id: 'rulo-08',
       title: 'İsimsiz Rulo 8',
       frameCount: 28,
       orientations: 'pppllllllllllpplllllplpllpll',
@@ -232,7 +232,7 @@ class FilmRollsData {
       // kaynak klasör: Fıss
     ),
     FilmRoll(
-      id: 'roll-aa',
+      id: 'rulo-09',
       title: 'İsimsiz Rulo 9',
       frameCount: 23,
       orientations: 'lllplllllllllllllppllpl',
@@ -241,7 +241,7 @@ class FilmRollsData {
       // kaynak klasör: AA
     ),
     FilmRoll(
-      id: 'roll-drive',
+      id: 'rulo-10',
       title: 'İsimsiz Rulo 10',
       frameCount: 19,
       orientations: 'lllllllllllllllllll',
@@ -250,7 +250,7 @@ class FilmRollsData {
       // kaynak klasör: drive
     ),
     FilmRoll(
-      id: 'wetransfer-ecef6d',
+      id: 'rulo-11',
       title: 'İsimsiz Rulo 11',
       frameCount: 31,
       orientations: 'lpllllllplllllllllplllllllllllp',
@@ -259,7 +259,7 @@ class FilmRollsData {
       // kaynak klasör: wetransfer-ecef6d
     ),
     FilmRoll(
-      id: 'roll-0910',
+      id: 'rulo-12',
       title: 'İsimsiz Rulo 12',
       frameCount: 8,
       orientations: 'llllllll',
@@ -268,7 +268,7 @@ class FilmRollsData {
       // kaynak klasör: 0910
     ),
     FilmRoll(
-      id: 'roll-01',
+      id: 'rulo-13',
       title: 'İsimsiz Rulo 13',
       frameCount: 27,
       orientations: 'lllllllllllllllllllllllllll',
@@ -277,7 +277,7 @@ class FilmRollsData {
       // kaynak klasör: 1
     ),
     FilmRoll(
-      id: 'roll-02',
+      id: 'rulo-14',
       title: 'İsimsiz Rulo 14',
       frameCount: 22,
       orientations: 'lllpllllllllllllllllll',
@@ -286,7 +286,7 @@ class FilmRollsData {
       // kaynak klasör: 2
     ),
     FilmRoll(
-      id: 'roll-03',
+      id: 'rulo-15',
       title: 'İsimsiz Rulo 15',
       frameCount: 30,
       orientations: 'lllplllllppllllpppplplplllllll',
@@ -295,7 +295,7 @@ class FilmRollsData {
       // kaynak klasör: 3
     ),
     FilmRoll(
-      id: 'roll-04',
+      id: 'rulo-16',
       title: 'İsimsiz Rulo 16',
       frameCount: 25,
       orientations: 'llllllllllllpllllllllplll',
@@ -304,7 +304,7 @@ class FilmRollsData {
       // kaynak klasör: 4
     ),
     FilmRoll(
-      id: 'roll-05',
+      id: 'rulo-17',
       title: 'İsimsiz Rulo 17',
       frameCount: 4,
       orientations: 'llll',
@@ -313,7 +313,7 @@ class FilmRollsData {
       // kaynak klasör: 5
     ),
     FilmRoll(
-      id: 'roll-x1',
+      id: 'rulo-18',
       title: 'İsimsiz Rulo 18',
       frameCount: 53,
       orientations: 'lllllllllllllllllllllllllllllllllllllllllllllllllllll',
@@ -322,7 +322,7 @@ class FilmRollsData {
       // kaynak klasör: asdasd
     ),
     FilmRoll(
-      id: 'roll-x2',
+      id: 'rulo-19',
       title: 'İsimsiz Rulo 19',
       frameCount: 31,
       orientations: 'lllplllllppllllpppplplpplllllll',

@@ -59,3 +59,4 @@ public/
 # Environment files
 .env
 .env.local
+tool/duplicates.json

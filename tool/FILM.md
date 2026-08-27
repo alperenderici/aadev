@@ -50,6 +50,11 @@ Doldurulabilecek alanlar — hepsi isteğe bağlı, sadece dolu olanlar ekranda 
 (`Kodak Ektar · 2025`). Bilinmiyorsa `İsimsiz Rulo N` kalır; lab ve makine
 bilgisi başlığa değil künye alanlarına yazılır.
 
+**Rulo id kuralı:** id hem klasör adı hem URL olduğu için başlıkla aynı mantığı
+izler. Film adı bilinen rulo `ektar-2025` gibi anlamlı bir id alır; bilinmeyen
+rulo `rulo-07` olur ve `İsimsiz Rulo 7` başlığıyla eşleşir. Böylece taramanın
+geldiği klasörün adı (kişi adı, lab adı, `asdasd`) adrese sızmaz.
+
 ## Yan yatmış kareleri düzeltme
 
 Lab taramalarında EXIF yön etiketi yok ve bazı rulolar bütünüyle yan ya da ters
@@ -77,6 +82,37 @@ Bu, dönmüş kareleri **orijinal taramadan** yeniden üretir (mevcut WebP'yi
 
 `tool/film_sources.json` her kareyi kaynak tarama dosyasına bağlar. Orijinallerin
 durduğu klasörü taşırsan bu dosyadaki `root` değerini güncelle.
+
+## Mükerrer kareleri temizleme
+
+Aynı negatif birden fazla klasöre farklı taramalarla girmiş olabiliyor. Dosyalar
+bayt bayt aynı olmadığı için `md5` işe yaramaz; algısal parmak izi gerekir:
+
+```bash
+python3 tool/find_duplicates.py           # tool/duplicates.json uretir
+open http://localhost:8000/tool/duplicates_review.html
+```
+
+Sayfa üç bölüm gösterir:
+
+- **Örtüşen rulolar** — bir rulo baştan sona başka bir rulonun kopyasıysa
+  (`rulo-15` ↔ `rulo-19` %97 gibi) tek düğmeyle o rulonun bütün kopyaları
+  işaretlenir. Düğme hiçbir grubu boşaltmaz, her grupta en az bir kare bırakır.
+- **Mükerrer gruplar** — kare kare karşılaştırma. Silmek istediğine tıkla.
+  Yeşil yazılı boyut o grubun en büyük dosyası, yani genelde daha iyi tarama.
+- **Parmak izi çıkmayan kareler** — fazla düz/soluk oldukları için güvenilir
+  eşleştirilemeyenler; bunlara gözünle bakman gerekiyor.
+
+Bitince **deletions.json indir** deyip:
+
+```bash
+python3 tool/apply_deletions.py ~/Downloads/deletions.json --dry-run   # once dene
+python3 tool/apply_deletions.py ~/Downloads/deletions.json
+```
+
+Kareler 001..N boşluksuz numaralandığı için silme sonrası kalanlar yeniden
+numaralanır; `frameCount`, `orientations`, `coverIndex` ve `film_sources.json`
+otomatik güncellenir. Bütün kareleri silinen rulo katalogdan tamamen kalkar.
 
 ## Yayına alma
 
