@@ -28,7 +28,7 @@ class FilmRollsData {
       filmStock: 'Kodak Ektar 100',
       shotOn: '2025',
       frameCount: 10,
-      orientations: 'pplppplppp',
+      orientations: 'llllllllll',
       sortKey: 950,
       coverIndex: 8,
       // kaynak klasör: ektar-2025
@@ -41,7 +41,7 @@ class FilmRollsData {
       developedOn: '2025-06-04',
       notes: 'İki ayrı tarama tek klasörde birleşti.',
       frameCount: 60,
-      orientations: 'ppppppppppppppppppppppppppplppllpplplpplpppppplpplpplppppppp',
+      orientations: 'ppllplpplllllllllllpppppllpllpllpllpllllllllllllllpllllllllp',
       sortKey: 940,
       coverIndex: 25,
       // kaynak klasör: fotograffabrikasi_2-adet-tarama_2025-06-04_1649
@@ -51,7 +51,7 @@ class FilmRollsData {
       title: 'İsimsiz Rulo 2',
       developedAt: '1885 Film Lab Studio',
       frameCount: 30,
-      orientations: 'ppppppppppppplpppppppppppppppp',
+      orientations: 'pplplplllppppllpllpllllplllllp',
       sortKey: 930,
       coverIndex: 25,
       // kaynak klasör: 1885filmlabstudio
@@ -62,7 +62,7 @@ class FilmRollsData {
       filmStock: 'Kodak 400',
       developedAt: 'Fotoğraf Fabrikası',
       frameCount: 34,
-      orientations: 'pppppppplplllpppppppppppppppppplpp',
+      orientations: 'lllllllllplllpllllllllplppllllllpp',
       sortKey: 920,
       coverIndex: 24,
       // kaynak klasör: kodak400 fotograf fabrikasi
@@ -72,7 +72,7 @@ class FilmRollsData {
       title: 'Kodak 400',
       filmStock: 'Kodak 400',
       frameCount: 33,
-      orientations: 'ppppppppppppppppppppppppppppppppp',
+      orientations: 'llllllllplllpllllllllplppllplllpp',
       sortKey: 910,
       coverIndex: 29,
       // kaynak klasör: Kodak 400
@@ -82,7 +82,7 @@ class FilmRollsData {
       title: 'İsimsiz Rulo 3',
       shotOn: '2024',
       frameCount: 26,
-      orientations: 'llllllllllllllllllllllllll',
+      orientations: 'lllllllplllllllllllllpppll',
       sortKey: 900,
       coverIndex: 1,
       // kaynak klasör: 2024-05-10_0916
@@ -92,7 +92,7 @@ class FilmRollsData {
       title: 'İsimsiz Rulo 4',
       shotOn: '2024',
       frameCount: 22,
-      orientations: 'llllllllllllllllllllll',
+      orientations: 'lllllllllllpplpllpllll',
       sortKey: 890,
       coverIndex: 15,
       // kaynak klasör: 2024-05-10_1521
@@ -103,7 +103,7 @@ class FilmRollsData {
       filmStock: 'Kodak Ektar 100',
       shotOn: '2022',
       frameCount: 16,
-      orientations: 'pppppllllllppppl',
+      orientations: 'pppppllllllppppp',
       sortKey: 820,
       coverIndex: 10,
       // kaynak klasör: Kodak Ektar2022
@@ -124,7 +124,7 @@ class FilmRollsData {
       filmStock: 'Ilford FP4',
       notes: 'Tarihi geçmiş film.',
       frameCount: 21,
-      orientations: 'pppppppppppppppppllpp',
+      orientations: 'lpllppplllllplllpllll',
       sortKey: 800,
       coverIndex: 1,
       // kaynak klasör: bayat-ilford fp4
@@ -146,7 +146,7 @@ class FilmRollsData {
       filmStock: 'Kodak Ektar 100',
       shotOn: '2020',
       frameCount: 33,
-      orientations: 'ppppppppppppppppppplppppppppppppp',
+      orientations: 'llllllllllllllllllllllpllllplllpp',
       sortKey: 780,
       coverIndex: 8,
       // kaynak klasör: Ektar2020
@@ -157,7 +157,7 @@ class FilmRollsData {
       filmStock: 'Kodak Portra 400',
       developedAt: 'Tunç Foto',
       frameCount: 35,
-      orientations: 'lllllllllllllllllllllllllllllllllll',
+      orientations: 'lllplpplpplpllllplllpllllllllllpppp',
       sortKey: 770,
       coverIndex: 31,
       // kaynak klasör: tuncfoto-kodakportra400
@@ -188,7 +188,7 @@ class FilmRollsData {
       title: 'Pan 400',
       filmStock: 'Pan 400',
       frameCount: 20,
-      orientations: 'llllllllllllllllllll',
+      orientations: 'lllppllllpllplplllll',
       sortKey: 740,
       coverIndex: 19,
       // kaynak klasör: pan400
@@ -207,7 +207,7 @@ class FilmRollsData {
       title: 'İsimsiz Rulo 6',
       camera: 'Ayça\'nın makinesi',
       frameCount: 38,
-      orientations: 'llplllllllllllllpllllllllllllllllllllp',
+      orientations: 'llppllllllllllllpllllllllllllllllllllp',
       sortKey: 720,
       coverIndex: 11,
       // kaynak klasör: Ayçamak.
@@ -280,7 +280,7 @@ class FilmRollsData {
       id: 'roll-02',
       title: 'İsimsiz Rulo 14',
       frameCount: 22,
-      orientations: 'llllllllllllllllllllll',
+      orientations: 'lllpllllllllllllllllll',
       sortKey: 140,
       coverIndex: 9,
       // kaynak klasör: 2
@@ -307,7 +307,7 @@ class FilmRollsData {
       id: 'roll-05',
       title: 'İsimsiz Rulo 17',
       frameCount: 4,
-      orientations: 'lppp',
+      orientations: 'llll',
       sortKey: 110,
       coverIndex: 3,
       // kaynak klasör: 5
