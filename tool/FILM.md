@@ -120,3 +120,12 @@ otomatik güncellenir. Bütün kareleri silinen rulo katalogdan tamamen kalkar.
 flutter build web --release
 firebase deploy --only hosting
 ```
+
+**Rulo sildiysen ya da yeniden adlandırdıysan** önce `build/web`'i temizle:
+
+```bash
+rm -rf build/web && flutter build web --release
+```
+
+`flutter build web`, `web/` klasörünü `build/web`'e kopyalarken artık var olmayan
+klasörleri silmiyor. Temizlemezsen eski adlarıyla boş dizinler deploy'a sızar.
