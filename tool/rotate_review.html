@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>35mm · Kare Yönü Düzeltme</title>
+<style>
+  :root {
+    --bg: #0b0b0c; --surface: #141416; --border: #2a2a2e;
+    --text: #ededef; --muted: #9a9aa2; --faint: #6a6a72; --accent: #e0a458;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10; background: rgba(11,11,12,.94);
+    backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+    padding: 14px 24px; display: flex; gap: 18px; align-items: center; flex-wrap: wrap;
+  }
+  h1 { font: bold 17px/1 ui-monospace, monospace; margin: 0; letter-spacing: -.3px; }
+  .stat { color: var(--muted); font: 12px/1 ui-monospace, monospace; letter-spacing: .5px; }
+  .stat b { color: var(--accent); font-weight: 600; }
+  .spacer { flex: 1; }
+  button {
+    background: var(--surface); color: var(--text); border: 1px solid var(--border);
+    border-radius: 6px; padding: 8px 14px; font-size: 13px; cursor: pointer;
+  }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: var(--accent); color: #1a1204; border-color: var(--accent); font-weight: 600; }
+  .hint {
+    padding: 16px 24px; color: var(--muted); border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .hint kbd {
+    background: #000; border: 1px solid var(--border); border-radius: 4px;
+    padding: 1px 6px; font: 12px ui-monospace, monospace; color: var(--text);
+  }
+  section { padding: 28px 24px 8px; }
+  section h2 { font-size: 16px; margin: 0 0 2px; }
+  section .meta { color: var(--faint); font: 11px/1 ui-monospace, monospace; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+  .rollbar { display: flex; gap: 6px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
+  .rollbar span { color: var(--faint); font: 11px ui-monospace, monospace; letter-spacing: 1px; margin-right: 4px; }
+  .rollbar button { padding: 5px 10px; font-size: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .cell {
+    position: relative; aspect-ratio: 1; background: #000; border: 1px solid transparent;
+    border-radius: 4px; overflow: hidden; cursor: pointer; user-select: none;
+  }
+  .cell:hover { border-color: var(--accent); }
+  .cell.changed { border-color: var(--accent); }
+  .cell img {
+    position: absolute; inset: 0; margin: auto; max-width: 100%; max-height: 100%;
+    display: block; transition: transform .18s ease;
+  }
+  .cell img.r90  { transform: rotate(90deg)  scale(var(--fit)); }
+  .cell img.r180 { transform: rotate(180deg); }
+  .cell img.r270 { transform: rotate(270deg) scale(var(--fit)); }
+  .tag {
+    position: absolute; left: 5px; bottom: 5px; background: rgba(0,0,0,.72);
+    padding: 2px 6px; border-radius: 3px; font: 10px ui-monospace, monospace;
+    letter-spacing: .5px; color: var(--muted);
+  }
+  .tag.on { color: #1a1204; background: var(--accent); font-weight: 700; }
+</style>
+</head>
+<body>
+<header>
+  <h1>35mm · yön düzeltme</h1>
+  <span class="stat" id="stat"></span>
+  <span class="spacer"></span>
+  <button id="reset">Sıfırla</button>
+  <button class="primary" id="save">rotations.json indir</button>
+</header>
+
+<p class="hint">
+  Bir rulonun tamamı aynı yöne yatmışsa önce <b>TÜM RULO</b> düğmelerini kullan,
+  sonra kalan tek tük kareyi düzelt. Tek kare için: <b>tıkla</b> — her tıklama 90°
+  saat yönünde çevirir, <kbd>Shift</kbd>+tıkla ters yöne çevirir.
+  Doğru duran karelere dokunma. Seçimlerin tarayıcıda saklanır, sayfayı kapatsan da kaybolmaz.
+  Bitince <b>rotations.json indir</b> deyip şunu çalıştır:
+  <kbd>python3 tool/apply_rotations.py ~/Downloads/rotations.json</kbd>
+</p>
+
+<main id="main"></main>
+
+<script>
+const KEY = 'film-rotations-v1';
+let rot = {};
+try { rot = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) { rot = {}; }
+
+let total = 0;
+
+function pad(n) { return String(n).padStart(3, '0'); }
+function keyOf(slug, i) { return slug + '/' + i; }
+
+function refreshStat() {
+  const n = Object.keys(rot).length;
+  document.getElementById('stat').innerHTML =
+    `<b>${n}</b> kare çevrildi · ${total} kare toplam`;
+}
+
+function applyClass(cell, slug, i) {
+  const img = cell.querySelector('img');
+  const tag = cell.querySelector('.tag');
+  const deg = rot[keyOf(slug, i)] || 0;
+  img.className = deg ? 'r' + deg : '';
+  cell.classList.toggle('changed', deg !== 0);
+  tag.textContent = deg ? deg + '°' : pad(i + 1);
+  tag.classList.toggle('on', deg !== 0);
+}
+
+// A 90° turn puts the image's long edge across the cell's short edge, so scale
+// it back down by its own aspect ratio to keep the whole frame visible.
+function setFit(cell, img) {
+  const r = img.naturalWidth / img.naturalHeight;
+  cell.style.setProperty('--fit', (r > 1 ? 1 / r : r).toFixed(4));
+}
+
+fetch('film_sources.json').then(r => r.json()).then(data => {
+  const main = document.getElementById('main');
+  const slugs = Object.keys(data.rolls);
+
+  for (const slug of slugs) {
+    const roll = data.rolls[slug];
+    const count = roll.files.length;
+    total += count;
+
+    const sec = document.createElement('section');
+    sec.innerHTML = `<h2>${slug}</h2><div class="meta">${count} kare · ${roll.folder}</div>`;
+
+    // Whole rolls come back from the lab turned the same way, so fixing a roll
+    // in one go and then correcting the odd frame beats clicking every tile.
+    const bar = document.createElement('div');
+    bar.className = 'rollbar';
+    bar.innerHTML = '<span>TÜM RULO</span>';
+    const cells = [];
+    for (const [text, delta] of [['↻ 90°', 90], ['180°', 180], ['↺ 90°', 270], ['temizle', null]]) {
+      const b = document.createElement('button');
+      b.textContent = text;
+      b.addEventListener('click', () => {
+        for (let i = 0; i < count; i++) {
+          const k = keyOf(slug, i);
+          if (delta === null) {
+            delete rot[k];
+          } else {
+            const deg = ((rot[k] || 0) + delta) % 360;
+            if (deg === 0) delete rot[k]; else rot[k] = deg;
+          }
+        }
+        localStorage.setItem(KEY, JSON.stringify(rot));
+        cells.forEach((cell, i) => applyClass(cell, slug, i));
+        refreshStat();
+      });
+      bar.appendChild(b);
+    }
+    sec.appendChild(bar);
+
+    const grid = document.createElement('div');
+    grid.className = 'grid';
+
+    for (let i = 0; i < count; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.innerHTML =
+        `<img loading="lazy" src="../web/film/${slug}/t/${pad(i + 1)}.webp">` +
+        `<span class="tag"></span>`;
+      const img = cell.querySelector('img');
+      img.addEventListener('load', () => setFit(cell, img), { once: true });
+
+      cell.addEventListener('click', e => {
+        const k = keyOf(slug, i);
+        const step = e.shiftKey ? 270 : 90;
+        const deg = ((rot[k] || 0) + step) % 360;
+        if (deg === 0) delete rot[k]; else rot[k] = deg;
+        localStorage.setItem(KEY, JSON.stringify(rot));
+        applyClass(cell, slug, i);
+        refreshStat();
+      });
+
+      applyClass(cell, slug, i);
+      cells.push(cell);
+      grid.appendChild(cell);
+    }
+
+    sec.appendChild(grid);
+    main.appendChild(sec);
+  }
+  refreshStat();
+});
+
+document.getElementById('save').addEventListener('click', () => {
+  const out = {};
+  for (const [k, deg] of Object.entries(rot)) {
+    const idx = k.lastIndexOf('/');
+    const slug = k.slice(0, idx);
+    (out[slug] ||= {})[k.slice(idx + 1)] = deg;
+  }
+  const blob = new Blob([JSON.stringify(out, null, 1)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'rotations.json';
+  a.click();
+});
+
+document.getElementById('reset').addEventListener('click', () => {
+  if (!confirm('Bütün çevirme seçimlerin silinecek. Emin misin?')) return;
+  rot = {};
+  localStorage.removeItem(KEY);
+  location.reload();
+});
+</script>
+</body>
+</html>

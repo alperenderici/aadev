@@ -1,44 +1,72 @@
 User-agent: *
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 # Generative-engine / AI assistant crawlers (explicitly allowed for GEO)
 User-agent: GPTBot
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: Claude-User
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: Meta-ExternalAgent
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 User-agent: CCBot
 Allow: /
+Disallow: /35mm
+Disallow: /film/
 
 Sitemap: https://alialperenderici.dev/sitemap.xml

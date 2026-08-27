@@ -10,6 +10,9 @@ import 'package:aad/core/providers/locale_provider.dart';
 import 'package:aad/core/services/analytics_service.dart';
 import 'package:aad/features/home/pages/home_page.dart';
 import 'package:aad/features/generative_art/pages/generative_art_page.dart';
+import 'package:aad/features/film/data/film_rolls_data.dart';
+import 'package:aad/features/film/pages/film_gallery_page.dart';
+import 'package:aad/features/film/pages/film_roll_page.dart';
 import 'package:aad/firebase_options.dart';
 
 void main() async {
@@ -60,7 +63,27 @@ class MyApp extends ConsumerWidget {
       routes: {
         '/': (context) => const SelectionArea(child: HomePage()),
         '/generative-art': (context) => const GenerativeArtPage(),
+        '/35mm': (context) => const FilmGalleryPage(),
       },
+
+      // `/35mm/<roll-id>` is generated per roll so each contact sheet has its
+      // own shareable address; an unknown id falls back to the archive index.
+      onGenerateRoute: _onGenerateRoute,
+    );
+  }
+
+  Route<dynamic>? _onGenerateRoute(RouteSettings settings) {
+    final name = settings.name ?? '';
+    if (!name.startsWith('/35mm/')) return null;
+
+    final rollId = name.substring('/35mm/'.length);
+    final roll = FilmRollsData.byId(rollId);
+
+    return MaterialPageRoute<void>(
+      settings: settings,
+      builder: (context) => roll == null
+          ? const FilmGalleryPage()
+          : FilmRollPage(roll: roll),
     );
   }
 }
