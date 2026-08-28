@@ -50,10 +50,10 @@ class FilmRollsData {
       id: 'rulo-02',
       title: 'İsimsiz Rulo 2',
       developedAt: '1885 Film Lab Studio',
-      frameCount: 28,
-      orientations: 'pplplplllppppllpllpllplllllp',
+      frameCount: 26,
+      orientations: 'pplplplllppppllpllpllplllp',
       sortKey: 930,
-      coverIndex: 23,
+      coverIndex: 14,
       // kaynak klasör: 1885filmlabstudio
     ),
     FilmRoll(
@@ -158,7 +158,7 @@ class FilmRollsData {
       frameCount: 35,
       orientations: 'lllplpplpplpllllpllppllplllllllpppp',
       sortKey: 770,
-      coverIndex: 31,
+      coverIndex: 15,
       // kaynak klasör: tuncfoto-kodakportra400
     ),
     FilmRoll(
