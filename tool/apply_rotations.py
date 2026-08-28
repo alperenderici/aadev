@@ -4,10 +4,18 @@
     python3 tool/apply_rotations.py ~/Downloads/rotations.json
 
 For every frame listed in rotations.json this re-encodes both sizes from the
-ORIGINAL scan rather than turning the existing WebP, so a rotated frame loses no
-quality relative to one that was already upright. It then rewrites the affected
-`orientations` strings in film_rolls_data.dart, since a 90° turn swaps a frame
-between portrait and landscape.
+ORIGINAL scan rather than turning the WebP, so a rotated frame loses no quality
+relative to one that was already upright.
+
+Because the source is the original, the turn a frame already carries has to be
+added to the new one — the review page shows the frame as it stands now, so a
+second pass over the same frame means "turn it further", not "turn it this far
+from the original". tool/film_rotations.json remembers each frame's total, and
+this script keeps it up to date. Without that, a second pass would silently undo
+the first. Run tool/rebuild_rotation_ledger.py if the file is ever lost.
+
+Frames whose shape ends up different are moved between portrait and landscape in
+film_rolls_data.dart.
 
 Needs: pillow  ->  python3 -m pip install pillow
 """
@@ -21,6 +29,7 @@ from PIL import Image
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCES = os.path.join(ROOT, "tool", "film_sources.json")
+LEDGER = os.path.join(ROOT, "tool", "film_rotations.json")
 DART = os.path.join(ROOT, "lib", "features", "film", "data", "film_rolls_data.dart")
 
 FULL_EDGE, FULL_Q = 1800, 78
@@ -42,6 +51,7 @@ def main():
 
     rotations = json.load(open(sys.argv[1], encoding="utf-8"))
     sources = json.load(open(SOURCES, encoding="utf-8"))
+    ledger = json.load(open(LEDGER, encoding="utf-8")) if os.path.exists(LEDGER) else {}
     src_root = sources["root"]
 
     if not os.path.isdir(src_root):
@@ -50,8 +60,7 @@ def main():
             f"tool/film_sources.json icindeki 'root' degerini guncelle."
         )
 
-    # slug -> {index: 'l' | 'p'} for the frames whose shape changed
-    flipped = {}
+    shapes = {}   # slug -> {index: 'l' | 'p'} for frames to fix in the catalogue
     done = 0
 
     for slug, frames in rotations.items():
@@ -62,10 +71,14 @@ def main():
 
         out_dir = os.path.join(ROOT, "web", "film", slug)
 
-        for index_text, degrees in frames.items():
+        for index_text, requested in frames.items():
             index = int(index_text)
-            degrees = int(degrees) % 360
-            if degrees == 0:
+            key = f"{slug}/{index}"
+            already = int(ledger.get(key, 0))
+            total = (already + int(requested)) % 360
+
+            if index >= len(roll["files"]):
+                print(f"!! {key}: rulodaki kare sayisini asiyor, atlandi")
                 continue
 
             src = os.path.join(src_root, roll["folder"], roll["files"][index])
@@ -75,8 +88,8 @@ def main():
 
             with Image.open(src) as image:
                 image = image.convert("RGB")
-                # PIL rotates counter-clockwise; the tool records clockwise.
-                turned = image.rotate(-degrees, expand=True)
+                # PIL turns counter-clockwise; the review page records clockwise.
+                turned = image.rotate(-total, expand=True) if total else image
 
                 number = f"{index + 1:03d}"
                 resized(turned, FULL_EDGE).save(
@@ -87,27 +100,33 @@ def main():
                     os.path.join(out_dir, "t", f"{number}.webp"),
                     "WEBP", quality=THUMB_Q, method=4,
                 )
+                w, h = turned.size
 
-                if degrees in (90, 270):
-                    w, h = turned.size
-                    flipped.setdefault(slug, {})[index] = "l" if w >= h else "p"
+            shapes.setdefault(slug, {})[index] = "l" if w >= h else "p"
+            if total:
+                ledger[key] = total
+            else:
+                ledger.pop(key, None)
 
             done += 1
-            print(f"  {slug}/{index + 1:03d}  {degrees}°")
+            note = f" (onceki {already}° + {requested}°)" if already else ""
+            print(f"  {key.replace('/', '/' )}  -> {total}°{note}")
 
     print(f"\n{done} kare yeniden uretildi")
 
-    if flipped:
-        update_orientations(flipped)
-        print(f"{sum(len(v) for v in flipped.values())} karenin yönü "
-              f"film_rolls_data.dart icinde guncellendi")
+    json.dump(ledger, open(LEDGER, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+
+    if shapes:
+        changed = update_orientations(shapes)
+        print(f"{changed} karenin yönü film_rolls_data.dart icinde guncellendi")
 
 
-def update_orientations(flipped):
-    """Rewrite the orientations string of every roll whose frames changed shape."""
+def update_orientations(shapes):
+    """Set the orientation character of every frame this run re-encoded."""
     dart = open(DART, encoding="utf-8").read()
+    changed = 0
 
-    for slug, changes in flipped.items():
+    for slug, frames in shapes.items():
         pattern = re.compile(
             r"(id: '" + re.escape(slug) + r"',.*?orientations: ')([lp]+)(')",
             re.S,
@@ -118,14 +137,14 @@ def update_orientations(flipped):
             continue
 
         chars = list(match.group(2))
-        for index, char in changes.items():
-            if index < len(chars):
+        for index, char in frames.items():
+            if index < len(chars) and chars[index] != char:
                 chars[index] = char
-        dart = (
-            dart[: match.start(2)] + "".join(chars) + dart[match.end(2) :]
-        )
+                changed += 1
+        dart = dart[: match.start(2)] + "".join(chars) + dart[match.end(2):]
 
     open(DART, "w", encoding="utf-8").write(dart)
+    return changed
 
 
 if __name__ == "__main__":

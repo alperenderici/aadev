@@ -80,6 +80,20 @@ Bu, dönmüş kareleri **orijinal taramadan** yeniden üretir (mevcut WebP'yi
 çevirmez, yani kalite kaybı olmaz) ve `film_rolls_data.dart` içindeki
 `orientations` dizgesini günceller.
 
+Döndürmeler **birikimlidir**: inceleme sayfası kareyi *o anki* haliyle
+gösterdiği için, ikinci bir turda verdiğin açı "orijinale göre şu kadar çevir"
+değil, "bulunduğu yerden şu kadar daha çevir" demektir. Kaynak orijinal tarama
+olduğundan, karenin halihazırda taşıdığı açının üstüne eklenmesi gerekir; bunu
+`tool/film_rotations.json` tutar ve `apply_rotations.py` her çalışmada günceller.
+Bu dosya olmasaydı ikinci tur birinciyi sessizce geri alırdı.
+
+Dosya kaybolursa mevcut kareleri orijinallerin dört dönüşüyle karşılaştırıp
+yeniden çıkarır:
+
+```bash
+python3 tool/rebuild_rotation_ledger.py
+```
+
 `tool/film_sources.json` her kareyi kaynak tarama dosyasına bağlar. Orijinallerin
 durduğu klasörü taşırsan bu dosyadaki `root` değerini güncelle.
 

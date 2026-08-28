@@ -40,10 +40,10 @@ class FilmRollsData {
       developedAt: 'Fotoğraf Fabrikası',
       developedOn: '2025-06-04',
       notes: 'İki ayrı tarama tek klasörde birleşti.',
-      frameCount: 59,
-      orientations: 'ppllplpplllllllllllpppppllpllpllllpllllllllllllllpllllllllp',
+      frameCount: 46,
+      orientations: 'llpllllllllppppllpllpllllplllllllllllllpllllll',
       sortKey: 940,
-      coverIndex: 25,
+      coverIndex: 16,
       // kaynak klasör: fotograffabrikasi_2-adet-tarama_2025-06-04_1649
     ),
     FilmRoll(
@@ -61,10 +61,10 @@ class FilmRollsData {
       title: 'Kodak 400 · Fotoğraf Fabrikası',
       filmStock: 'Kodak 400',
       developedAt: 'Fotoğraf Fabrikası',
-      frameCount: 34,
-      orientations: 'lllllllllplllpllllllllplppllllllpp',
+      frameCount: 33,
+      orientations: 'llllllllplllpllllllllplppllllllpp',
       sortKey: 920,
-      coverIndex: 24,
+      coverIndex: 23,
       // kaynak klasör: kodak400 fotograf fabrikasi
     ),
     FilmRoll(
@@ -80,8 +80,8 @@ class FilmRollsData {
       id: 'rulo-03',
       title: 'İsimsiz Rulo 3',
       shotOn: '2024',
-      frameCount: 26,
-      orientations: 'lllllllplllllllllllllpppll',
+      frameCount: 24,
+      orientations: 'lllpllpllllllllllllpppll',
       sortKey: 900,
       coverIndex: 1,
       // kaynak klasör: 2024-05-10_0916
@@ -90,10 +90,10 @@ class FilmRollsData {
       id: 'rulo-04',
       title: 'İsimsiz Rulo 4',
       shotOn: '2024',
-      frameCount: 22,
-      orientations: 'lllllllllllpplpllpllll',
+      frameCount: 19,
+      orientations: 'llllllllllppppplplp',
       sortKey: 890,
-      coverIndex: 15,
+      coverIndex: 14,
       // kaynak klasör: 2024-05-10_1521
     ),
     FilmRoll(
@@ -101,20 +101,20 @@ class FilmRollsData {
       title: 'Kodak Ektar · 2022',
       filmStock: 'Kodak Ektar 100',
       shotOn: '2022',
-      frameCount: 16,
-      orientations: 'pppppllllllppppp',
+      frameCount: 13,
+      orientations: 'ppppplllllppp',
       sortKey: 820,
-      coverIndex: 10,
+      coverIndex: 9,
       // kaynak klasör: Kodak Ektar2022
     ),
     FilmRoll(
       id: 'fomapan-400',
       title: 'Fomapan 400',
       filmStock: 'Fomapan 400',
-      frameCount: 25,
-      orientations: 'llpllpppllllplplllplllllp',
+      frameCount: 23,
+      orientations: 'llpllppplllpplllplllllp',
       sortKey: 810,
-      coverIndex: 12,
+      coverIndex: 11,
       // kaynak klasör: Fomopan400
     ),
     FilmRoll(
@@ -122,8 +122,8 @@ class FilmRollsData {
       title: 'Ilford FP4 · Bayat',
       filmStock: 'Ilford FP4',
       notes: 'Tarihi geçmiş film.',
-      frameCount: 21,
-      orientations: 'lpllppplllllplllpllll',
+      frameCount: 18,
+      orientations: 'lpllpplllplllpllll',
       sortKey: 800,
       coverIndex: 1,
       // kaynak klasör: bayat-ilford fp4
@@ -133,8 +133,8 @@ class FilmRollsData {
       title: 'Fujifilm 100 · Bayat',
       filmStock: 'Fujifilm 100 ASA',
       notes: 'Tarihi geçmiş film.',
-      frameCount: 23,
-      orientations: 'llpllllppppllllpllpplpp',
+      frameCount: 22,
+      orientations: 'llpllllppppllllplpplpp',
       sortKey: 790,
       coverIndex: 11,
       // kaynak klasör: fuji 100 asa -bayat
@@ -144,10 +144,10 @@ class FilmRollsData {
       title: 'Kodak Ektar · 2020',
       filmStock: 'Kodak Ektar 100',
       shotOn: '2020',
-      frameCount: 33,
-      orientations: 'llllllllllllllllllllllpllllplllpp',
+      frameCount: 29,
+      orientations: 'llllllllllllllllllllplllpllpp',
       sortKey: 780,
-      coverIndex: 8,
+      coverIndex: 6,
       // kaynak klasör: Ektar2020
     ),
     FilmRoll(
@@ -156,7 +156,7 @@ class FilmRollsData {
       filmStock: 'Kodak Portra 400',
       developedAt: 'Tunç Foto',
       frameCount: 35,
-      orientations: 'lllplpplpplpllllplllpllllllllllpppp',
+      orientations: 'lllplpplpplpllllpllppllplllllllpppp',
       sortKey: 770,
       coverIndex: 31,
       // kaynak klasör: tuncfoto-kodakportra400
@@ -176,27 +176,27 @@ class FilmRollsData {
       id: 'portra',
       title: 'Kodak Portra',
       filmStock: 'Kodak Portra',
-      frameCount: 32,
-      orientations: 'lpplpppppplllplllplppplllllllpll',
+      frameCount: 30,
+      orientations: 'lpplpppppplllpllplpppllllllpll',
       sortKey: 750,
-      coverIndex: 26,
+      coverIndex: 24,
       // kaynak klasör: portra
     ),
     FilmRoll(
       id: 'pan-400',
       title: 'Pan 400',
       filmStock: 'Pan 400',
-      frameCount: 20,
-      orientations: 'lllppllllpllplplllll',
+      frameCount: 19,
+      orientations: 'lllpllllpllplplllll',
       sortKey: 740,
-      coverIndex: 19,
+      coverIndex: 18,
       // kaynak klasör: pan400
     ),
     FilmRoll(
       id: 'rulo-05',
       title: 'İsimsiz Rulo 5',
-      frameCount: 59,
-      orientations: 'plllllllppplppllllplpppllplllppplplplllllllllllllllllllllll',
+      frameCount: 57,
+      orientations: 'plllllllppplppllllplpppllplllppplplplllllllllllllllllllll',
       sortKey: 730,
       coverIndex: 23,
       // kaynak klasör: Pro foto
@@ -205,38 +205,37 @@ class FilmRollsData {
       id: 'rulo-06',
       title: 'İsimsiz Rulo 6',
       camera: 'Ayça\'nın makinesi',
-      frameCount: 38,
-      orientations: 'llppllllllllllllpllllllllllllllllllllp',
+      frameCount: 36,
+      orientations: 'llpplllllllllllplllllllllllllllllllp',
       sortKey: 720,
-      coverIndex: 11,
+      coverIndex: 10,
       // kaynak klasör: Ayçamak.
     ),
     FilmRoll(
       id: 'rulo-07',
       title: 'İsimsiz Rulo 7',
       camera: 'Yiğit\'in makinesi',
-      frameCount: 18,
-      orientations: 'lllllllpppllpllpll',
+      frameCount: 5,
+      orientations: 'pppll',
       sortKey: 710,
-      coverIndex: 16,
       // kaynak klasör: Yiğitin makina
     ),
     FilmRoll(
       id: 'rulo-08',
       title: 'İsimsiz Rulo 8',
-      frameCount: 24,
-      orientations: 'ppplllllllllpplllllplpll',
+      frameCount: 15,
+      orientations: 'pplllllllllllll',
       sortKey: 700,
-      coverIndex: 6,
+      coverIndex: 5,
       // kaynak klasör: Fıss
     ),
     FilmRoll(
       id: 'rulo-09',
       title: 'İsimsiz Rulo 9',
-      frameCount: 23,
-      orientations: 'lllplllllllllllllppllpl',
+      frameCount: 21,
+      orientations: 'lllllllllllllllppllpl',
       sortKey: 690,
-      coverIndex: 10,
+      coverIndex: 8,
       // kaynak klasör: AA
     ),
     FilmRoll(
@@ -251,10 +250,10 @@ class FilmRollsData {
     FilmRoll(
       id: 'rulo-11',
       title: 'İsimsiz Rulo 11',
-      frameCount: 31,
-      orientations: 'lpllllllplllllllllplllllllllllp',
+      frameCount: 22,
+      orientations: 'plllplllllllpllllllllp',
       sortKey: 670,
-      coverIndex: 11,
+      coverIndex: 7,
       // kaynak klasör: wetransfer-ecef6d
     ),
     FilmRoll(
@@ -268,17 +267,17 @@ class FilmRollsData {
     FilmRoll(
       id: 'rulo-13',
       title: 'İsimsiz Rulo 13',
-      frameCount: 27,
-      orientations: 'lllllllllllllllllllllllllll',
+      frameCount: 11,
+      orientations: 'lllllllllll',
       sortKey: 150,
-      coverIndex: 3,
+      coverIndex: 2,
       // kaynak klasör: 1
     ),
     FilmRoll(
       id: 'rulo-14',
       title: 'İsimsiz Rulo 14',
-      frameCount: 22,
-      orientations: 'lllpllllllllllllllllll',
+      frameCount: 21,
+      orientations: 'lllplllllllllllllllll',
       sortKey: 140,
       coverIndex: 9,
       // kaynak klasör: 2
@@ -286,35 +285,34 @@ class FilmRollsData {
     FilmRoll(
       id: 'rulo-15',
       title: 'İsimsiz Rulo 15',
-      frameCount: 29,
-      orientations: 'lllplllllppllllpppplplpllllll',
+      frameCount: 24,
+      orientations: 'lllllllppllllpppplplllll',
       sortKey: 130,
-      coverIndex: 18,
+      coverIndex: 16,
       // kaynak klasör: 3
     ),
     FilmRoll(
       id: 'rulo-16',
       title: 'İsimsiz Rulo 16',
-      frameCount: 24,
-      orientations: 'lllllllllllpllllllllplll',
+      frameCount: 14,
+      orientations: 'llllllplllllll',
       sortKey: 120,
-      coverIndex: 18,
       // kaynak klasör: 4
     ),
     FilmRoll(
       id: 'rulo-17',
       title: 'İsimsiz Rulo 17',
-      frameCount: 4,
-      orientations: 'llll',
+      frameCount: 3,
+      orientations: 'lll',
       sortKey: 110,
-      coverIndex: 3,
+      coverIndex: 2,
       // kaynak klasör: 5
     ),
     FilmRoll(
       id: 'rulo-18',
       title: 'İsimsiz Rulo 18',
-      frameCount: 23,
-      orientations: 'lllllllllllllllllllllll',
+      frameCount: 21,
+      orientations: 'lllllllllllllllllllll',
       sortKey: 100,
       coverIndex: 3,
       // kaynak klasör: asdasd
