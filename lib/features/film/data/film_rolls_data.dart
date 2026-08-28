@@ -319,14 +319,6 @@ class FilmRollsData {
       coverIndex: 3,
       // kaynak klasör: asdasd
     ),
-    FilmRoll(
-      id: 'rulo-19',
-      title: 'İsimsiz Rulo 19',
-      frameCount: 1,
-      orientations: 'p',
-      sortKey: 90,
-      // kaynak klasör: asdsadddd
-    ),
   ];
 
   /// Total number of frames across every roll.
