@@ -136,7 +136,7 @@ class FilmRollsData {
       frameCount: 22,
       orientations: 'llpllllppppllllplpplpp',
       sortKey: 790,
-      coverIndex: 11,
+      coverIndex: 9,
       // kaynak klasör: fuji 100 asa -bayat
     ),
     FilmRoll(
@@ -169,7 +169,7 @@ class FilmRollsData {
       frameCount: 31,
       orientations: 'pllllpplllllllplplllplpllllllll',
       sortKey: 760,
-      coverIndex: 10,
+      coverIndex: 7,
       // kaynak klasör: tunç-pan400
     ),
     FilmRoll(
@@ -204,7 +204,6 @@ class FilmRollsData {
     FilmRoll(
       id: 'rulo-06',
       title: 'İsimsiz Rulo 6',
-      camera: 'Ayça\'nın makinesi',
       frameCount: 36,
       orientations: 'llpplllllllllllplllllllllllllllllllp',
       sortKey: 720,
