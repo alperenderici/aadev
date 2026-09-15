@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:aad/core/constants/app_constants.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
+import 'package:aad/core/utils/responsive.dart';
+import 'package:aad/shared/widgets/animated_card.dart';
 import 'package:aad/shared/widgets/responsive_section.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -13,96 +15,86 @@ class UpworkServiceSection extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
+    final isMobile = Responsive.isMobile(context);
 
     return ResponsiveSection(
       backgroundColor: theme.colorScheme.surface,
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppConstants.spacingL,
-          vertical: AppConstants.spacingM,
-        ),
-        decoration: BoxDecoration(
-          color: theme.colorScheme.primary.withValues(alpha: 0.04),
-          borderRadius: BorderRadius.circular(AppConstants.radiusM),
-          border: Border.all(
-            color: theme.colorScheme.primary.withValues(alpha: 0.15),
+      child:
+          AnimatedCard(
+                enableHoverEffect: false,
+                padding: const EdgeInsets.all(AppConstants.spacingL),
+                child: isMobile
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          _buildIconAndText(context, l10n, theme),
+                          const SizedBox(height: AppConstants.spacingM),
+                          _buildCta(context, l10n, theme),
+                        ],
+                      )
+                    : Row(
+                        children: [
+                          Expanded(
+                            child: _buildIconAndText(context, l10n, theme),
+                          ),
+                          const SizedBox(width: AppConstants.spacingL),
+                          _buildCta(context, l10n, theme),
+                        ],
+                      ),
+              )
+              .animate()
+              .fadeIn(duration: AppConstants.mediumAnimation)
+              .slideY(begin: 0.1, end: 0),
+    );
+  }
+
+  Widget _buildIconAndText(
+    BuildContext context,
+    AppLocalizations l10n,
+    ThemeData theme,
+  ) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          padding: const EdgeInsets.all(AppConstants.spacingS),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.primary.withValues(alpha: 0.1),
+            borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          ),
+          child: Icon(
+            Icons.work_outline,
+            color: theme.colorScheme.primary,
+            size: 22,
           ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-                  children: [
-                    Icon(
-                      Icons.work_outline,
-                      color: theme.colorScheme.primary,
-                      size: 18,
-                    ),
-                    const SizedBox(width: AppConstants.spacingS),
-                    Expanded(
-                      child: Text(
-                        l10n.translate('upwork_service_title'),
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: theme.colorScheme.primary,
-                        ),
-                      ),
-                    ),
-                  ],
-                )
-                .animate()
-                .fadeIn(duration: AppConstants.mediumAnimation)
-                .slideX(begin: -0.2, end: 0),
-            const SizedBox(height: AppConstants.spacingXS),
-            Text(
-                  l10n.translate('upwork_service_desc'),
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    height: 1.5,
-                    color: theme.textTheme.bodySmall?.color,
-                  ),
-                )
-                .animate()
-                .fadeIn(duration: AppConstants.mediumAnimation, delay: 200.ms)
-                .slideY(begin: 0.2, end: 0),
-            const SizedBox(height: AppConstants.spacingS),
-            InkWell(
-              borderRadius: BorderRadius.circular(AppConstants.radiusS),
-              onTap: () async {
-                final url = Uri.parse(AppConstants.upworkServiceUrl);
-                if (await canLaunchUrl(url)) {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
-                }
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: AppConstants.spacingXS,
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      l10n.translate('upwork_service_cta'),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(width: AppConstants.spacingXS),
-                    Icon(
-                      Icons.arrow_forward,
-                      color: theme.colorScheme.primary,
-                      size: 14,
-                    ),
-                  ],
-                ),
-              ),
-            ).animate().fadeIn(
-              duration: AppConstants.mediumAnimation,
-              delay: 400.ms,
+        const SizedBox(width: AppConstants.spacingM),
+        Expanded(
+          child: Text(
+            l10n.translate('upwork_service_title'),
+            style: theme.textTheme.titleLarge?.copyWith(
+              fontWeight: FontWeight.bold,
             ),
-          ],
+          ),
         ),
-      ),
+      ],
+    );
+  }
+
+  Widget _buildCta(
+    BuildContext context,
+    AppLocalizations l10n,
+    ThemeData theme,
+  ) {
+    return TextButton.icon(
+      onPressed: () async {
+        final url = Uri.parse(AppConstants.upworkServiceUrl);
+        if (await canLaunchUrl(url)) {
+          await launchUrl(url, mode: LaunchMode.externalApplication);
+        }
+      },
+      icon: const Icon(Icons.open_in_new, size: 18),
+      label: Text(l10n.translate('upwork_service_cta')),
     );
   }
 }

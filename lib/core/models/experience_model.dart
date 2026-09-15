@@ -54,7 +54,12 @@ class ExperienceModel {
     final startYear = startDate!.year;
 
     if (isCurrent) {
-      return '$startMonth $startYear - Present';
+      final now = DateTime.now();
+      final startedThisMonth =
+          startDate!.year == now.year && startDate!.month == now.month;
+      return startedThisMonth
+          ? '$startMonth $startYear'
+          : '$startMonth $startYear - Present';
     }
 
     if (endDate == null) return '$startMonth $startYear';

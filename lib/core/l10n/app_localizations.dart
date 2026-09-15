@@ -167,8 +167,6 @@ class AppLocalizations {
 
       // Upwork Service
       'upwork_service_title': 'Freelance Services on Upwork',
-      'upwork_service_desc':
-          'I offer professional Flutter development services on Upwork. Specializing in building scalable, cross-platform app MVPs from Figma designs, ready to grow into production. Let\'s bring your app idea to life!',
       'upwork_service_cta': 'View My Service',
 
       // Events & Conferences
@@ -337,8 +335,6 @@ class AppLocalizations {
 
       // Upwork Hizmeti
       'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',
-      'upwork_service_desc':
-          'Upwork\'te profesyonel Flutter geliştirme hizmetleri sunuyorum. Figma tasarımlarından üretime hazır, ölçeklenebilir cross-platform uygulama MVP\'leri oluşturma konusunda uzmanım. Uygulama fikrinizi hayata geçirelim!',
       'upwork_service_cta': 'Hizmetimi Görüntüle',
 
       // Etkinlikler & Konferanslar
