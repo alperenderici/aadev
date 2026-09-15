@@ -34,7 +34,6 @@ class AppLocalizations {
       'hero_subtitle':
           'Computer Engineering Graduate | Passionate about creating beautiful, performant mobile and web applications.',
       'hero_cta_contact': 'Get in Touch',
-      'hero_cta_cv': 'Download CV',
 
       // About Section
       'about_title': 'About Me',
@@ -59,8 +58,8 @@ class AppLocalizations {
       'social_subtitle': 'Find me on these platforms',
 
       // CV Download Section
-      'cv_title': 'Download Documents',
-      'cv_download': 'Download CV',
+      'cv_title': 'Request Documents',
+      'cv_download': 'Request CV',
       'cv_cover_letter': 'Request Cover Letter',
       'cv_english': 'English',
       'cv_turkish': 'Turkish',
@@ -156,6 +155,16 @@ class AppLocalizations {
       'exp_caproll_desc':
           'A private photo-sharing platform for weddings and special events. Guests scan a QR code and upload photos to a locked gallery that is revealed simultaneously to all participants at a host-chosen moment.',
 
+      // Mixory
+      'exp_mixory_title': 'Mixory',
+      'exp_mixory_desc':
+          'An iOS-only multitrack audio mixer and recorder, positioned between AUM and Tape It. Flutter UI layer paired with a native Swift audio engine (AVAudioEngine/Core Audio) for real-time mixing, with AUv3 hosting on the roadmap.',
+
+      // Fildişi Çikolata ve Makaron Atölyesi
+      'exp_fildisiatelier_title': 'Fildişi Çikolata & Makaron Atölyesi',
+      'exp_fildisiatelier_desc':
+          'Bilingual website for a handmade chocolate and macaron atelier, built with Next.js and deployed as a static export on Firebase Hosting. Includes a blog, a generated responsive image pipeline, and full SEO and GEO (AI search engine) optimization.',
+
       // Upwork Service
       'upwork_service_title': 'Freelance Services on Upwork',
       'upwork_service_desc':
@@ -166,6 +175,7 @@ class AppLocalizations {
       'events_title': 'Events & Conferences',
       'events_subtitle': 'Community Engagement & Learning',
       'event_attendee': 'Attendee',
+      'event_member': 'Member',
       'event_gdg_izmir_devfest': 'GDG Izmir DevFest',
       'event_wtm_izmir': 'Women Techmakers Izmir',
       'event_gdg_manisa_devfest': 'GDG Manisa DevFest',
@@ -177,6 +187,7 @@ class AppLocalizations {
       'event_hack_n_break': 'Hack\'N Break',
       'event_create_in_izmir': 'Create In Izmir Pitching Day',
       'event_tmug_app_community_night_izmir': 'TMUG APP Community Night İzmir',
+      'event_teknokratlar_dernegi': 'TEK Teknokratlar Derneği',
     },
     'tr': {
       // Navigation
@@ -193,7 +204,6 @@ class AppLocalizations {
       'hero_subtitle':
           'Bilgisayar Mühendisliği Mezunu | Güzel ve performanslı mobil ve web uygulamaları oluşturma konusunda tutkulu',
       'hero_cta_contact': 'İletişime Geç',
-      'hero_cta_cv': 'CV İndir',
 
       // About Section
       'about_title': 'Hakkımda',
@@ -218,8 +228,8 @@ class AppLocalizations {
       'social_subtitle': 'Beni bu platformlarda bulabilirsiniz',
 
       // CV Download Section
-      'cv_title': 'Dokümanları İndir',
-      'cv_download': 'CV İndir',
+      'cv_title': 'Belgeleri Talep Et',
+      'cv_download': 'CV Talep Et',
       'cv_cover_letter': 'Ön Yazı Talep Et',
       'cv_english': 'İngilizce',
       'cv_turkish': 'Türkçe',
@@ -315,6 +325,16 @@ class AppLocalizations {
       'exp_caproll_desc':
           'Düğün ve özel etkinlikler için gizli fotoğraf paylaşım platformu. Misafirler QR kod okutup galeriye fotoğraf yükler; host\'un belirlediği anda tüm katılımcılara aynı anda açılır.',
 
+      // Mixory
+      'exp_mixory_title': 'Mixory',
+      'exp_mixory_desc':
+          'AUM ve Tape It arasında konumlanan, sadece iOS için çoklu kanal ses mixer ve multitrack kayıt uygulaması. Flutter UI katmanı, gerçek zamanlı mixing için native Swift ses motoruyla (AVAudioEngine/Core Audio) birleşiyor; AUv3 desteği yol haritasında.',
+
+      // Fildişi Çikolata ve Makaron Atölyesi
+      'exp_fildisiatelier_title': 'Fildişi Çikolata & Makaron Atölyesi',
+      'exp_fildisiatelier_desc':
+          'El yapımı çikolata ve makaron atölyesi için Next.js ile geliştirilen, Firebase Hosting üzerinde statik export olarak yayınlanan iki dilli web sitesi. Blog, otomatik responsive görsel pipeline ve tam SEO ile GEO (yapay zeka arama motoru) optimizasyonu içeriyor.',
+
       // Upwork Hizmeti
       'upwork_service_title': 'Upwork\'te Freelance Hizmetlerim',
       'upwork_service_desc':
@@ -325,6 +345,7 @@ class AppLocalizations {
       'events_title': 'Etkinlikler & Konferanslar',
       'events_subtitle': 'Topluluk Katılımı & Öğrenme',
       'event_attendee': 'Katılımcı',
+      'event_member': 'Üye',
       'event_gdg_izmir_devfest': 'GDG Izmir DevFest',
       'event_wtm_izmir': 'Women Techmakers Izmir',
       'event_gdg_manisa_devfest': 'GDG Manisa DevFest',
@@ -336,6 +357,7 @@ class AppLocalizations {
       'event_hack_n_break': 'Hack\'N Break',
       'event_create_in_izmir': 'Create In Izmir Pitching Day',
       'event_tmug_app_community_night_izmir': 'TMUG APP Community Night İzmir',
+      'event_teknokratlar_dernegi': 'TEK Teknokratlar Derneği',
     },
   };
 
@@ -355,7 +377,6 @@ class AppLocalizations {
   String get heroTitle => translate('hero_title');
   String get heroSubtitle => translate('hero_subtitle');
   String get heroCtaContact => translate('hero_cta_contact');
-  String get heroCtaCv => translate('hero_cta_cv');
 
   String get aboutTitle => translate('about_title');
   String get aboutDescription => translate('about_description');

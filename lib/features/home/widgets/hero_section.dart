@@ -9,9 +9,8 @@ import 'package:aad/shared/widgets/app_button.dart';
 /// Hero section widget
 class HeroSection extends StatelessWidget {
   final VoidCallback? onContactPressed;
-  final VoidCallback? onCVPressed;
 
-  const HeroSection({super.key, this.onContactPressed, this.onCVPressed});
+  const HeroSection({super.key, this.onContactPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -221,28 +220,8 @@ class HeroSection extends StatelessWidget {
       icon: Icons.email,
     );
 
-    final cvButton = AppButton(
-      text: l10n.heroCtaCv,
-      onPressed: onCVPressed,
-      isOutlined: true,
-      icon: Icons.download,
-    );
-
     return isColumn
-        ? Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              contactButton,
-              const SizedBox(height: AppConstants.spacingM),
-              cvButton,
-            ],
-          )
-        : Row(
-            children: [
-              contactButton,
-              const SizedBox(width: AppConstants.spacingM),
-              cvButton,
-            ],
-          );
+        ? SizedBox(width: double.infinity, child: contactButton)
+        : contactButton;
   }
 }

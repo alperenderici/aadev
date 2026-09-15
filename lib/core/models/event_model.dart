@@ -6,6 +6,7 @@ class EventModel {
   final DateTime date;
   final String? location;
   final String? url;
+  final String roleKey;
 
   const EventModel({
     required this.id,
@@ -14,5 +15,6 @@ class EventModel {
     required this.date,
     this.location,
     this.url,
+    this.roleKey = 'event_attendee',
   });
 }

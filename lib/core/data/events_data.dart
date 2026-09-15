@@ -65,5 +65,13 @@ class EventsData {
       date: DateTime(2026, 4),
       location: 'Izmir, Turkey',
     ),
+    EventModel(
+      id: 'teknokratlar_dernegi',
+      nameKey: 'event_teknokratlar_dernegi',
+      date: DateTime(2026, 8),
+      location: 'Istanbul, Turkey',
+      url: 'https://teknokratlar.org.tr/',
+      roleKey: 'event_member',
+    ),
   ];
 }

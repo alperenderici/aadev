@@ -260,15 +260,13 @@ Want to use this portfolio template for your own website? Here's how:
 3. Certificates are automatically sorted by date (newest first)
 
 #### Update CV/Cover Letter
-1. Replace PDF files in `assets/CV/`
-2. Keep naming convention: `AAD_CV(EN).pdf`, `AAD_CV(TR).pdf`, etc.
+CV and cover letter are no longer bundled as public PDF files. Requests are sent via a mailto link (`_requestCV` / `_requestCoverLetter` in `lib/features/home/widgets/cv_download_section.dart`) to the address configured there.
 
 ### 🎨 Assets Structure
 
 ```
 assets/
 ├── certificates/          # Certificate images (DD.MM.YYYY.png format)
-├── CV/                   # Resume PDFs (English & Turkish)
 ├── images/               # Profile and project images
 │   ├── pp.png           # Profile photo
 │   └── fitgo_*.JPG      # Project photos

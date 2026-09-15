@@ -81,9 +81,8 @@ class MyApp extends ConsumerWidget {
 
     return MaterialPageRoute<void>(
       settings: settings,
-      builder: (context) => roll == null
-          ? const FilmGalleryPage()
-          : FilmRollPage(roll: roll),
+      builder: (context) =>
+          roll == null ? const FilmGalleryPage() : FilmRollPage(roll: roll),
     );
   }
 }

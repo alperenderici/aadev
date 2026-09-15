@@ -47,22 +47,25 @@ class ExperienceSection extends StatelessWidget {
       );
     }
 
-    // Desktop: 2 columns
-    return Wrap(
-      spacing: AppConstants.spacingL,
-      runSpacing: AppConstants.spacingL,
-      children: experiences.asMap().entries.map((entry) {
-        final index = entry.key;
-        final experience = entry.value;
-        return SizedBox(
-          width:
-              (MediaQuery.of(context).size.width -
-                  AppConstants.spacingXXXL * 2 -
-                  AppConstants.spacingL) /
-              2,
-          child: _ExperienceCard(experience: experience, index: index),
+    // Desktop/tablet: 2 columns, sized to the actual available width so the
+    // grid stays 2-wide even when the section's content is capped narrower
+    // than the full screen (see Responsive.maxContentWidth).
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final columnWidth = (constraints.maxWidth - AppConstants.spacingL) / 2;
+        return Wrap(
+          spacing: AppConstants.spacingL,
+          runSpacing: AppConstants.spacingL,
+          children: experiences.asMap().entries.map((entry) {
+            final index = entry.key;
+            final experience = entry.value;
+            return SizedBox(
+              width: columnWidth,
+              child: _ExperienceCard(experience: experience, index: index),
+            );
+          }).toList(),
         );
-      }).toList(),
+      },
     );
   }
 }
@@ -176,7 +179,7 @@ class _ExperienceCard extends StatelessWidget {
       ),
     );
 
-    if (experience.id == 'upwork') {
+    if (experience.id == 'upwork' || experience.id == 'fildisiatelier') {
       return Container(
         decoration: BoxDecoration(
           color: Colors.white,

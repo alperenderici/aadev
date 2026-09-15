@@ -6,7 +6,26 @@ class ExperiencesData {
   ExperiencesData._();
 
   static final List<ExperienceModel> experiences = [
-    // 1. Opex - Current
+    // 1. Mixory - Current
+    ExperienceModel(
+      id: 'mixory',
+      titleKey: 'exp_mixory_title',
+      descriptionKey: 'exp_mixory_desc',
+      companyName: 'Mixory',
+      screenshot: AssetPaths.mixoryLogo,
+      technologies: [
+        'Flutter',
+        'Swift',
+        'AVAudioEngine',
+        'Platform Channels',
+        'AUv3',
+      ],
+      startDate: DateTime(2026, 9),
+      isCurrent: true,
+      liveUrl: 'https://mixory-app.web.app/',
+    ),
+
+    // 2. Opex - Current
     ExperienceModel(
       id: 'opex',
       titleKey: 'exp_opex_title',
@@ -64,6 +83,26 @@ class ExperiencesData {
       startDate: DateTime(2026, 4),
       endDate: DateTime(2026, 5),
       isStopped: true,
+      isCurrent: false,
+    ),
+
+    // 5. Fildişi Çikolata ve Makaron Atölyesi
+    ExperienceModel(
+      id: 'fildisiatelier',
+      titleKey: 'exp_fildisiatelier_title',
+      descriptionKey: 'exp_fildisiatelier_desc',
+      companyName: 'Fildişi Çikolata ve Makaron Atölyesi',
+      screenshot: AssetPaths.fildisiAtelierLogo,
+      technologies: [
+        'Next.js',
+        'Firebase Hosting',
+        'Vercel',
+        'SEO',
+        'GEO Optimization',
+      ],
+      liveUrl: 'https://fildisiatelier.com/',
+      startDate: DateTime(2026, 4),
+      endDate: DateTime(2026, 8),
       isCurrent: false,
     ),
 

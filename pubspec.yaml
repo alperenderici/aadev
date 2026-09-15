@@ -64,5 +64,3 @@ flutter:
     # Certificates
     - assets/certificates/
 
-    # CV and Cover Letters
-    - assets/CV/

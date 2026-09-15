@@ -17,19 +17,15 @@ class UpworkServiceSection extends StatelessWidget {
     return ResponsiveSection(
       backgroundColor: theme.colorScheme.surface,
       child: Container(
-        padding: const EdgeInsets.all(AppConstants.spacingXL),
+        padding: const EdgeInsets.symmetric(
+          horizontal: AppConstants.spacingL,
+          vertical: AppConstants.spacingM,
+        ),
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              theme.colorScheme.primary.withValues(alpha: 0.1),
-              theme.colorScheme.secondary.withValues(alpha: 0.1),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          ),
-          borderRadius: BorderRadius.circular(AppConstants.radiusL),
+          color: theme.colorScheme.primary.withValues(alpha: 0.04),
+          borderRadius: BorderRadius.circular(AppConstants.radiusM),
           border: Border.all(
-            color: theme.colorScheme.primary.withValues(alpha: 0.3),
+            color: theme.colorScheme.primary.withValues(alpha: 0.15),
           ),
         ),
         child: Column(
@@ -38,16 +34,16 @@ class UpworkServiceSection extends StatelessWidget {
             Row(
                   children: [
                     Icon(
-                      Icons.work,
+                      Icons.work_outline,
                       color: theme.colorScheme.primary,
-                      size: 32,
+                      size: 18,
                     ),
-                    const SizedBox(width: AppConstants.spacingM),
+                    const SizedBox(width: AppConstants.spacingS),
                     Expanded(
                       child: Text(
                         l10n.translate('upwork_service_title'),
-                        style: theme.textTheme.headlineMedium?.copyWith(
-                          fontWeight: FontWeight.bold,
+                        style: theme.textTheme.titleSmall?.copyWith(
+                          fontWeight: FontWeight.w600,
                           color: theme.colorScheme.primary,
                         ),
                       ),
@@ -57,69 +53,53 @@ class UpworkServiceSection extends StatelessWidget {
                 .animate()
                 .fadeIn(duration: AppConstants.mediumAnimation)
                 .slideX(begin: -0.2, end: 0),
-            const SizedBox(height: AppConstants.spacingL),
+            const SizedBox(height: AppConstants.spacingXS),
             Text(
                   l10n.translate('upwork_service_desc'),
-                  style: theme.textTheme.bodyLarge?.copyWith(
-                    height: 1.8,
-                    fontSize: 18,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    height: 1.5,
+                    color: theme.textTheme.bodySmall?.color,
                   ),
                 )
                 .animate()
                 .fadeIn(duration: AppConstants.mediumAnimation, delay: 200.ms)
                 .slideY(begin: 0.2, end: 0),
-            const SizedBox(height: AppConstants.spacingXL),
+            const SizedBox(height: AppConstants.spacingS),
             InkWell(
-                  onTap: () async {
-                    final url = Uri.parse(AppConstants.upworkServiceUrl);
-                    if (await canLaunchUrl(url)) {
-                      await launchUrl(
-                        url,
-                        mode: LaunchMode.externalApplication,
-                      );
-                    }
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: AppConstants.spacingXL,
-                      vertical: AppConstants.spacingL,
+              borderRadius: BorderRadius.circular(AppConstants.radiusS),
+              onTap: () async {
+                final url = Uri.parse(AppConstants.upworkServiceUrl);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                }
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: AppConstants.spacingXS,
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      l10n.translate('upwork_service_cta'),
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        color: theme.colorScheme.primary,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                    decoration: BoxDecoration(
+                    const SizedBox(width: AppConstants.spacingXS),
+                    Icon(
+                      Icons.arrow_forward,
                       color: theme.colorScheme.primary,
-                      borderRadius: BorderRadius.circular(AppConstants.radiusM),
-                      boxShadow: [
-                        BoxShadow(
-                          color: theme.colorScheme.primary.withValues(
-                            alpha: 0.3,
-                          ),
-                          blurRadius: 20,
-                          offset: const Offset(0, 10),
-                        ),
-                      ],
+                      size: 14,
                     ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          l10n.translate('upwork_service_cta'),
-                          style: theme.textTheme.titleLarge?.copyWith(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(width: AppConstants.spacingM),
-                        const Icon(
-                          Icons.arrow_forward,
-                          color: Colors.white,
-                          size: 24,
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-                .animate()
-                .fadeIn(duration: AppConstants.mediumAnimation, delay: 400.ms)
-                .scale(duration: AppConstants.mediumAnimation, delay: 400.ms),
+                  ],
+                ),
+              ),
+            ).animate().fadeIn(
+              duration: AppConstants.mediumAnimation,
+              delay: 400.ms,
+            ),
           ],
         ),
       ),

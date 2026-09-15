@@ -54,7 +54,6 @@ class _HomePageState extends State<HomePage> {
                     key: _sectionKeys['home'],
                     child: HeroSection(
                       onContactPressed: () => _scrollToSection('contact'),
-                      onCVPressed: () => _scrollToSection('cv'),
                     ),
                   ),
 

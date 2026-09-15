@@ -8,6 +8,7 @@ import 'package:aad/shared/widgets/responsive_section.dart';
 import 'package:aad/shared/widgets/section_title.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 /// Events section widget
 class EventsSection extends StatelessWidget {
@@ -48,20 +49,23 @@ class EventsSection extends StatelessWidget {
       );
     }
 
-    // Desktop: 2 columns
-    return Wrap(
-      spacing: AppConstants.spacingL,
-      runSpacing: AppConstants.spacingL,
-      children: events.map((event) {
-        return SizedBox(
-          width:
-              (MediaQuery.of(context).size.width -
-                  AppConstants.spacingXXXL * 2 -
-                  AppConstants.spacingL) /
-              2,
-          child: _EventCard(event: event),
+    // Desktop/tablet: 2 columns, sized to the actual available width so the
+    // grid stays 2-wide even when the section's content is capped narrower
+    // than the full screen (see Responsive.maxContentWidth).
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final columnWidth = (constraints.maxWidth - AppConstants.spacingL) / 2;
+        return Wrap(
+          spacing: AppConstants.spacingL,
+          runSpacing: AppConstants.spacingL,
+          children: events.map((event) {
+            return SizedBox(
+              width: columnWidth,
+              child: _EventCard(event: event),
+            );
+          }).toList(),
         );
-      }).toList(),
+      },
     );
   }
 }
@@ -76,116 +80,127 @@ class _EventCard extends StatelessWidget {
     final l10n = AppLocalizations.of(context);
     final theme = Theme.of(context);
 
-    return Container(
-          padding: const EdgeInsets.all(AppConstants.spacingL),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
-            border: Border.all(
-              color: theme.colorScheme.outline.withValues(alpha: 0.2),
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: theme.shadowColor.withValues(alpha: 0.05),
-                blurRadius: 10,
-                offset: const Offset(0, 4),
-              ),
-            ],
+    final card = Container(
+      padding: const EdgeInsets.all(AppConstants.spacingL),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        border: Border.all(
+          color: theme.colorScheme.outline.withValues(alpha: 0.2),
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: theme.shadowColor.withValues(alpha: 0.05),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Date badge
-              Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Date badge
+          Container(
+            width: 60,
+            height: 60,
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primary.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  DateFormat('MMM').format(event.date).toUpperCase(),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      DateFormat('MMM').format(event.date).toUpperCase(),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.primary,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text(
-                      DateFormat('yyyy').format(event.date),
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.primary,
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
+                Text(
+                  DateFormat('yyyy').format(event.date),
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontSize: 10,
+                  ),
                 ),
-              ),
-              const SizedBox(width: AppConstants.spacingM),
+              ],
+            ),
+          ),
+          const SizedBox(width: AppConstants.spacingM),
 
-              // Event details
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.translate(event.nameKey),
-                      style: theme.textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
+          // Event details
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.translate(event.nameKey),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                if (event.location != null) ...[
+                  const SizedBox(height: AppConstants.spacingXS),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.location_on,
+                        size: 14,
+                        color: theme.textTheme.bodySmall?.color,
                       ),
-                    ),
-                    if (event.location != null) ...[
-                      const SizedBox(height: AppConstants.spacingXS),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.location_on,
-                            size: 14,
-                            color: theme.textTheme.bodySmall?.color,
-                          ),
-                          const SizedBox(width: AppConstants.spacingXS),
-                          Text(
-                            event.location!,
-                            style: theme.textTheme.bodySmall?.copyWith(
-                              color: theme.textTheme.bodySmall?.color,
-                            ),
-                          ),
-                        ],
+                      const SizedBox(width: AppConstants.spacingXS),
+                      Text(
+                        event.location!,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: theme.textTheme.bodySmall?.color,
+                        ),
                       ),
                     ],
-                    const SizedBox(height: AppConstants.spacingXS),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: AppConstants.spacingS,
-                        vertical: AppConstants.spacingXS,
-                      ),
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.secondary.withValues(
-                          alpha: 0.1,
-                        ),
-                        borderRadius: BorderRadius.circular(
-                          AppConstants.radiusS,
-                        ),
-                      ),
-                      child: Text(
-                        l10n.translate('event_attendee'),
-                        style: theme.textTheme.bodySmall?.copyWith(
-                          color: theme.colorScheme.secondary,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 11,
-                        ),
-                      ),
+                  ),
+                ],
+                const SizedBox(height: AppConstants.spacingXS),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppConstants.spacingS,
+                    vertical: AppConstants.spacingXS,
+                  ),
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.secondary.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(AppConstants.radiusS),
+                  ),
+                  child: Text(
+                    l10n.translate(event.roleKey),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.secondary,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 11,
                     ),
-                  ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        )
+        ],
+      ),
+    );
+
+    return (event.url != null
+            ? InkWell(
+                borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                onTap: () => _launchUrl(event.url!),
+                child: card,
+              )
+            : card)
         .animate()
         .fadeIn(duration: AppConstants.mediumAnimation)
         .slideY(begin: 0.1, end: 0);
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
   }
 }

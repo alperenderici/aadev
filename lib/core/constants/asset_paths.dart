@@ -39,6 +39,9 @@ class AssetPaths {
   static const String rembetikaLogo =
       'assets/screenshots/rembatika_app_logo.png';
   static const String caprollLogo = 'assets/screenshots/caproll_icon.png';
+  static const String mixoryLogo = 'assets/screenshots/mixory_logo.png';
+  static const String fildisiAtelierLogo =
+      'assets/screenshots/fildisiatelier_logo.png';
 
   // Certificates
   static const String certificatesDir = 'assets/certificates/';
@@ -54,12 +57,6 @@ class AssetPaths {
     'assets/certificates/25.10.2020.png',
     'assets/certificates/10.12.2019.png',
   ];
-
-  // CV and Cover Letters
-  static const String cvEnglish = 'assets/CV/AAD_CV(EN).pdf';
-  static const String cvTurkish = 'assets/CV/AAD_CV(TR).pdf';
-  static const String coverLetterEnglish = 'assets/CV/AAD_CL_(EN).pdf';
-  static const String coverLetterTurkish = 'assets/CV/AAD_CL_(TR).pdf';
 
   // Videos
   static const String demoVideo = 'assets/videos/record1.mp4';

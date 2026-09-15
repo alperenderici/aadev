@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:aad/core/constants/app_constants.dart';
-import 'package:aad/core/constants/asset_paths.dart';
 import 'package:aad/core/l10n/app_localizations.dart';
 import 'package:aad/core/providers/locale_provider.dart';
 import 'package:aad/core/services/analytics_service.dart';
@@ -92,8 +91,8 @@ class CVDownloadSection extends ConsumerWidget {
                   Expanded(
                     child: AppButton(
                       text: l10n.cvEnglish,
-                      onPressed: () => _downloadFile(AssetPaths.cvEnglish),
-                      icon: Icons.download,
+                      onPressed: () => _requestCV('EN'),
+                      icon: Icons.email,
                       isOutlined:
                           !isTurkish, // English outlined if English is active
                     ),
@@ -102,8 +101,8 @@ class CVDownloadSection extends ConsumerWidget {
                   Expanded(
                     child: AppButton(
                       text: l10n.cvTurkish,
-                      onPressed: () => _downloadFile(AssetPaths.cvTurkish),
-                      icon: Icons.download,
+                      onPressed: () => _requestCV('TR'),
+                      icon: Icons.email,
                       isOutlined:
                           isTurkish, // Turkish outlined if Turkish is active
                     ),
@@ -170,43 +169,23 @@ class CVDownloadSection extends ConsumerWidget {
         .slideX(begin: 0.2, end: 0);
   }
 
-  Future<void> _downloadFile(String assetPath) async {
-    // Track download event
-    String type = '';
-    if (assetPath.contains('CV')) {
-      type = assetPath.contains('EN') ? 'CV_EN' : 'CV_TR';
-    } else {
-      type = assetPath.contains('EN') ? 'CL_EN' : 'CL_TR';
-    }
-    AnalyticsService.logCVDownload(type);
+  Future<void> _requestCV(String language) async {
+    AnalyticsService.logCVDownload('CV_REQUEST_$language');
 
-    // For web, open the PDF in a new tab
-    // On web, assets are served from /assets/assets/ path after build
-    // This is because Flutter web copies assets to build/web/assets/
-    final url = Uri.parse('/assets/$assetPath');
+    final subject = language == 'EN'
+        ? 'CV Request - English'
+        : 'CV Talebi - Türkçe';
 
-    try {
-      // Use externalApplication mode to force opening in new tab
-      final launched = await launchUrl(
-        url,
-        mode: LaunchMode.externalApplication,
-      );
+    final body = language == 'EN'
+        ? 'Hello,\n\nI would like to request your CV in English.\n\nThank you!'
+        : 'Merhaba,\n\nCV\'nizi Türkçe olarak talep etmek istiyorum.\n\nTeşekkürler!';
 
-      if (!launched) {
-        // Fallback: try with webOnlyWindowName
-        await launchUrl(url, webOnlyWindowName: '_blank');
-      }
-    } catch (e) {
-      // Ignore errors - file will open in new tab if available
-      debugPrint('Error opening CV: $e');
-    }
+    await _sendRequestEmail(subject, body);
   }
 
   Future<void> _requestCoverLetter(String language) async {
-    // Track cover letter request event
     AnalyticsService.logCVDownload('CL_REQUEST_$language');
 
-    // Open email client with pre-filled subject and body
     final subject = language == 'EN'
         ? 'Cover Letter Request - English'
         : 'Ön Yazı Talebi - Türkçe';
@@ -215,6 +194,10 @@ class CVDownloadSection extends ConsumerWidget {
         ? 'Hello,\n\nI would like to request your cover letter in English.\n\nThank you!'
         : 'Merhaba,\n\nÖn yazınızı Türkçe olarak talep etmek istiyorum.\n\nTeşekkürler!';
 
+    await _sendRequestEmail(subject, body);
+  }
+
+  Future<void> _sendRequestEmail(String subject, String body) async {
     final emailUrl = Uri(
       scheme: 'mailto',
       path: 'alialperenderici@gmail.com',

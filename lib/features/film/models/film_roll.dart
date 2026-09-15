@@ -92,6 +92,5 @@ class FilmRoll {
       scannedAt != null ||
       notes != null;
 
-  String _frameNumber(int index) =>
-      (index + 1).toString().padLeft(3, '0');
+  String _frameNumber(int index) => (index + 1).toString().padLeft(3, '0');
 }

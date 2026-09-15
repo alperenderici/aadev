@@ -50,12 +50,25 @@ class AboutSection extends StatelessWidget {
     AppLocalizations l10n,
     ThemeData theme,
   ) {
-    return Row(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(flex: 2, child: _buildContent(context, l10n, theme)),
-        const SizedBox(width: AppConstants.spacingXXL),
-        Expanded(flex: 1, child: _buildImages(context)),
+        _buildDescription(context, l10n, theme),
+        const SizedBox(height: AppConstants.spacingXXL),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(flex: 1, child: _buildImages(context)),
+            const SizedBox(width: AppConstants.spacingXXL),
+            Expanded(
+              flex: 2,
+              child: _buildHighlights(context, theme)
+                  .animate()
+                  .fadeIn(duration: AppConstants.mediumAnimation, delay: 200.ms)
+                  .slideY(begin: 0.2, end: 0),
+            ),
+          ],
+        ),
       ],
     );
   }
@@ -68,16 +81,7 @@ class AboutSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-              l10n.aboutDescription,
-              style: theme.textTheme.bodyLarge?.copyWith(
-                height: 1.8,
-                fontSize: 18,
-              ),
-            )
-            .animate()
-            .fadeIn(duration: AppConstants.mediumAnimation)
-            .slideY(begin: 0.2, end: 0),
+        _buildDescription(context, l10n, theme),
         const SizedBox(height: AppConstants.spacingXXL),
         _buildHighlights(context, theme)
             .animate()
@@ -85,6 +89,20 @@ class AboutSection extends StatelessWidget {
             .slideY(begin: 0.2, end: 0),
       ],
     );
+  }
+
+  Widget _buildDescription(
+    BuildContext context,
+    AppLocalizations l10n,
+    ThemeData theme,
+  ) {
+    return Text(
+          l10n.aboutDescription,
+          style: theme.textTheme.bodyLarge?.copyWith(height: 1.8, fontSize: 18),
+        )
+        .animate()
+        .fadeIn(duration: AppConstants.mediumAnimation)
+        .slideY(begin: 0.2, end: 0);
   }
 
   Widget _buildHighlights(BuildContext context, ThemeData theme) {
@@ -127,92 +145,102 @@ class AboutSection extends StatelessWidget {
       },
     ];
 
-    return Wrap(
-      spacing: AppConstants.spacingL,
-      runSpacing: AppConstants.spacingL,
-      children: highlights.map((highlight) {
-        return Container(
-          width: Responsive.isMobile(context)
-              ? double.infinity
-              : (MediaQuery.of(context).size.width -
-                        AppConstants.spacingXXXL * 2 -
-                        AppConstants.spacingL) /
-                    2,
-          padding: const EdgeInsets.all(AppConstants.spacingM),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(AppConstants.radiusL),
-            border: Border.all(
-              color: theme.colorScheme.primary.withValues(alpha: 0.2),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final cardWidth = Responsive.isMobile(context)
+            ? double.infinity
+            : (constraints.maxWidth - AppConstants.spacingL) / 2;
+        return Wrap(
+          spacing: AppConstants.spacingL,
+          runSpacing: AppConstants.spacingL,
+          children: highlights.map((highlight) {
+            return _buildHighlightCard(context, theme, highlight, cardWidth);
+          }).toList(),
+        );
+      },
+    );
+  }
+
+  Widget _buildHighlightCard(
+    BuildContext context,
+    ThemeData theme,
+    Map<String, Object> highlight,
+    double width,
+  ) {
+    return Container(
+      width: width,
+      padding: const EdgeInsets.all(AppConstants.spacingM),
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(AppConstants.radiusL),
+        border: Border.all(
+          color: theme.colorScheme.primary.withValues(alpha: 0.2),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(AppConstants.spacingS),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primary.withValues(alpha: 0.1),
+              borderRadius: BorderRadius.circular(AppConstants.radiusM),
+            ),
+            child: Icon(
+              highlight['icon'] as IconData,
+              color: theme.colorScheme.primary,
+              size: 24,
             ),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: const EdgeInsets.all(AppConstants.spacingS),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(AppConstants.radiusM),
+          const SizedBox(width: AppConstants.spacingM),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  highlight['title'] as String,
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-                child: Icon(
-                  highlight['icon'] as IconData,
-                  color: theme.colorScheme.primary,
-                  size: 24,
+                const SizedBox(height: AppConstants.spacingXS),
+                Text(
+                  highlight['description'] as String,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    height: 1.5,
+                    color: theme.textTheme.bodySmall?.color,
+                  ),
                 ),
-              ),
-              const SizedBox(width: AppConstants.spacingM),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      highlight['title'] as String,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(height: AppConstants.spacingXS),
-                    Text(
-                      highlight['description'] as String,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        height: 1.5,
-                        color: theme.textTheme.bodySmall?.color,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
-        );
-      }).toList(),
+        ],
+      ),
     );
   }
 
   Widget _buildImages(BuildContext context) {
-    return Column(
-      children: [
-        ClipRRect(
-              borderRadius: BorderRadius.circular(AppConstants.radiusL),
-              child: Image.asset(
-                AssetPaths.fitgoProfessional,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    height: 300,
-                    color: Theme.of(
-                      context,
-                    ).colorScheme.primary.withValues(alpha: 0.1),
-                    child: const Icon(Icons.image, size: 100),
-                  );
-                },
-              ),
-            )
-            .animate()
-            .fadeIn(duration: AppConstants.mediumAnimation)
-            .scale(duration: AppConstants.mediumAnimation),
-      ],
+    return AspectRatio(
+      aspectRatio: 3 / 4,
+      child:
+          ClipRRect(
+                borderRadius: BorderRadius.circular(AppConstants.radiusL),
+                child: Image.asset(
+                  AssetPaths.fitgoProfessional,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Container(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withValues(alpha: 0.1),
+                      child: const Icon(Icons.image, size: 100),
+                    );
+                  },
+                ),
+              )
+              .animate()
+              .fadeIn(duration: AppConstants.mediumAnimation)
+              .scale(duration: AppConstants.mediumAnimation),
     );
   }
 }
