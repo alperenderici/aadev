@@ -6,7 +6,7 @@ class ExperiencesData {
   ExperiencesData._();
 
   static final List<ExperienceModel> experiences = [
-    // 1. Mixory - Current
+    // 1. Mixory
     ExperienceModel(
       id: 'mixory',
       titleKey: 'exp_mixory_title',
@@ -21,7 +21,7 @@ class ExperiencesData {
         'AUv3',
       ],
       startDate: DateTime(2026, 9),
-      isCurrent: true,
+      isCurrent: false,
       liveUrl: 'https://mixory-app.web.app/',
     ),
 
