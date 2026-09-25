@@ -30,10 +30,10 @@ class SocialLinksSection extends StatelessWidget {
   }
 
   Widget _buildSocialLinks(BuildContext context) {
-    final isMobile = Responsive.isMobile(context);
+    final isDesktop = Responsive.isDesktop(context);
 
-    if (isMobile) {
-      // Mobile: Wrap layout
+    if (!isDesktop) {
+      // Mobile/tablet: Wrap layout
       return Wrap(
         spacing: AppConstants.spacingL,
         runSpacing: AppConstants.spacingL,

@@ -31,10 +31,10 @@ class ExperienceSection extends StatelessWidget {
 
   Widget _buildExperienceList(BuildContext context) {
     final experiences = ExperiencesData.experiences;
-    final isMobile = Responsive.isMobile(context);
+    final isDesktop = Responsive.isDesktop(context);
 
-    if (isMobile) {
-      // Mobile: Single column
+    if (!isDesktop) {
+      // Mobile/tablet: Single column
       return Column(
         children: experiences.asMap().entries.map((entry) {
           final index = entry.key;
@@ -47,7 +47,7 @@ class ExperienceSection extends StatelessWidget {
       );
     }
 
-    // Desktop/tablet: 2 columns, sized to the actual available width so the
+    // Desktop: 2 columns, sized to the actual available width so the
     // grid stays 2-wide even when the section's content is capped narrower
     // than the full screen (see Responsive.maxContentWidth).
     return LayoutBuilder(
