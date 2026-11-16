@@ -148,6 +148,7 @@ class _ExperienceCard extends StatelessWidget {
     if (experience.additionalScreenshot != null) {
       images.add(experience.additionalScreenshot!);
     }
+    images.addAll(experience.extraImages);
 
     if (images.isEmpty) return const SizedBox.shrink();
     if (images.length == 1) return _assetImage(context, images.first);

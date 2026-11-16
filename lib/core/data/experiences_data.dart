@@ -106,7 +106,7 @@ class ExperiencesData {
       isCurrent: false,
     ),
 
-    // 6. Train One - Current
+    // 6. Train One
     ExperienceModel(
       id: 'fitgo',
       titleKey: 'exp_fitgo_title',
@@ -121,7 +121,7 @@ class ExperiencesData {
         'Domain-Driven Design (DDD)',
       ],
       startDate: DateTime(2025, 6),
-      isCurrent: true,
+      isCurrent: false,
     ),
 
     // 7. WellNow / Geo Spor - Current
@@ -133,6 +133,7 @@ class ExperiencesData {
       companyLogo: AssetPaths.geoSporLogoWhite,
       screenshot: AssetPaths.wellnowScreenshot,
       additionalScreenshot: AssetPaths.partyWizardScreenshot,
+      extraImages: [AssetPaths.wouLogo],
       technologies: [
         'Flutter',
         'Riverpod',

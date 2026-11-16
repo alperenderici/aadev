@@ -7,6 +7,9 @@ class ExperienceModel {
   final String? companyLogo;
   final String? screenshot;
   final String? additionalScreenshot;
+
+  /// Extra images shown below [additionalScreenshot], in order.
+  final List<String> extraImages;
   final List<String> technologies;
   final String? liveUrl;
   final String? githubUrl;
@@ -23,6 +26,7 @@ class ExperienceModel {
     this.companyLogo,
     this.screenshot,
     this.additionalScreenshot,
+    this.extraImages = const [],
     required this.technologies,
     this.liveUrl,
     this.githubUrl,

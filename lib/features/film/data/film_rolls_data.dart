@@ -23,6 +23,16 @@ class FilmRollsData {
   /// Rolls newest-first, as shown on `/35mm`.
   static const List<FilmRoll> rolls = [
     FilmRoll(
+      id: 'gold-200-2026',
+      title: 'Kodak Gold 200 · 2026',
+      filmStock: 'Kodak Gold 200',
+      camera: 'Yashica FR2',
+      shotOn: '2026',
+      frameCount: 20,
+      orientations: 'lppllllppplllllllllp',
+      sortKey: 1000,
+    ),
+    FilmRoll(
       id: 'ektar-2025',
       title: 'Kodak Ektar · 2025',
       filmStock: 'Kodak Ektar 100',

@@ -34,6 +34,7 @@ class AssetPaths {
       'assets/screenshots/party_wizard.png';
   static const String geoSporLogoWhite =
       'assets/screenshots/geo-logo-beyaz.png';
+  static const String wouLogo = 'assets/screenshots/wou_logo.png';
   static const String analogBuddyLogo =
       'assets/screenshots/AnalogBuddy_logo.jpg';
   static const String rembetikaLogo =
