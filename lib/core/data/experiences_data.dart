@@ -121,6 +121,7 @@ class ExperiencesData {
         'Domain-Driven Design (DDD)',
       ],
       startDate: DateTime(2025, 6),
+      endDate: DateTime(2026, 10),
       isCurrent: false,
     ),
 
